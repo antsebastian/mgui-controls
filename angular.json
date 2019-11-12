@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -37,7 +37,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
@@ -72,7 +72,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -115,6 +115,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "mgui-controls": {
+      "root": "projects/mgui-controls",
+      "sourceRoot": "projects/mgui-controls/src",
+      "projectType": "library",
+      "prefix": "mgui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mgui-controls/tsconfig.lib.json",
+            "project": "projects/mgui-controls/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/mgui-controls/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mgui-controls/src/test.ts",
+            "tsConfig": "projects/mgui-controls/tsconfig.spec.json",
+            "karmaConfig": "projects/mgui-controls/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mgui-controls/tsconfig.lib.json",
+              "projects/mgui-controls/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

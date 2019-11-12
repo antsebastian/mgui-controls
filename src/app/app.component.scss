@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+
+@mixin app-component-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+
+  .primary-background{
+    background-color: red
+    
+  }
+
+  .active-highlighter
+  {
+    position: absolute;
+    left: 10px;
+    height: 18px;
+    width: 4px;
+    background: mat-color($primary);
+  }
+
+.foreground{
+  color: mat-color($foreground, text);
+}
+
+  .primary-foreground{
+    color: white;
+  }
+}

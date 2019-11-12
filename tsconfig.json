@@ -16,6 +16,22 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "mgui-controls": [
+        "dist/mgui-controls",
+        "dist/mgui-controls"
+      ],
+      "mgui-controls/*": [
+        "dist/mgui-controls/*",
+        "dist/mgui-controls/*"
+      ],
+      "ng7-common": [
+        "dist/ng7-common"
+      ],
+      "ng7-common/*": [
+        "dist/ng7-common/*"
+      ]
+    }
   }
 }

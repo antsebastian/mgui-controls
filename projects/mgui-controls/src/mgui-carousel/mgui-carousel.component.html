@@ -1,0 +1,49 @@
+<section #section1
+             style="position: relative;top:0; left:0; width:100%; height:100%">
+      <div #rotator style="overflow-x: hidden;" fxFill>
+
+        <div id="scrolled-wrapper" fxLayout="row" fxFill>
+          <ng-container *ngFor="let s of slideSrc; let i = index">            
+            <slide-div #slide fxFill [slideid]="i"
+                       [ngStyle]="{'background-image':
+                     'url(http://localhost:4200/assets/small-business-parallax-' + (i + 1) + '-1920x1200.jpg)'}"
+                       style="background-size: cover;">
+
+              <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
+                   style="background: rgba(0, 0, 0, 0.3)">
+                <!--[@responsive-scale-ani]="currLayoutString"-->
+                <div *ngIf="slide.animatePage" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
+                  <div class="child white-text {{getClassName('h6-')}}">{{s.smallText}}</div>
+                  <div class="child white-text {{getClassName('h1-')}}"
+                       style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"
+                       [ngStyle.sm]="{'max-width' : '535px'}"
+                       [ngStyle.xs]="{'max-width' : '350px', 'margin-top': '30px',
+                                      'margin-bottom' : '25px'}">
+                    {{s.bigText}}
+                  </div>
+                  <button class="child {{'read-more-button-' + currLayoutString}}">READ MORE</button>
+                </div>
+              </div>
+            </slide-div>
+          </ng-container>
+        </div>
+      </div>
+
+      <ng-container *ngIf="mediaService.isActive('gt-sm')">
+        <button mat-fab style=" color:white; background: rgba(0, 0, 0, 0.6); position: absolute;
+                              top: 50%; left: 25px" (click)="prevSlide()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-fab style=" color:white; background: rgba(0, 0, 0, 0.6); position: absolute;
+                              top: 50%; right:25px" (click)="nextSlide()">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </ng-container>
+
+      <div fxLayout="row" style="position: absolute; bottom: 10%; left: calc(50% - 30px)">
+        <button (click)="selSlide(0)">0</button>
+        <button (click)="selSlide(1)">1</button>
+        <button (click)="selSlide(2)">2</button>
+        <button (click)="selSlide(3)">3</button>
+      </div>
+    </section>
