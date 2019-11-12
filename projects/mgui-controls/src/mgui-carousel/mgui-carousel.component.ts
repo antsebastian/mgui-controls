@@ -3,12 +3,14 @@ import { SlideDiv } from './slide-div';
 import { ObservableMedia } from '@angular/flex-layout';
 import {concatMap, flatMap, map, take, takeUntil, takeWhile, tap, throttle, timeout} from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { SetPageAni, ResponsiveScaleAni, FadeInAni } from '../mgui-animations/mgui-animations';
 
 
 @Component({
   selector: 'lib-mgui-carousel',
   templateUrl: './mgui-carousel.component.html',
-  styleUrls: ['./mgui-carousel.component.css']
+  styleUrls: ['./mgui-carousel.component.css'],
+  animations: [SetPageAni('animate-page'), ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
 export class MguiCarouselComponent implements OnInit, OnDestroy {
 
