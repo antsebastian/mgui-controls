@@ -1,3 +1,35 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<h2>Carousel: </h2>
-<lib-mgui-carousel></lib-mgui-carousel>
+<div fxFlex="100%" fxLayout="column">
+
+    <mat-toolbar fxShow fxHide.lt-md fxHide.md>
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle Navigation" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <h2 style="padding-left:20px">Modern GUI Controls - Showcase</h2>
+        <span fxFlex="1 1 auto"></span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container fxFlex="100%">
+  
+      <mat-sidenav-content role="main" fxFlex="100%">
+       <router-outlet></router-outlet>
+      </mat-sidenav-content>
+  
+      <mat-sidenav #drawer class="mat-elevation-z3"
+                   [mode]="drawerMode" opened
+                   role="navigation" style="min-width:300px" fxLayout="column">
+  
+        <mat-nav-list>
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/home-workspace'
+                         routerLinkActive #rla="routerLinkActive">
+            <div *ngIf="rla.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>home</mat-icon>
+            <a mat-line>Site</a>
+  
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </div>
+  
+  

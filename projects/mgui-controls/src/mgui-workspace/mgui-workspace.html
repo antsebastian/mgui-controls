@@ -1,0 +1,36 @@
+<div fxFlex="100%" fxLayout="column">
+
+  <!--TODO: Using isActive instead of fxHide. Maybe fixed on version fxFlex v7 fxHide fxShow.gt-sm fxShow.sm
+            https://github.com/angular/flex-layout/issues/171-->
+  <ng-container *ngIf="mediaService.isActive('gt-md')">
+    <mat-toolbar class="mat-elevation-z4" fxFlex="0 0 auto"
+                 style="z-index: 999;"
+                 color="primary">
+      <h1 style="margin-right: 20px">{{title}}</h1>
+      <ng-content select="[webTools]"></ng-content>
+    </mat-toolbar>
+  </ng-container>
+  <!--TODO: Test on version fxFlex v7 fxHide fxShow.lt-sm
+      also had to set fxFlex explicitly on toolbars otherwise they behave strange and disappear
+      when sizing passes certain breakpoints-->
+  <ng-container *ngIf="mediaService.isActive('lt-md') || mediaService.isActive('md')">
+    <mat-toolbar class="mat-elevation-z4" fxFlex="0 0 auto"
+                 style="z-index: 999;"
+                 color="primary">
+      <button type="button" aria-label="Toggle Navigation" mat-icon-button (click)="appService?.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <h1>{{title}}</h1>
+      <span fxFlex="100%"></span>
+      <ng-content select="[mobileTools]"></ng-content>
+    </mat-toolbar>
+  </ng-container>
+
+  <ng-content></ng-content>
+
+  <ng-container *ngIf="mediaService.isActive('lt-sm') || mediaService.isActive('sm')">
+    <div style="position:fixed; bottom: 15px; right: 30px; z-index: 999">
+      <ng-content select="[mobilePrimeTools]"></ng-content>
+    </div>
+  </ng-container>
+</div>

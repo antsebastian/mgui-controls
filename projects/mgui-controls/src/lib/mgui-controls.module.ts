@@ -9,12 +9,13 @@ import {
   MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatTableModule
 } from '@angular/material';
 import { MguiCarouselComponent } from '../mgui-carousel/mgui-carousel.component';
+import {MguiWorkspace} from '../mgui-workspace/mgui-workspace'
 import { SlideDiv, ScaleToFitWidth } from '../mgui-carousel/slide-div';
 
 @NgModule({
   imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule
   ],
-  declarations: [MguiCarouselComponent, SlideDiv, ScaleToFitWidth],
-  exports: [MguiCarouselComponent,SlideDiv, ScaleToFitWidth]
+  declarations: [MguiWorkspace, MguiCarouselComponent, SlideDiv, ScaleToFitWidth],
+  exports: [MguiWorkspace, MguiCarouselComponent,SlideDiv, ScaleToFitWidth]
 })
 export class MguiControlsModule { }
