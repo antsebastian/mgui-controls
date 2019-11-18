@@ -16,17 +16,24 @@
       </mat-sidenav-content>
   
       <mat-sidenav #drawer class="mat-elevation-z3"
-                   [mode]="drawerMode" opened
                    role="navigation" style="min-width:300px" fxLayout="column">
   
         <mat-nav-list>
-          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/home-workspace'
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/carousel-workspace'
                          routerLinkActive #rla="routerLinkActive">
             <div *ngIf="rla.isActive" class="active-highlighter"></div>
-            <mat-icon mat-list-icon>home</mat-icon>
-            <a mat-line>Site</a>
+            <mat-icon mat-list-icon>slideshow</mat-icon>
+            <a mat-line>Carousel Control</a>
   
           </mat-list-item>
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/pointerpanel-workspace'
+                         routerLinkActive #rla1="routerLinkActive">
+            <div *ngIf="rla1.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>horizontal_split</mat-icon>
+            <a mat-line>Pointer Panel Control</a>
+  
+          </mat-list-item>
+
         </mat-nav-list>
       </mat-sidenav>
     </mat-sidenav-container>

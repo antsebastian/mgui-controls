@@ -10,8 +10,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { MguiControlsModule } from 'projects/mgui-controls/src/lib/mgui-controls.module';
 import { CarouselWorkspace } from './workspaces/carousel-workspace/carousel-workspace'
+import {PointerPanelWorkspace} from './workspaces/pointer-panel-workspace/pointer-panel-workspace'
 import { MguiSideNavService } from 'projects/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
 import {Route, RouterModule, Routes} from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { ContactsMockService, CRUDService } from './services/app.dataservice';
 
 const indexRoute: Route = {
   path: '',
@@ -25,19 +28,31 @@ const fallbackRoute: Route = {
 
 const appRoutes: Routes = [
  {path: 'carousel-workspace', component: CarouselWorkspace},
+ {path: 'pointerpanel-workspace', component: PointerPanelWorkspace},
  indexRoute, fallbackRoute
 ];
+
+const contactsServiceFactory = (http: HttpClient) => {
+  return new ContactsMockService(http);
+};
+
+const contactsServiceProvider = {
+    provide: CRUDService,
+    useFactory: contactsServiceFactory,
+    deps: [HttpClient]
+  };
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselWorkspace,
+    CarouselWorkspace, PointerPanelWorkspace
   ],
   imports: [
-    
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    HttpClientModule,
     MguiControlsModule,
     MatToolbarModule, MatButtonModule, MatIconModule, MatExpansionModule,
   MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
@@ -46,7 +61,7 @@ const appRoutes: Routes = [
   RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
   
-  providers: [MguiSideNavService],
+  providers: [MguiSideNavService, contactsServiceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

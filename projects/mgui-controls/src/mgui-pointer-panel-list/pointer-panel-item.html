@@ -1,0 +1,11 @@
+<div #imageContainer class="image-container" (click)="select()" [@in-out-ani]
+     [style.transform]="isSelected ? 'translateY(0px)' : 'translateY(0px)'">
+  <ng-template *ngTemplateOutlet="itemTemplate; context: {$implicit: data}"></ng-template>
+  <div id="card-details-indicator-container" [style.visibility]="isSelected ? 'visible' : 'hidden'" fxLayout="row" fxLayoutAlign="center">
+    <div id="card-details-indicator" fxFlexAlign="end"></div>
+  </div>
+</div>
+
+
+<!--
+-->

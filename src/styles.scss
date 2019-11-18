@@ -1,10 +1,9 @@
 @import '~@angular/material/theming';
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import './app/app.component.scss';
-
-// @import 'app/mgui/mgui-pointer-panel-list/pointer-panel-details';
-// @import 'app/dashboard-workspace/dashboard-workspace';
-// @import 'app/home-workspace/home-workspace';
+@import '../projects/mgui-controls/src/mgui-carousel/mgui-carousel.component.scss';
+@import '../projects/mgui-controls/src/mgui-pointer-panel-list/pointer-panel-details.scss';
+@import './app/workspaces/carousel-workspace/carousel-workspace.scss';
 
 // Include non-theme styles for core.
 @include mat-core();
@@ -20,9 +19,8 @@ $theme: mat-dark-theme($primary, $accent);
 
 // Include all theme styles for the components.
 @include app-component-theme($theme);
-// @include details-panel-theme($theme);/* You can add global styles to this file, and also import other style files */
-// @include dashboard-workspace-theme($theme);/* You can add global styles to this file, and also import other style files */
-// @include home-workspace-theme($theme);/* You can add global styles to this file, and also import other style files */
+@include carousel-workspace-theme($theme);
+@include details-panel-theme($theme);/* You can add global styles to this file, and also import other style files */
 
 html, body, app-root { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: 0; font-family: 'Roboto', sans-serif; }
 

@@ -9,7 +9,7 @@
   $foreground: map-get($theme, foreground);
 
   .primary-background{
-    background-color: red
+    background-color: mat-color($primary);
     
   }
 

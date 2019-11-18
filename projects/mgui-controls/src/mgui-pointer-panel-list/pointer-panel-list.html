@@ -1,0 +1,16 @@
+<div #gridcontainer style="padding: 0">
+  <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <pointer-panel-item #ic fxFlex *ngFor="let item of (dataStream$ | async); let i = index" id="{{i}}"
+                          (selectionChanged)="icSelectionChanged(ic)"
+                          [style.z-index]="2"
+                          [@animate-row-move]="{value: ic.detailsPanelState, params: {to: detailsRowHeight}}"
+                          [itemTemplate]="itemTemplate" [data]="item">
+      </pointer-panel-item>
+  </div>
+
+  <pointer-panel-details #detailsPanel [pointerHeight]="20" [pointerWidth]="40"
+                         class="image-details-panel"
+                         [style.top]="detailsPanelTop + 'px'"
+                         [pointerX]="detailsPointerLeft"
+                         [itemDetailsTemplate]="itemDetailsTemplate"></pointer-panel-details>
+</div>

@@ -1,0 +1,21 @@
+  <div class="details-panel-grid">
+    <svg #pointer class="svg-details-pointer"
+         [@animate-pointer]="{value: pointerState, params: { from: pointerFrom, to: pointerTo}}"
+         (@animate-pointer.done)="handleDone()" [attr.height.px]="pointerHeight"
+         [attr.width.px]="pointerWidth">
+
+      <path id="pointer-path" [attr.d]="'M ' + pointerWidth * 0.5 + ' 0 L0 ' +
+                          pointerHeight + ' L' + pointerWidth + ' ' + pointerHeight + ' Z'">
+      </path>
+      <polyline id="pointer-poly" [attr.points]="'0,' + pointerHeight + ' ' +
+                pointerWidth * 0.5 + ',0' + ' '+  pointerWidth + ',' + pointerHeight"></polyline>
+
+    </svg>
+    <div id="div-details-panel" class="mat-elevation-z2">
+      <button mat-icon-button (click)="close.emit()" style="position:absolute; top:20px; right:0">
+        <mat-icon>close</mat-icon>
+      </button>
+      <ng-template *ngTemplateOutlet="itemDetailsTemplate; context: {$implicit: data}"></ng-template>
+    </div>
+  </div> 
+  <div class="div-details-reveal" [@animate-reveal]="{value: panelState}"></div>

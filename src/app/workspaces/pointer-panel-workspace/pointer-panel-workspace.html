@@ -1,0 +1,83 @@
+<!--ITEM DETAILS TEMPLATE-->
+<ng-template #myItemDetailsTemplate let-data>
+  <div *ngIf="data" fxLayout="row" style="height: 100%">
+    <div fxShow fxHide.lt-sm class="primary-background"
+         style="margin:10px; text-align:center">
+      <div style="display:inline-block; margin:15px;">
+        <img class="avatar" style="width: 150px; height: 150px;" [src]="data?.largeAvatarFileName"/>
+      </div>
+      <div class="primary-foreground" style="font-size:20px; margin-top: 15px">{{data?.firstName}}</div>
+    </div>
+    <div style="margin-top:50px; margin-left: 20px; margin-right: 20px; height: 280px; overflow: auto">
+      <p style="word-wrap: break-spaces">{{data?.largeDescription}}</p>
+    </div>
+  </div>
+</ng-template>
+
+<!--ITEM CARD TEMPLATE-->
+<ng-template #myItemTemplate let-data>
+  <mat-card style="min-width: 300px">
+    <mat-card-header>
+      <div fxLayout="row">
+        <img class="avatar" style="width:75px; height: 75px; transform: translate(-20px,-10px)"
+             [src]="data?.avatarFileName"/>
+        <div fxLayout="column" style="margin-left:10px">
+          <span class="foreground" style="font-size:20px">{{data?.firstName}}</span>
+          <span class="foreground" style="font-size:16px">{{data?.description}}</span>
+        </div>
+      </div>
+      <button mat-icon-button (click)="onDeleteCard(data)" style="position: absolute; right: 10px; top: 10px">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card>
+</ng-template>
+
+<!-- WORKSPACE TEMPLATE -->
+<mgui-workspace title="Contact">
+
+  <ng-container webTools>
+    <button mat-icon-button>
+      <mat-icon>cloud_upload</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="addCard()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
+
+  </ng-container>
+
+  <ng-container mobileTools>
+    <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item>Add Card</button>
+      <button mat-menu-item>Share</button>
+      <button mat-menu-item>Help</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container mobilePrimeTools>
+    <button mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-fab style="margin-left: 10px">
+      <mat-icon>share</mat-icon>
+    </button>
+  </ng-container>
+
+  <!--Subscribe once to items observable and add it to variable
+  so we don't get multiple subscriptions-->
+  <div *ngIf="cards$ | async as items">
+    <pointer-panel-list [itemTemplate]="myItemTemplate"
+                        [itemDetailsTemplate]="myItemDetailsTemplate"
+                        [dataSource]="items">
+    </pointer-panel-list>
+  </div>
+</mgui-workspace>

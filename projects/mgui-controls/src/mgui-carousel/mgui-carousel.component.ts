@@ -9,15 +9,11 @@ import { SetPageAni, ResponsiveScaleAni, FadeInAni } from '../animations';
 @Component({
   selector: 'lib-mgui-carousel',
   templateUrl: './mgui-carousel.component.html',
-  styleUrls: ['../styles.scss'],
+  styleUrls: ['./mgui-carousel.component.scss'],
   animations: [SetPageAni('animate-page'), ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
 export class MguiCarouselComponent implements OnInit, OnDestroy {
 
-  ngOnDestroy(): void {
-    this._onDestroy.next();
-    this._onDestroy.complete();
-  }
   private _onDestroy = new Subject<void>();
 
   @ViewChild('rotator') rotator: ElementRef;
@@ -43,12 +39,36 @@ export class MguiCarouselComponent implements OnInit, OnDestroy {
     .pipe(takeUntil(this._onDestroy))
     .subscribe((change) => {
       this.currLayoutString = change.mqAlias;
-      //  console.log('currLayoutString 1' + change.mqAlias);
     });
 
   }
 
   ngOnInit() {
+        // get the current size in case the view activates in
+    // overlapped breakpoint then fx mediaService doesnt set anything in observable
+    // fx bug????
+    if (!this.currLayoutString) {
+
+      if (this.mediaService.isActive('xs')) {
+        this.currLayoutString = 'xs';
+      }
+      if (this.mediaService.isActive('sm')) {
+        this.currLayoutString = 'sm';
+      }
+      if (this.mediaService.isActive('md')) {
+        this.currLayoutString = 'md';
+      }
+      if (this.mediaService.isActive('lg')) {
+        this.currLayoutString = 'lg';
+      }
+      if (this.mediaService.isActive('xl')) {
+        this.currLayoutString = 'xl';
+      }
+    }
+  }
+  ngOnDestroy(): void {
+    this._onDestroy.next();
+    this._onDestroy.complete();
   }
 
   getClassName(prefix: string) {
@@ -158,4 +178,5 @@ export class MguiCarouselComponent implements OnInit, OnDestroy {
     const leavingSlide = this.slides.toArray()[leavingIndex];
     leavingSlide.wrapAroundEnd(leavingSlide.currTrans + (this.moveOffset * this.slideCount));
   }
+
 }

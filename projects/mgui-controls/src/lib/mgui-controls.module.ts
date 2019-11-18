@@ -1,3 +1,4 @@
+import {BootstrapBreakpointsModule} from '../bootstrap-breakpoints';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,11 +12,15 @@ import {
 import { MguiCarouselComponent } from '../mgui-carousel/mgui-carousel.component';
 import {MguiWorkspace} from '../mgui-workspace/mgui-workspace'
 import { SlideDiv, ScaleToFitWidth } from '../mgui-carousel/slide-div';
+import { PointerPanelList } from '../mgui-pointer-panel-list/pointer-panel-list';
+import { PointerPanelItem } from '../mgui-pointer-panel-list/pointer-panel-item';
+import { PointerPanelDetails } from '../mgui-pointer-panel-list/pointer-panel-details';
 
 @NgModule({
   imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule
   ],
-  declarations: [MguiWorkspace, MguiCarouselComponent, SlideDiv, ScaleToFitWidth],
-  exports: [MguiWorkspace, MguiCarouselComponent,SlideDiv, ScaleToFitWidth]
+  providers: [BootstrapBreakpointsModule],
+  declarations: [MguiWorkspace, MguiCarouselComponent, SlideDiv, ScaleToFitWidth, PointerPanelList, PointerPanelItem, PointerPanelDetails],
+  exports: [MguiWorkspace, MguiCarouselComponent,SlideDiv, ScaleToFitWidth, PointerPanelList, PointerPanelItem, PointerPanelDetails]
 })
 export class MguiControlsModule { }

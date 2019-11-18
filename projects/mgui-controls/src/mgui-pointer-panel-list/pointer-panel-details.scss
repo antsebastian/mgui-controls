@@ -1,0 +1,79 @@
+@import '~@angular/material/theming';
+
+
+@mixin details-panel-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  #card-details-indicator {
+    width: 25%;
+    height: 5px;
+    background-color: mat-color($primary);
+  }
+
+  #card-details-indicator-container {
+    position:relative;
+    float: bottom;
+    bottom:5px;
+    visibility: hidden;
+
+  }
+
+
+
+  .details-panel-grid
+{
+  position: relative;
+  left: 0;
+  top: 0;
+  width:100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+$ic-border-color: mat-color($foreground, divider);
+
+.svg-details-pointer
+{
+  position: relative;
+}
+
+#pointer-poly
+{
+  stroke: $ic-border-color;
+  stroke-width: 1px;
+  fill: none;
+
+}
+
+  #pointer-path
+  {
+    fill: mat-color($background, card);
+  }
+
+
+#div-details-panel
+{
+   flex: 1;
+  border: $ic-border-color solid 1px;
+  border-radius: 2px;
+  margin-top: -1px;
+  background-color: mat-color($background, card);
+}
+
+.div-details-reveal
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: mat-color($background, background);
+  transform-origin: bottom;
+}
+
+}

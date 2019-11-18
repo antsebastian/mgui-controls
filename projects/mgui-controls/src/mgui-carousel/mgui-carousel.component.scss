@@ -1,0 +1,311 @@
+@import '~@angular/material/theming';
+
+@mixin home-workspace-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .dark-grey-text{
+    color: #232323;
+  }
+
+  .med-grey-text{
+    color: #6f6f6f;
+  }
+
+  .primary-color-text{
+    color: mat-color($primary);
+  }
+
+  .white-text{
+    color: white;
+  }
+
+  .p,.p-sm, .p-md, .p-lg, .p-xl {
+
+  }
+
+  .p-xs {
+   // @extend .p;
+  }
+
+  .h1, .h1-xl, .h1-lg, .h1-md {
+    font-weight: 400;
+    text-align: center;
+    word-wrap: break-spaces;
+    font-size: 70px;
+    line-height: 70px;
+  }
+  .h1-sm {
+    @extend .h1;
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .h1-xs {
+    @extend .h1;
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+/* h2     */
+  .h3, .h3-xl, .h3-lg {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 400;
+  }
+  .h3-md {
+    @extend .h3;
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .h3-sm, .h3-xs {
+    @extend .h3;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .h3-wide{
+
+  }
+
+  .h4, .h4-xl, .h4-lg, .h4-md, .h4-sm {
+    font-weight: 400;
+    line-height: 1.6;
+    white-space: normal;
+    font-size: 23px;
+  }
+  .h4-xs {
+    @extend .h4;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+
+  .h5, .h5-xl, .h5-lg, .h5-md, .h5-sm {
+    font-weight: 300;
+    line-height: 1.6;
+    white-space: normal;
+    font-size: 23px;
+  }
+  .h5-xs {
+    @extend .h5;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .h6, .h6-xl, .h6-lg, .h6-md, .h6-sm {
+    font-weight: 300;
+    line-height: 1.4;
+    white-space: normal;
+    font-size: 21px;
+  }
+  .h6-xs {
+    @extend .h6;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .h7 {
+    font-weight: 400;
+    white-space: normal;
+    font-size: 16px;
+  }
+  .h8 {
+    font-weight: 400;
+    white-space: normal;
+    line-height: 1.6em;
+    font-size: 14px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .raleway{
+    font-family: Raleway, sans-serif;
+  }
+
+  .center-text{
+    text-align: center;
+  }
+  .char-spacing-med {
+    letter-spacing: 0.052em;
+  }
+
+  .read-more-button, .read-more-button-xl, .read-more-button-lg,
+  .read-more-button-md, .read-more-button-sm {
+    color: white; /* Text color */
+    background: transparent; /* Remove background color */
+    border: 2px solid white; /* Border thickness, line style, and color */
+    border-radius: 70px; /* Adds curve to border corners */
+    text-decoration: none;
+    text-transform: uppercase; /* Make letters uppercase */
+    padding: 12px 35px;
+    text-align: center;
+    display: inline-block;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .read-more-button-xs {
+    @extend .read-more-button;
+    padding: 9px 30px;
+  }
+
+  .section2, .section2-xl, .section2-lg {
+    padding: 150px 50px;
+  }
+  .section2-md, .section2-sm {
+    @extend .section2;
+    padding: 70px;
+  }
+  .section2-xs {
+    @extend .section2;
+    padding: 20px;
+  }
+
+  .asterisk, .asterisk-xl, .asterisk-lg {
+    margin-right: 30px;
+    line-height: 70px;
+    font-size: 90px;
+    color: mat-color($primary);
+  }
+  .asterisk-md, .asterisk-sm, .asterisk-xs {
+    // noop;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .section3-rectangle, .section3-rectangle-xl {
+    padding: 30px 50px;
+    position:relative;
+    max-width: 500px; min-width: 400px;
+    background-color:white
+  }
+  .section3-rectangle-sm, .section3-rectangle-md, .section3-rectangle-lg {
+    @extend .section3-rectangle;
+    max-width: 400px; min-width: 350px;
+    padding: 15px 25px;
+
+  }
+
+  .section3-rectangle-xs {
+    @extend .section3-rectangle;
+    padding: 0;
+    margin:50px 10px;
+    max-width: initial; min-width: initial;
+
+    background-color:white;
+  }
+
+
+  .at-sign {
+    margin: 0px;
+    font-size: 65px;
+    line-height: 65px;
+    font-weight: 600;
+    color: mat-color($primary);
+  }
+
+  .h5{
+    color: #232323;
+    font-family: "Raleway", sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    margin-top:20px;
+    margin-left: 10px;
+  }
+
+  .list-dash-bullet {
+    color: #232323;
+    list-style: none;
+    padding: 0;
+    margin-left:10px;
+    font-size: 18px;
+  }
+
+  .list-dash-bullet li {
+    position: relative;
+    padding: 0 0 0 22px;
+    margin: 0 0 15px 0;
+  }
+
+  .list-dash-bullet li:before {
+    content: "";
+    width: 10px;
+    height: 1px;
+    background-color: mat-color($primary);
+    position: absolute;
+    top: 13px;
+    left: 0;
+  }
+}
+
+/*
+
+  #controls {
+    position: absolute;
+    width: 620px;
+    top: calc(50% - 25px);
+    margin: 0 -60px;
+  }
+
+  #controls span {
+    width: 50px;
+    cursor: pointer;
+    opacity: 0.4;
+  }
+  #controls span:hover {
+    opacity: 1;
+  }
+
+  #prev {
+    float: left;
+  }
+
+  #next {
+    float: right;
+  }
+
+
+  #carousel-container{
+    width: 500px;
+    height: 332px;
+    position: relative;
+    margin: 50px auto 0;
+    border: 10px solid #000;
+    border-radius: 10px;
+  }
+  #carousel-container > div:first-child{
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0;
+  }
+  #carousel{
+    position: relative;
+    width: 5000px;
+    height: 332px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .animate{
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+  }
+  .slide {
+    list-style: none;
+    position: relative;
+    float: left;
+    transform: translateX(0);
+  }
+  */
