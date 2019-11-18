@@ -8,7 +8,7 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatExpansionModule,
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
-import { MguiControlsModule } from 'projects/mgui-controls/src/lib/mgui-controls.module';
+import { MguiControlsModule } from 'projects/mgui-controls/src/mgui-controls.module';
 import { CarouselWorkspace } from './workspaces/carousel-workspace/carousel-workspace'
 import {PointerPanelWorkspace} from './workspaces/pointer-panel-workspace/pointer-panel-workspace'
 import { MguiSideNavService } from 'projects/mgui-controls/src/mgui-workspace/mgui-side-nav.service';

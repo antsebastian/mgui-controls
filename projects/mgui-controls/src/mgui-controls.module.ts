@@ -1,4 +1,4 @@
-import {BootstrapBreakpointsModule} from '../bootstrap-breakpoints';
+import {BootstrapBreakpointsModule} from './bootstrap-breakpoints';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,12 +9,12 @@ import {
   MatButtonToggleModule, MatSidenavModule, MatProgressBarModule, MatTabsModule,
   MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatTableModule
 } from '@angular/material';
-import { MguiCarousel } from '../mgui-carousel/mgui-carousel';
-import {MguiWorkspace} from '../mgui-workspace/mgui-workspace'
-import { SlideDiv, ScaleToFitWidth } from '../mgui-carousel/slide-div';
-import { MguiPointerPanelList } from '../mgui-pointer-panel-list/mgui-pointer-panel-list';
-import { MguiPointerPanelItem } from '../mgui-pointer-panel-list/mgui-pointer-panel-item';
-import { MguiPointerPanelDetails } from '../mgui-pointer-panel-list/mgui-pointer-panel-details';
+import { MguiCarousel } from './mgui-carousel/mgui-carousel';
+import {MguiWorkspace} from './mgui-workspace/mgui-workspace'
+import { SlideDiv, ScaleToFitWidth } from './mgui-carousel/slide-div';
+import { MguiPointerPanelList } from './mgui-pointer-panel-list/mgui-pointer-panel-list';
+import { MguiPointerPanelItem } from './mgui-pointer-panel-list/mgui-pointer-panel-item';
+import { MguiPointerPanelDetails } from './mgui-pointer-panel-list/mgui-pointer-panel-details';
 
 @NgModule({
   imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule
