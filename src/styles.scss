@@ -1,8 +1,8 @@
 @import '~@angular/material/theming';
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import './app/app.component.scss';
-@import '../projects/mgui-controls/src/mgui-carousel/mgui-carousel.component.scss';
-@import '../projects/mgui-controls/src/mgui-pointer-panel-list/pointer-panel-details.scss';
+@import '../projects/mgui-controls/src/mgui-carousel/mgui-carousel.scss';
+@import '../projects/mgui-controls/src/mgui-pointer-panel-list/mgui-pointer-panel-details.scss';
 @import './app/workspaces/carousel-workspace/carousel-workspace.scss';
 
 // Include non-theme styles for core.

@@ -50,13 +50,13 @@ export function SetRevealAni(name) {
 }
 
 @Component({
-  selector: 'pointer-panel-details',
-  templateUrl: './pointer-panel-details.html',
-  styleUrls: ['./pointer-panel-details.scss'],
+  selector: 'mgui-pointer-panel-details',
+  templateUrl: './mgui-pointer-panel-details.html',
+  styleUrls: ['./mgui-pointer-panel-details.scss'],
   animations: [ SetRevealAni('animate-reveal'),
                 SetPointerAni('animate-pointer', 'pointerFrom', 'pointerTo') ]
 })
-export class PointerPanelDetails<T> {
+export class MguiPointerPanelDetails<T> {
 
   @Output() close = new EventEmitter();
   @Output() next = new EventEmitter();

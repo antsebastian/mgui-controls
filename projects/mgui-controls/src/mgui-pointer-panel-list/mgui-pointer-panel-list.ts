@@ -11,11 +11,11 @@ import {
   ViewChildren
 } from '@angular/core';
 import {ViewportRuler} from '@angular/cdk/scrolling';
-import {PointerPanelDetails} from './pointer-panel-details';
+import {MguiPointerPanelDetails} from './mgui-pointer-panel-details';
 import {Observable, of, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {PointerPanelItem} from './pointer-panel-item';
+import {MguiPointerPanelItem} from './mgui-pointer-panel-item';
 
 export function MoveRowAni(name, to) {
   return trigger(name, [
@@ -43,14 +43,14 @@ export function MoveRowAni(name, to) {
 
 
 @Component({
-  selector: 'pointer-panel-list',
-  templateUrl: './pointer-panel-list.html',
-  styleUrls: ['./pointer-panel-list.scss'],
+  selector: 'mgui-pointer-panel-list',
+  templateUrl: './mgui-pointer-panel-list.html',
+  styleUrls: ['./mgui-pointer-panel-list.scss'],
   animations: [MoveRowAni('animate-row-move', 'detailsRowHeight')],
 //  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class PointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
+export class MguiPointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
   constructor(private ruler: ViewportRuler, protected readonly differs: IterableDiffers) {
   }
 
@@ -73,16 +73,16 @@ export class PointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit, Af
   /** Subscription that listens for the data provided by the data source. */
   private _dataChangeSubscription: Subscription | null;
 
-  @ViewChild(PointerPanelDetails) detailsPanel: PointerPanelDetails<T>;
+  @ViewChild(MguiPointerPanelDetails) detailsPanel: MguiPointerPanelDetails<T>;
   @ViewChild('gridcontainer') gridContainer: ElementRef;
-  @ViewChildren(PointerPanelItem) listViewChildren: QueryList<PointerPanelItem<T>>;
+  @ViewChildren(MguiPointerPanelItem) listViewChildren: QueryList<MguiPointerPanelItem<T>>;
 
   private _selectedIndex = -1;
 
   detailsPanelTop = 0;
   detailsPointerLeft = 0;
 
-  private _dataDiffer: IterableDiffer<PointerPanelItem<T>>;
+  private _dataDiffer: IterableDiffer<MguiPointerPanelItem<T>>;
   private _dataSource: Observable<T[]> | T[];
 
   @Input()
@@ -140,7 +140,7 @@ export class PointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit, Af
 */
   }
 
-  icSelectionChanged(icSel: PointerPanelItem<T>): void {
+  icSelectionChanged(icSel: MguiPointerPanelItem<T>): void {
 
     if (!this.detailsPanel) { return; }
 

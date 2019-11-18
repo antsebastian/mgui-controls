@@ -16,12 +16,12 @@ export function InOutAni(name) {
 }
 
   @Component({
-  selector: 'pointer-panel-item',
-  templateUrl: './pointer-panel-item.html',
-  styleUrls: ['./pointer-panel-item.scss'],
+  selector: 'mgui-pointer-panel-item',
+  templateUrl: './mgui-pointer-panel-item.html',
+  styleUrls: ['./mgui-pointer-panel-item.scss'],
   animations: [ InOutAni('in-out-ani')]
   })
-export class PointerPanelItem<T> implements OnDestroy {
+export class MguiPointerPanelItem<T> implements OnDestroy {
 
   @ViewChild('imageContainer') translatedContainer: ElementRef;
 

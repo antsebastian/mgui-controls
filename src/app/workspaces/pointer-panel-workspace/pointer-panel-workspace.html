@@ -75,9 +75,9 @@
   <!--Subscribe once to items observable and add it to variable
   so we don't get multiple subscriptions-->
   <div *ngIf="cards$ | async as items">
-    <pointer-panel-list [itemTemplate]="myItemTemplate"
+    <mgui-pointer-panel-list [itemTemplate]="myItemTemplate"
                         [itemDetailsTemplate]="myItemDetailsTemplate"
                         [dataSource]="items">
-    </pointer-panel-list>
+    </mgui-pointer-panel-list>
   </div>
 </mgui-workspace>

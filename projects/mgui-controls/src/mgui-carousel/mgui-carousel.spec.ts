@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MguiCarouselComponent } from './mgui-carousel.component';
+import { MguiCarousel } from './mgui-carousel';
 
 describe('MguiCarouselComponent', () => {
-  let component: MguiCarouselComponent;
-  let fixture: ComponentFixture<MguiCarouselComponent>;
+  let component: MguiCarousel;
+  let fixture: ComponentFixture<MguiCarousel>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MguiCarouselComponent ]
+      declarations: [ MguiCarousel ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MguiCarouselComponent);
+    fixture = TestBed.createComponent(MguiCarousel);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

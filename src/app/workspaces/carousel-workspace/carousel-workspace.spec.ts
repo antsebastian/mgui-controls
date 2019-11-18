@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarouselWorkspaceComponent } from './carousel-workspace';
+import { CarouselWorkspace } from './carousel-workspace';
 
-describe('CarouselWorkspaceComponent', () => {
-  let component: CarouselWorkspaceComponent;
-  let fixture: ComponentFixture<CarouselWorkspaceComponent>;
+describe('CarouselWorkspace', () => {
+  let component: CarouselWorkspace;
+  let fixture: ComponentFixture<CarouselWorkspace>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarouselWorkspaceComponent ]
+      declarations: [ CarouselWorkspace ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarouselWorkspaceComponent);
+    fixture = TestBed.createComponent(CarouselWorkspace);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

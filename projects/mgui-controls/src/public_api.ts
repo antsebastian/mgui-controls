@@ -3,6 +3,6 @@
  */
 
 export * from './lib/mgui-controls.module';
-export * from './mgui-carousel/mgui-carousel.component';
+export * from './mgui-carousel/mgui-carousel';
 export * from './mgui-workspace/mgui-workspace';
-export * from './mgui-pointer-panel-list/pointer-panel-list';
+export * from './mgui-pointer-panel-list/mgui-pointer-panel-list';

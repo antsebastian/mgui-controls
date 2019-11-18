@@ -7,12 +7,12 @@ import { SetPageAni, ResponsiveScaleAni, FadeInAni } from '../animations';
 
 
 @Component({
-  selector: 'lib-mgui-carousel',
-  templateUrl: './mgui-carousel.component.html',
-  styleUrls: ['./mgui-carousel.component.scss'],
+  selector: 'mgui-carousel',
+  templateUrl: './mgui-carousel.html',
+  styleUrls: ['./mgui-carousel.scss'],
   animations: [SetPageAni('animate-page'), ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
-export class MguiCarouselComponent implements OnInit, OnDestroy {
+export class MguiCarousel implements OnInit, OnDestroy {
 
   private _onDestroy = new Subject<void>();
 
