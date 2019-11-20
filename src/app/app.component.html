@@ -5,7 +5,7 @@
         <button type="button" aria-label="Toggle Navigation" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <h2 style="padding-left:20px">Modern GUI Controls - Showcase</h2>
+        <h2 style="padding-left:20px">Modern GUIs</h2>
         <span fxFlex="1 1 auto"></span>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -23,14 +23,21 @@
                          routerLinkActive #rla="routerLinkActive">
             <div *ngIf="rla.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>slideshow</mat-icon>
-            <a mat-line>Carousel Control</a>
+            <a mat-line>Carousel</a>
   
           </mat-list-item>
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/pointerpanel-workspace'
                          routerLinkActive #rla1="routerLinkActive">
             <div *ngIf="rla1.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>horizontal_split</mat-icon>
-            <a mat-line>Pointer Panel Control</a>
+            <a mat-line>Pointer Panel</a>
+  
+          </mat-list-item>
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/itemscontrol-workspace'
+                         routerLinkActive #rla2="routerLinkActive">
+            <div *ngIf="rla2.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>list</mat-icon>
+            <a mat-line>Items</a>
   
           </mat-list-item>
 

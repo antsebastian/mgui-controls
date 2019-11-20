@@ -20,8 +20,11 @@
       <button type="button" aria-label="Toggle Navigation" mat-icon-button (click)="appService?.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <h1>{{title}}</h1>
+      <div style="margin: auto; display: flex">
+      <h1 style="margin-right: 10px">{{title}}</h1>
+      </div>
       <span fxFlex="100%"></span>
+
       <ng-content select="[mobileTools]"></ng-content>
     </mat-toolbar>
   </ng-container>

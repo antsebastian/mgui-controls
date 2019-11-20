@@ -15,6 +15,7 @@ import { MguiSideNavService } from 'projects/mgui-controls/src/mgui-workspace/mg
 import {Route, RouterModule, Routes} from '@angular/router';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { ContactsMockService, CRUDService } from './services/app.dataservice';
+import {ItemsControlWorkspace} from './workspaces/items-control-workspace/items-control-workspace'
 
 const indexRoute: Route = {
   path: '',
@@ -29,6 +30,7 @@ const fallbackRoute: Route = {
 const appRoutes: Routes = [
  {path: 'carousel-workspace', component: CarouselWorkspace},
  {path: 'pointerpanel-workspace', component: PointerPanelWorkspace},
+ {path: 'itemscontrol-workspace', component: ItemsControlWorkspace},
  indexRoute, fallbackRoute
 ];
 
@@ -46,20 +48,21 @@ const contactsServiceProvider = {
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselWorkspace, PointerPanelWorkspace
+    CarouselWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
-    MguiControlsModule,
+    MguiControlsModule, 
     MatToolbarModule, MatButtonModule, MatIconModule, MatExpansionModule,
   MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
   MatButtonToggleModule, MatSidenavModule, MatProgressBarModule, MatTabsModule,
   MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatTableModule,
   RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
+
   
   providers: [MguiSideNavService, contactsServiceProvider],
   bootstrap: [AppComponent]
