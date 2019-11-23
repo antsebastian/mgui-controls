@@ -1,20 +1,24 @@
-import { Component, OnInit, Input, ViewChild, ViewChildren, ElementRef, QueryList, OnDestroy, DoCheck, IterableDiffer, IterableDiffers, TemplateRef, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren, ElementRef, QueryList, OnDestroy, DoCheck, IterableDiffer, IterableDiffers, TemplateRef, AfterContentChecked, AfterViewInit } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 import {concatMap, flatMap, map, take, takeUntil, takeWhile, tap, throttle, timeout} from 'rxjs/operators';
 import { Subject, Observable, Subscription, of } from 'rxjs';
 import { ItemContainer } from './item-container';
 
 @Component({selector:'items-control',
- template: `
+
+ template: `<items-panel>
  <item-container #ic fxFlex *ngFor="let item of (dataStream$ | async); let i = index" id="{{i}}"
                     (selectionChanged)="icSelectionChanged(ic)"
                     [style.z-index]="2"              
                     [itemTemplate]="itemTemplate" [data]="item">
 </item-container>
+</items-panel>
 `})
 export class ItemsControl<T> implements OnInit, OnDestroy, DoCheck, AfterContentChecked {
     constructor(protected readonly differs: IterableDiffers) { }
     @Input() itemTemplate: TemplateRef<T>;
+    @Input() itemsPanel: TemplateRef<any>;
+
 
     icSelectionChanged(ic) { 
 
@@ -100,7 +104,7 @@ export class ItemsControl<T> implements OnInit, OnDestroy, DoCheck, AfterContent
     }
   }
   
-  private _onDestroy = new Subject<void>();
+  protected _onDestroy = new Subject<void>();
 
   get itemContainerCount() {
     return this.itemContainers.length;

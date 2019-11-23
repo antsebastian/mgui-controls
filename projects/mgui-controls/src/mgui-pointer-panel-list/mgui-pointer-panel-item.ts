@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnDestroy, Output, TemplateRef, ViewChild} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
+import { ItemContainer } from '../item-container';
 
 
 export function InOutAni(name) {
@@ -21,20 +22,19 @@ export function InOutAni(name) {
   styleUrls: ['./mgui-pointer-panel-item.scss'],
   animations: [ InOutAni('in-out-ani')]
   })
-export class MguiPointerPanelItem<T> implements OnDestroy {
+export class MguiPointerPanelItem<T> extends ItemContainer<T> {
 
   @ViewChild('imageContainer') translatedContainer: ElementRef;
 
   @Input() itemsPanelTop: number;
   @Input() yTranslate = 385;
   @Input() detailsPanelState = 'close';
-  @Input() itemTemplate: TemplateRef<T>;
-  @Input() data: T;
   @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
   public isSelected: boolean;
 
     constructor(private element: ElementRef) {
-  }
+        super();
+    }
 
     get translatedBottom(): number {
       const rect = this.element.nativeElement.getBoundingClientRect();

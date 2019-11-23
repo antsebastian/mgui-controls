@@ -4,18 +4,13 @@ import { OnInit, OnDestroy, Input, TemplateRef, Output, EventEmitter, ElementRef
     selector: 'item-container',
     template: `<ng-template *ngTemplateOutlet="itemTemplate; context: {$implicit: data}"></ng-template>`
     })
-  export class ItemContainer<T> implements OnInit, OnDestroy {
+  export class ItemContainer<T>  {
 
     @Input() itemTemplate: TemplateRef<T>;
     @Input() data: T;
     @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
     public isSelected: boolean;
   
-    constructor(private element: ElementRef) {
+    constructor() {
     }
-  
-    ngOnDestroy(): void {
-    }
-    ngOnInit(): void {
-    }
-}
+  }

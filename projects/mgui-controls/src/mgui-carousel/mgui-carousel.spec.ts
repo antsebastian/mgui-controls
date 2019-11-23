@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MguiCarousel } from './mgui-carousel';
+import { MguiCarousel } from "./MguiCarousel";
 
 describe('MguiCarouselComponent', () => {
   let component: MguiCarousel;

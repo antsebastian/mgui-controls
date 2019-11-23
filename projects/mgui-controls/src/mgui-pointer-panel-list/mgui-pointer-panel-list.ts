@@ -16,6 +16,7 @@ import {Observable, of, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MguiPointerPanelItem} from './mgui-pointer-panel-item';
+import { ItemsControl } from '../items-control';
 
 export function MoveRowAni(name, to) {
   return trigger(name, [
@@ -50,8 +51,9 @@ export function MoveRowAni(name, to) {
 //  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class MguiPointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
+export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
   constructor(private ruler: ViewportRuler, protected readonly differs: IterableDiffers) {
+    super(differs);
   }
 
   @Input() detailsRowHeight = 385;
@@ -66,12 +68,7 @@ export class MguiPointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit
     } else { return 'close'; }
   }
 
-  private _onDestroy = new Subject<void>();
-  @Input() itemTemplate: TemplateRef<T>;
   @Input() itemDetailsTemplate: TemplateRef<T>;
-
-  /** Subscription that listens for the data provided by the data source. */
-  private _dataChangeSubscription: Subscription | null;
 
   @ViewChild(MguiPointerPanelDetails) detailsPanel: MguiPointerPanelDetails<T>;
   @ViewChild('gridcontainer') gridContainer: ElementRef;
@@ -82,63 +79,6 @@ export class MguiPointerPanelList<T> implements OnInit, OnDestroy, AfterViewInit
   detailsPanelTop = 0;
   detailsPointerLeft = 0;
 
-  private _dataDiffer: IterableDiffer<MguiPointerPanelItem<T>>;
-  private _dataSource: Observable<T[]> | T[];
-
-  @Input()
-  get dataSource(): Observable<T[]> | T[] {
-    return this._dataSource; }
-
-  set dataSource(dataSource: Observable<T[]> | T[]) {
-    if (this._dataSource !== dataSource) {
-      // Stop listening for data from the previous data source.
-      if (this._dataChangeSubscription) {
-        this._dataChangeSubscription.unsubscribe();
-        this._dataChangeSubscription = null;
-      }
-      this._dataSource = dataSource;
-    }
-  }
-
-  protected _data: T[] | ReadonlyArray<T>;
-  get data(): T[] | ReadonlyArray<T> { return this._data; }
-
-  dataStream$: Observable<T[] | ReadonlyArray<T>> | undefined;
-
-
-  private _observeRenderChanges() {
-    // If no data source has been set, there is nothing to observe for changes.
-    if (!this.dataSource) {
-      return;
-    }
-
-  //  let dataStream: Observable<T[] | ReadonlyArray<T>> | undefined;
-
-    if (this.dataSource instanceof Observable) {
-      this.dataStream$ = this.dataSource;
-    } else if (Array.isArray(this.dataSource)) {
-      this.dataStream$ = of(this.dataSource);
-    }
-
-    if (this.dataStream$ === undefined) {
-      throw new Error('datastream undefined.');
-    }
-
-/*
-    this._dataChangeSubscription = dataStream
-      .pipe(takeUntil(this._onDestroy))
-      .subscribe(
-        data => {
-          this._data = data || [];
-        },
-        err => {
-          console.log('error ' + err);
-        },
-        () => {
-          console.log('completed');
-        });
-*/
-  }
 
   icSelectionChanged(icSel: MguiPointerPanelItem<T>): void {
 
@@ -245,15 +185,13 @@ protected getItem(index: number) {
 
 
   ngOnInit(): void {
-    this._dataDiffer = this.differs.find([]).create();
-
+    super.ngOnInit();
     this.ruler.change().pipe(takeUntil(this._onDestroy)).subscribe(() => {
       this.setDetailPanelPosition();
     });
   }
 
   ngAfterViewInit(): void {
- //   console.log(typeof (this.itemTemplate));
 
     this.listViewChildren.changes.pipe(takeUntil(this._onDestroy)).subscribe(() => {
       setTimeout(() => {this.setDetailPanelPosition(); });
@@ -265,39 +203,6 @@ protected getItem(index: number) {
     });
   }
 
-  ngAfterContentChecked(): void {
-    if (this.dataSource && !this._dataChangeSubscription) {
-      this._observeRenderChanges();
-    }
-  }
-
-  ngOnDestroy(): void {
-    this._onDestroy.next();
-    this._onDestroy.complete();
-  }
-
-  ngDoCheck(): void {
-
-    if (this.listViewChildren) {
-      const changes = this._dataDiffer.diff(this.listViewChildren.toArray());
-
-      if (changes) {
-
-        changes.forEachAddedItem((record) => {
-        //  console.log('forEachAddedItem ' + record);
-          // this.renderer.addClass(this.host.nativeElement, record.item);
-          this.setDetailPanelPosition();
-        });
-
-        changes.forEachRemovedItem((record) => {
-//          console.log('forEachRemovedItem ' + record);
-
-          this.closeDetailsPanel();
-          return; // only handles single item deletion for now.
-        });
-      }
-    }
-  }
 }
 
 

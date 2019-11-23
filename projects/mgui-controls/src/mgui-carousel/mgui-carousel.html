@@ -1,31 +1,31 @@
+<ng-template #slideTemplate let-data let-slide>
+      <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
+      style="background: rgba(0, 0, 0, 0.3)">
+   <!--[@responsive-scale-ani]="currLayoutString"-->
+    <div *ngIf="slide.animatePage" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
+     <div class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
+     <div class="child white-text {{getClassName('h1-')}}"
+          style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"
+          [ngStyle.sm]="{'max-width' : '535px'}"
+          [ngStyle.xs]="{'max-width' : '350px', 'margin-top': '30px',
+                         'margin-bottom' : '25px'}">
+       {{data.bigText}}
+     </div>
+     <button class="child {{'read-more-button-' + currLayoutString}}">READ MORE</button>
+   </div>
+  </div>
+  </ng-template>
+
 <section #section1
              style="position: relative;top:0; left:0; width:100%; height:100%">
       <div #rotator style="overflow-x: hidden;" fxFill>
 
         <div id="scrolled-wrapper" fxLayout="row" fxFill>
-          <ng-container *ngFor="let s of slideSrc; let i = index">            
-            <slide-div #slide fxFill [slideid]="i"
-                       [ngStyle]="{'background-image':
-                     'url(http://localhost:4200/assets/small-business-parallax-' + (i + 1) + '-1920x1200.jpg)'}"
-                       style="background-size: cover;">
 
-              <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
-                   style="background: rgba(0, 0, 0, 0.3)">
-                <!--[@responsive-scale-ani]="currLayoutString"-->
-                <div *ngIf="slide.animatePage" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
-                  <div class="child white-text {{getClassName('h6-')}}">{{s.smallText}}</div>
-                  <div class="child white-text {{getClassName('h1-')}}"
-                       style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"
-                       [ngStyle.sm]="{'max-width' : '535px'}"
-                       [ngStyle.xs]="{'max-width' : '350px', 'margin-top': '30px',
-                                      'margin-bottom' : '25px'}">
-                    {{s.bigText}}
-                  </div>
-                  <button class="child {{'read-more-button-' + currLayoutString}}">READ MORE</button>
-                </div>
-              </div>
-            </slide-div>
-          </ng-container>
+          <slide-div [ngStyle]="{'background-image': 'url('+item.fileName+')'}" style="background-size: cover" 
+          *ngFor="let item of (dataStream$ | async); let i = index" id="{{i}}" #slide fxFill [slideid]="i"
+          [slide]="slide" [data]="item"></slide-div>
+
         </div>
       </div>
 

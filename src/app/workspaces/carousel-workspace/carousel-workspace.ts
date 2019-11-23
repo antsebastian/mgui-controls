@@ -10,6 +10,11 @@ import { Subject } from 'rxjs';
 })
 export class CarouselWorkspace implements OnInit, OnDestroy {
 
+  @Input()
+  slideSrc = [{ fileName: '../../../assets/small-business-parallax-1-1920x1200.jpg', smallText: 'Union Bank Welcomes You.', bigText: 'We create stunning websites' },
+  { fileName: '../../../assets/small-business-parallax-2-1920x1200.jpg', smallText: 'This is a small line.', bigText: 'We create stunning websites' },
+  { fileName: '../../../assets/small-business-parallax-3-1920x1200.jpg', smallText: 'This is a small line.', bigText: 'We create stunning websites' }];
+  
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();
 

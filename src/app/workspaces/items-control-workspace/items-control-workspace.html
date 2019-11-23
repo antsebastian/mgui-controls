@@ -4,7 +4,13 @@
       </button>
       <span class="foreground" style="font-size:20px">{{data}}</span>
 </ng-template>
+<ng-template #myItemsPanel>
+    <div fxLayoutGap="15px" fxLayout="column" fxLayout.lt-sm="column">
+      <ng-content></ng-content>
+      </div>
 
+
+</ng-template>
 <mgui-workspace title="ItemsControl">
     <ng-container webTools>
       <button mat-icon-button (click)="addCard(ic.itemContainerCount)">
@@ -15,8 +21,7 @@
     <ng-container mobileTools>
       <span>{{currLayoutString}}</span>
     </ng-container>
-
-  <items-control #ic style="margin:15px" fxLayoutGap="5px" fxLayout="column" fxLayout.lt-sm="column" 
+  <items-control #ic style="margin:15px" [itemsPanel]="myItemsPanel"
                 [itemTemplate]="myItemTemplate" [dataSource]="items$ | async">
   </items-control>
 </mgui-workspace>

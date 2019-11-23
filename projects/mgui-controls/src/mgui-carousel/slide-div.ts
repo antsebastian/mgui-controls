@@ -1,17 +1,16 @@
 import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style } from '@angular/animations';
-import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit, TemplateRef, ViewContainerRef, ViewChild } from '@angular/core';
+import { ItemContainer } from '../item-container';
 
 
 @Component({
   selector: 'fit-width',
-  template:
-      `
-    <div  style="display:table">
+  template: `<div style="display:table">
       <ng-content></ng-content>
     </div>`,
   animations: []
 })
-export class ScaleToFitWidth implements OnInit, AfterViewInit {
+export class ScaleToFitWidth {
 
   @ContentChild('fitme') content: ElementRef;
 
@@ -41,14 +40,6 @@ export class ScaleToFitWidth implements OnInit, AfterViewInit {
 
 
   constructor(private el: ElementRef) {
-    console.log('created');
-
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
 
   }
 }
@@ -56,24 +47,25 @@ export class ScaleToFitWidth implements OnInit, AfterViewInit {
 
 @Component({
   selector: 'slide-div',
-  template: `<ng-content></ng-content>`,
+  template: `<ng-template *ngTemplateOutlet="itemTemplate; context: {$implicit: data}"></ng-template>`,
   animations: []
 })
 
 
-export class SlideDiv implements OnInit {
+export class SlideDiv<T> extends ItemContainer<T> {
   @Input() currTrans = 0;
   @Input() slideid = 0;
   @Input() animatePage = false;
+  @Input() slide;
+
   wrapTrans = 0;
   isWrapAround = false;
   player: AnimationPlayer = null;
   state: string;
 
   constructor(public eleRef: ElementRef, private builder: AnimationBuilder) {
-  }
-
-  ngOnInit(): void {
+    super();
+    
   }
 
   wrapAroundStart(dx: number) {

@@ -9,7 +9,7 @@ import {
   MatButtonToggleModule, MatSidenavModule, MatProgressBarModule, MatTabsModule,
   MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatTableModule
 } from '@angular/material';
-import { MguiCarousel } from './mgui-carousel/mgui-carousel';
+import { MguiCarousel } from "./mgui-carousel/mgui-carousel";
 import {MguiWorkspace} from './mgui-workspace/mgui-workspace'
 import { SlideDiv, ScaleToFitWidth } from './mgui-carousel/slide-div';
 import { MguiPointerPanelList } from './mgui-pointer-panel-list/mgui-pointer-panel-list';
@@ -17,12 +17,13 @@ import { MguiPointerPanelItem } from './mgui-pointer-panel-list/mgui-pointer-pan
 import { MguiPointerPanelDetails } from './mgui-pointer-panel-list/mgui-pointer-panel-details';
 import { ItemsControl } from './items-control';
 import { ItemContainer } from './item-container';
+import { ItemsPanel } from './items-panel';
 
 @NgModule({
   imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule
   ],
   providers: [BootstrapBreakpointsModule],
-  declarations: [ItemsControl, ItemContainer, MguiWorkspace, MguiCarousel, SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails],
-  exports: [ItemsControl, ItemContainer,MguiWorkspace, MguiCarousel,SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails]
+  declarations: [ItemsPanel, ItemsControl, ItemContainer, MguiWorkspace, MguiCarousel, SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails],
+  exports: [ItemsPanel, ItemsControl, ItemContainer,MguiWorkspace, MguiCarousel,SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails]
 })
 export class MguiControlsModule { }
