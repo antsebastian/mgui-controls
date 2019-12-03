@@ -1,0 +1,47 @@
+[
+  {
+    "game": "1",
+    "channel": "CBS 5",
+    "quarter": "3rd",
+    "sport": "football",
+    "teams": [
+      {
+        "teamName": "49ers",
+        "avatarFileName": "49ers.png",
+        "standings": "10-0",
+        "probablity": "75%",
+        "score": "21"
+      },
+      {
+        "teamName": "Chargers",
+        "avatarFileName": "Chargers.png",
+        "standings": "5-5",
+        "probablity": "25%",
+        "score": "14"
+      }
+    ]
+  },
+  {
+    "game": "2",
+    "channel": "CBS 5",
+    "quarter": "3rd",
+    "sport": "football",
+    "teams": [
+      {
+        "teamName": "49ers",
+        "avatarFileName": "49ers.png",
+        "standings": "10-0",
+        "probablity": "75%",
+        "score": "21"
+      },
+      {
+        "teamName": "Chargers",
+        "avatarFileName": "Chargers.png",
+        "standings": "5-5",
+        "probablity": "25%",
+        "score": "14"
+      }
+    ]
+  }
+
+]

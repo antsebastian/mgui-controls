@@ -44,10 +44,10 @@ export class ScaleToFitWidth {
   }
 }
 
-
 @Component({
   selector: 'slide-div',
-  template: `<ng-template *ngTemplateOutlet="itemTemplate; context: {$implicit: data}"></ng-template>`,
+  template: `<ng-template [ngTemplateOutlet]="itemTemplate" 
+              [ngTemplateOutletContext]="{data: data, slide: slide}"></ng-template>`,
   animations: []
 })
 
@@ -76,6 +76,10 @@ export class SlideDiv<T> extends ItemContainer<T> {
   wrapAroundEnd(dx: number) {
     this.isWrapAround = true;
     this.wrapTrans = dx;
+  }
+
+  setanimatePage(){
+    this.animatePage = true;
   }
 
   animateSlide(dx: number, time = 250) {

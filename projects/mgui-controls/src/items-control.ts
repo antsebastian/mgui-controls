@@ -19,7 +19,6 @@ export class ItemsControl<T> implements OnInit, OnDestroy, DoCheck, AfterContent
     @Input() itemTemplate: TemplateRef<T>;
     @Input() itemsPanel: TemplateRef<any>;
 
-
     icSelectionChanged(ic) { 
 
     }

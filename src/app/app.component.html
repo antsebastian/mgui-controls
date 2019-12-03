@@ -2,8 +2,8 @@
 
     <mat-toolbar fxShow fxHide.lt-md fxHide.md>
       <mat-toolbar-row>
-        <button type="button" aria-label="Toggle Navigation" mat-icon-button (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <button type="button" matTooltip="Toggle Navigation" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
         </button>
         <h2 style="padding-left:20px">Modern GUIs</h2>
         <span fxFlex="1 1 auto"></span>
@@ -31,13 +31,18 @@
             <div *ngIf="rla1.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>horizontal_split</mat-icon>
             <a mat-line>Pointer Panel</a>
-  
           </mat-list-item>
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/itemscontrol-workspace'
                          routerLinkActive #rla2="routerLinkActive">
             <div *ngIf="rla2.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>list</mat-icon>
-            <a mat-line>Items</a>
+            <a mat-line>Items</a>  
+          </mat-list-item>
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/sportsbook-workspace'
+                         routerLinkActive #rla3="routerLinkActive">
+            <div *ngIf="rla3.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>sports_football</mat-icon>
+            <a mat-line>Sportsbook</a>
   
           </mat-list-item>
 

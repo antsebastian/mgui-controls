@@ -20,15 +20,15 @@
     <mat-card-header>
       <div fxLayout="row">
         <img class="avatar" style="width:75px; height: 75px; transform: translate(-20px,-10px)"
-             [src]="data?.avatarFileName"/>
+             [src]="data?.teams[0].avatarFileName"/>
         <div fxLayout="column" style="margin-left:10px">
-          <span class="foreground" style="font-size:20px">{{data?.firstName}}</span>
-          <span class="foreground" style="font-size:16px">{{data?.description}}</span>
+          <span class="foreground" style="font-size:20px">{{data?.game}}</span>
+          <span class="foreground" style="font-size:16px">{{data?.channel}}</span>
         </div>
+        <img class="avatar" style="width:75px; height: 75px; transform: translate(20px,-10px)"
+        [src]="data?.teams[1].avatarFileName"/>
+
       </div>
-      <button mat-icon-button (click)="onDeleteCard(data)" style="position: absolute; right: 10px; top: 10px">
-        <mat-icon>delete_outline</mat-icon>
-      </button>
     </mat-card-header>
     <mat-card-content>
     </mat-card-content>
@@ -36,20 +36,24 @@
 </ng-template>
 
 <!-- WORKSPACE TEMPLATE -->
-<mgui-workspace workspaceTitle="Pointer Panel">
+<mgui-workspace workspaceTitle="Sportsbook">
 
   <ng-container webTools>
-    <button mat-icon-button>
-      <mat-icon>cloud_upload</mat-icon>
-    </button>
+    <mat-button-toggle-group [value]="sportCategory" (change)="onSportsCategoryChanged($event)">
+      <mat-button-toggle matTooltip="Football games" aria-label="Bet on football games" value="football">      
+        <mat-icon color="white">sports_football</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="baseball" matTooltip="Baseball games">
+          <mat-icon >sports_baseball</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="basketball" matTooltip="Basketball games">          
+        <mat-icon>sports_basketball</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="hockey" matTooltip="Hockey games">
+        <mat-icon>sports_hockey</mat-icon>
+      </mat-button-toggle>
 
-    <button mat-icon-button (click)="addCard()">
-      <mat-icon>add</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
-    </button>
-
+    </mat-button-toggle-group>
   </ng-container>
 
   <ng-container mobileTools>
@@ -74,7 +78,7 @@
 
   <!--Subscribe once to items observable and add it to variable
   so we don't get multiple subscriptions-->
-  <div *ngIf="cards$ | async as items">
+  <div *ngIf="games$ | async as items">
     <mgui-pointer-panel-list [itemTemplate]="myItemTemplate"
                         [itemDetailsTemplate]="myItemDetailsTemplate"
                         [dataSource]="items">

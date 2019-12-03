@@ -12,7 +12,7 @@ export class MguiWorkspace {
 
   // media$: Observable<MediaChange> = this.mediaService.asObservable();
 
-  @Input() title: string;
+  @Input() workspaceTitle: string;
 
   // TODO: work around since workspace is first component under router, and :host is not working under router
   @HostBinding('style.height') ht = '100%';

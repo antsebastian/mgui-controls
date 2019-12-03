@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CRUDService, Contact} from '../../services/app.dataservice';
+import {CRUDService, Contact, ContactsMockService, ContactsService} from '../../services/app.dataservice';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pointer-panel-workspace',
@@ -9,9 +10,12 @@ import {CRUDService, Contact} from '../../services/app.dataservice';
 export class PointerPanelWorkspace implements OnInit {
 
  uniqueId = 0;
- cards$;
+ cards$: Observable<Contact[]>;
 
-  constructor(public contactsService: CRUDService<Contact> ) { }
+  constructor(public contactsService: ContactsService ) { 
+
+
+  }
 
   addCard() {
 

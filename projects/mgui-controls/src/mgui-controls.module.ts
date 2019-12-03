@@ -7,7 +7,7 @@ import {
   MatToolbarModule, MatButtonModule, MatIconModule, MatExpansionModule,
   MatListModule, MatGridListModule, MatCardModule, MatMenuModule,
   MatButtonToggleModule, MatSidenavModule, MatProgressBarModule, MatTabsModule,
-  MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatTableModule
+  MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatTableModule, MatTooltipModule
 } from '@angular/material';
 import { MguiCarousel } from "./mgui-carousel/mgui-carousel";
 import {MguiWorkspace} from './mgui-workspace/mgui-workspace'
@@ -20,7 +20,7 @@ import { ItemContainer } from './item-container';
 import { ItemsPanel } from './items-panel';
 
 @NgModule({
-  imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule
+  imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule
   ],
   providers: [BootstrapBreakpointsModule],
   declarations: [ItemsPanel, ItemsControl, ItemContainer, MguiWorkspace, MguiCarousel, SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails],
