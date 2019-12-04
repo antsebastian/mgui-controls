@@ -48,14 +48,13 @@ export function MoveRowAni(name, to) {
   templateUrl: './mgui-pointer-panel-list.html',
   styleUrls: ['./mgui-pointer-panel-list.scss'],
   animations: [MoveRowAni('animate-row-move', 'detailsRowHeight')],
-//  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
   constructor(private ruler: ViewportRuler, protected readonly differs: IterableDiffers) {
-    super(differs);
+    super(differs);   
   }
-
+  
   @Input() detailsRowHeight = 385;
 
   @Input()
@@ -63,16 +62,14 @@ export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, 
     this.detailsPanel.panelState = _state;
   }
   get detailsPanelState(): string {
-    if (this.detailsPanel) {
-      return this.detailsPanel.panelState;
-    } else { return 'close'; }
+    return this.detailsPanel ? this.detailsPanel.panelState : 'close'; 
   }
 
   @Input() itemDetailsTemplate: TemplateRef<T>;
 
   @ViewChild(MguiPointerPanelDetails) detailsPanel: MguiPointerPanelDetails<T>;
   @ViewChild('gridcontainer') gridContainer: ElementRef;
-  @ViewChildren(MguiPointerPanelItem) listViewChildren: QueryList<MguiPointerPanelItem<T>>;
+  @ViewChildren(MguiPointerPanelItem) pointerPanelItems: QueryList<MguiPointerPanelItem<T>>;
 
   private _selectedIndex = -1;
 
@@ -87,14 +84,14 @@ export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, 
     const icPrev = this.getItem(this._selectedIndex);
 
     const gridScrolledTop = this.gridContainer.nativeElement.getBoundingClientRect().top - this.gridContainer.nativeElement.offsetTop;
-    const selIndex = this.listViewChildren.toArray().indexOf(icSel);
+    const selIndex = this.pointerPanelItems.toArray().indexOf(icSel);
 
     if (this._selectedIndex === selIndex) { // same card selected...close row
       icSel.isSelected = false;
       this._selectedIndex = -1;
       this.detailsPanelState = 'close';
       this.detailsPanel.data = null;
-      const belows = this.listViewChildren.filter(ic => ic.translatedBottom > icSel.translatedBottom);
+      const belows = this.pointerPanelItems.filter(ic => ic.translatedBottom > icSel.translatedBottom);
       for (const ibc of belows) {
         ibc.detailsPanelState = 'close';
       }
@@ -103,7 +100,7 @@ export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, 
       this._selectedIndex = selIndex;
       this.detailsPanel.data = icSel.data;
 
-      const belows = this.listViewChildren.filter(ic => ic.translatedBottom > icSel.translatedBottom);
+      const belows = this.pointerPanelItems.filter(ic => ic.translatedBottom > icSel.translatedBottom);
       for (const ibc of belows) {
         ibc.detailsPanelState = 'open';
       }
@@ -117,14 +114,14 @@ export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, 
       this.detailsPanel.data = icSel.data;
       if (icPrev.translatedBottom > icSel.translatedBottom) { // over
         this.detailsPanelTop = icSel.translatedBottom - gridScrolledTop - 10;
-        const belows = this.listViewChildren.filter(ic => ic.translatedBottom > icSel.translatedBottom);
+        const belows = this.pointerPanelItems.filter(ic => ic.translatedBottom > icSel.translatedBottom);
         for (const ibc of belows) {
           ibc.detailsPanelState = 'open';
         }
       } else if (icPrev.translatedBottom < icSel.translatedBottom) {  // under
         this.detailsPanelTop = (icSel.translatedBottom - gridScrolledTop) - this.detailsRowHeight - 10;
 
-        const aboves = this.listViewChildren.filter(ic => ic.translatedBottom <= icSel.translatedBottom);
+        const aboves = this.pointerPanelItems.filter(ic => ic.translatedBottom <= icSel.translatedBottom);
         for (const ibc of aboves) {
           ibc.detailsPanelState = 'close';
         }
@@ -139,18 +136,17 @@ export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, 
 protected getItem(index: number) {
   let icSel = null;
   if (index !== -1) {
-    if (this.listViewChildren.length > index) {
-      icSel = this.listViewChildren.toArray()[index];
+    if (this.pointerPanelItems.length > index) {
+      icSel = this.pointerPanelItems.toArray()[index];
     } else {
-      icSel = this.listViewChildren.last;
+      icSel = this.pointerPanelItems.last;
     }
   }
   return icSel;
 }
-
   protected setDetailPanelPosition() {
 
-    if (!this.listViewChildren) {
+    if (!this.pointerPanelItems) {
       return;
     }
 
@@ -160,10 +156,10 @@ protected getItem(index: number) {
       const gridScrolledTop = this.gridContainer.nativeElement.getBoundingClientRect().top -
         this.gridContainer.nativeElement.offsetTop;
 
-      const evens = this.listViewChildren.filter(ic => ic.bottom === icSel.bottom);
+      const evens = this.pointerPanelItems.filter(ic => ic.bottom === icSel.bottom);
       for (const ic of evens) { ic.detailsPanelState = 'closeNow'; }
 
-      const belows = this.listViewChildren.filter(ic => ic.bottom > icSel.bottom);
+      const belows = this.pointerPanelItems.filter(ic => ic.bottom > icSel.bottom);
       for (const ic of belows) { ic.detailsPanelState = 'openNow'; }
 
       this.detailsPanelTop = icSel.bottom - gridScrolledTop - 10;
@@ -176,7 +172,7 @@ protected getItem(index: number) {
     this._selectedIndex = -1;
 
     this.detailsPanelState = 'close';
-    this.listViewChildren.forEach((ibc) => {
+    this.pointerPanelItems.forEach((ibc) => {
       ibc.detailsPanelState = 'close';
       ibc.isSelected = false;
     });
@@ -186,22 +182,40 @@ protected getItem(index: number) {
 
   ngOnInit(): void {
     super.ngOnInit();
-    this.ruler.change().pipe(takeUntil(this._onDestroy)).subscribe(() => {
-      this.setDetailPanelPosition();
-    });
+    this.ruler.change().pipe(takeUntil(this._onDestroy)).subscribe(() => this.setDetailPanelPosition());
   }
 
   ngAfterViewInit(): void {
 
-    this.listViewChildren.changes.pipe(takeUntil(this._onDestroy)).subscribe(() => {
-      setTimeout(() => {this.setDetailPanelPosition(); });
-    });
+    this.pointerPanelItems.changes.pipe(takeUntil(this._onDestroy)).subscribe(() =>
+      setTimeout(() => this.setDetailPanelPosition()));
 
     this.detailsPanel.close.pipe(takeUntil(this._onDestroy))
-      .subscribe(() => {
-      this.closeDetailsPanel();
-    });
+      .subscribe(() => this.closeDetailsPanel());
   }
+
+  ngDoCheck(): void {
+
+    if (this.pointerPanelItems) {
+     const changes = this.dataDiffer.diff(this.pointerPanelItems.toArray());
+
+     if (changes) {
+
+       changes.forEachAddedItem((record) => {
+       //  console.log('forEachAddedItem ' + record);
+         // this.renderer.addClass(this.host.nativeElement, record.item);
+          this.setDetailPanelPosition();
+       });
+
+       changes.forEachRemovedItem((record) => {
+         // console.log('forEachRemovedItem ' + record);
+         this.closeDetailsPanel();
+         return; // only handles single item deletion for now.
+       });
+     }
+   }
+ }
+
 
 }
 

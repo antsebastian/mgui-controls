@@ -14,12 +14,10 @@
         <button class="child {{'read-more-button-' + currLayoutString}}">READ MORE</button>
       </div>
     </div>
-
 </ng-template>
 <section #section1
              style="position: relative;top:0; left:0; width:100%; height:100%">
       <div #rotator style="overflow-x: hidden;" fxFill>
-
         <div id="scrolled-wrapper" fxLayout="row" fxFill>
             <ng-container *ngFor="let s of (dataStream$ | async); let i = index">
                 <slide-div #slide fxFill [slideid]="i"

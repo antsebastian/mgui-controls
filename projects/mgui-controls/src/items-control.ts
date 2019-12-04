@@ -14,16 +14,16 @@ import { ItemContainer } from './item-container';
 </item-container>
 </items-panel>
 `})
-export class ItemsControl<T> implements OnInit, OnDestroy, DoCheck, AfterContentChecked {
+export class ItemsControl<T> implements OnInit, OnDestroy, AfterContentChecked {
+  
     constructor(protected readonly differs: IterableDiffers) { }
     @Input() itemTemplate: TemplateRef<T>;
     @Input() itemsPanel: TemplateRef<any>;
 
     icSelectionChanged(ic) { 
-
+        //todo: implement 
     }
 
-    @ViewChildren(ItemContainer) itemContainers: QueryList<ItemContainer<T>>;
     private _dataDiffer: IterableDiffer<ItemContainer<T>>;
     private _dataSource: Observable<T[]> | T[];
     /** Subscription that listens for the data provided by the data source. */
@@ -51,62 +51,23 @@ export class ItemsControl<T> implements OnInit, OnDestroy, DoCheck, AfterContent
   
     ngAfterContentChecked(): void {
       if (this.dataSource && !this._dataChangeSubscription) {
-        this._observeRenderChanges();
-      }
+          
+          if (this.dataSource instanceof Observable) {
+              this.dataStream$ = this.dataSource;
+            } else if (Array.isArray(this.dataSource)) {
+              this.dataStream$ = of(this.dataSource);
+            }
+      
+          if (this.dataStream$ === undefined) {
+            throw new Error('datastream undefined.');
+          }
+        }
     }
-  
-    private _observeRenderChanges() {
-      // If no data source has been set, there is nothing to observe for changes.
-      if (!this.dataSource) {
-        return;
-      }
-  
-    //  let dataStream: Observable<T[] | ReadonlyArray<T>> | undefined;
-  
-      if (this.dataSource instanceof Observable) {
-        this.dataStream$ = this.dataSource;
-      } else if (Array.isArray(this.dataSource)) {
-        this.dataStream$ = of(this.dataSource);
-      }
-  
-      if (this.dataStream$ === undefined) {
-        throw new Error('datastream undefined.');
-      }
-    }
-  
-  onItemAdded(item) { }
-  onItemRemoved(item) { }
-
-  ngDoCheck(): void {
-
-     if (this.itemContainers) {
-      const changes = this._dataDiffer.diff(this.itemContainers.toArray());
-
-      if (changes) {
-
-        changes.forEachAddedItem((record) => {
-          this.onItemAdded(record);
-        //  console.log('forEachAddedItem ' + record);
-          // this.renderer.addClass(this.host.nativeElement, record.item);
-          //this.setDetailPanelPosition();
-        });
-
-        changes.forEachRemovedItem((record) => {
-          this.onItemRemoved(record);
-
-          //          console.log('forEachRemovedItem ' + record);
-
-          // this.closeDetailsPanel();
-          return; // only handles single item deletion for now.
-        });
-      }
-    }
-  }
-  
+      
   protected _onDestroy = new Subject<void>();
 
-  get itemContainerCount() {
-    return this.itemContainers.length;
+  get dataDiffer() {
+    return this._dataDiffer;
   }
 
   ngOnInit() { 
