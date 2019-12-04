@@ -15,10 +15,14 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
   items$ = this.itemService.getItems(); // subscribed in  html
 
   addCard(index: number) {
-      this.itemService.addItem(`item ${index}`);
+      this.itemService.addItem(`item ${this.getItemCount()}`);
   }
   removeCard(data: string) {
     this.itemService.deleteItem(data);
+  }
+
+  getItemCount() {
+    return this.itemService.getItemCount();
   }
 
   @Input() currLayoutString = 'lg';

@@ -24,6 +24,10 @@ export abstract class CRUDService<T> {
 }
 
 export class CRUDBehaviourService<T> extends CRUDService<T>{
+  
+  getItemCount() {
+    return this.itemsSubject.getValue().length;
+  }
 
   private itemsSubject = new BehaviorSubject<T[]>([]);
   private _items = this.itemsSubject.asObservable();
@@ -31,20 +35,6 @@ export class CRUDBehaviourService<T> extends CRUDService<T>{
   constructor(private http: HttpClient) {
     super();
   }
-
-  /*
- notes on cloning - cloning is done to keep the service from calling next multiple times,
- the idea 1) is clone the array, make changes to all elements and call next once.
-          2) cloning the array keeps consumers from changing objects with out notifying 3rd party subscribers.
- BUT - The view has to re-init all elements every call, which is performance issue.
-
-    private cloneItems() {
-      return _.cloneDeep(this.itemsSubject.getValue());
-    }
-  */
-
-  // TODO: add a way to to batch updates and then call next for CRUD edits, maybe IEditable
-  // add load file method
 
   addItem(item: T) {
     this.itemsSubject.getValue().push(item);

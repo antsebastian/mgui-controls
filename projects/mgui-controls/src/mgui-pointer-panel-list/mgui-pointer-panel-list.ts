@@ -215,8 +215,6 @@ protected getItem(index: number) {
      }
    }
  }
-
-
 }
 
 
