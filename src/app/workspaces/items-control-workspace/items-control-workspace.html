@@ -1,5 +1,5 @@
 <ng-template #myItemTemplate let-data>
-    <button mat-icon-button (click)="removeCard(data)">
+    <button mat-icon-button (click)="removeItem(data)">
         <mat-icon>delete</mat-icon>
       </button>
       <span class="foreground" style="font-size:20px">{{data}}</span>
@@ -8,11 +8,10 @@
     <div fxLayoutGap="15px" fxLayout="column" fxLayout.lt-sm="column">
       <ng-content></ng-content>
       </div>
-
 </ng-template>
 <mgui-workspace workspaceTitle="ItemsControl">
     <ng-container webTools>
-      <button mat-icon-button (click)="addCard()">
+      <button mat-icon-button (click)="addItem()">
         <mat-icon>add</mat-icon>
       </button>
       </ng-container>
@@ -20,7 +19,7 @@
     <ng-container mobileTools>
       <span>{{currLayoutString}}</span>
     </ng-container>
-  <items-control #ic style="margin:15px" [itemsPanel]="myItemsPanel"
-                [itemTemplate]="myItemTemplate" [dataSource]="items$ | async">
+  <items-control style="margin:15px" [itemsPanel]="myItemsPanel"
+                 [itemTemplate]="myItemTemplate" [dataSource]="items$ | async">
   </items-control>
 </mgui-workspace>

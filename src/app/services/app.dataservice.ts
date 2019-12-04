@@ -20,7 +20,6 @@ export abstract class CRUDService<T> {
   abstract addItem(item: T);
 
   abstract deleteItem(item: T);
-
 }
 
 export class CRUDBehaviourService<T> extends CRUDService<T>{

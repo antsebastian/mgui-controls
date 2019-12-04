@@ -1,3 +1,20 @@
+<ng-template #fadeinTemplate let-data="data" let-slide="slide">
+  <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
+       style="background: rgba(0, 0, 0, 0.3)">
+    <div *ngIf="slide.animatePage" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
+      <div class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
+      <div class="child white-text {{getClassName('h1-')}}"
+           style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"
+           [ngStyle.sm]="{'max-width' : '535px'}"
+           [ngStyle.xs]="{'max-width' : '350px', 'margin-top': '30px',
+                          'margin-bottom' : '25px'}">
+        {{data.bigText}}
+      </div>
+      <button class="child {{'read-more-button-' + currLayoutString}}">READ MORE</button>
+    </div>
+  </div>
+</ng-template>
+
 <mgui-workspace workspaceTitle="Carousel">
     <ng-container webTools>
         <span>{{currLayoutString}}</span>
@@ -6,5 +23,5 @@
       <ng-container mobileTools>
         <span>{{currLayoutString}}</span>
       </ng-container>
-  <mgui-carousel [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
+  <mgui-carousel [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
 </mgui-workspace>

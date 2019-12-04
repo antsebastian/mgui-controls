@@ -1,5 +1,5 @@
 import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style } from '@angular/animations';
-import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit, TemplateRef, ViewContainerRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit, TemplateRef, ViewContainerRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ItemContainer } from '../item-container';
 
 
@@ -50,8 +50,6 @@ export class ScaleToFitWidth {
               [ngTemplateOutletContext]="{data: data, slide: slide}"></ng-template>`,
   animations: []
 })
-
-
 export class SlideDiv<T> extends ItemContainer<T> {
   @Input() currTrans = 0;
   @Input() slideid = 0;
@@ -62,6 +60,7 @@ export class SlideDiv<T> extends ItemContainer<T> {
   isWrapAround = false;
   player: AnimationPlayer = null;
   state: string;
+  @Output() TransitionComplete = new EventEmitter<T>();
 
   constructor(public eleRef: ElementRef, private builder: AnimationBuilder) {
     super();
@@ -108,6 +107,7 @@ export class SlideDiv<T> extends ItemContainer<T> {
         this.animateSlide(this.wrapTrans, 0);
       }
 
+      this.TransitionComplete.next();
       if (this.state === 'entering') {
         this.animatePage = true;
       } else {

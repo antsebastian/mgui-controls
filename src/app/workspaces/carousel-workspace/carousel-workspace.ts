@@ -2,11 +2,13 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { SetPageAni } from 'projects/mgui-controls/src/animations';
 
 @Component({
   selector: 'carousel-workspace',
   templateUrl: './carousel-workspace.html',
-  styleUrls: ['./carousel-workspace.scss']
+  styleUrls: ['./carousel-workspace.scss'],
+  animations: [SetPageAni('animate-page')]
 })
 export class CarouselWorkspace implements OnInit, OnDestroy {
 

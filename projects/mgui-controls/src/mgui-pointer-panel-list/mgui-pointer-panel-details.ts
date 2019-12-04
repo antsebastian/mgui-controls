@@ -59,8 +59,6 @@ export function SetRevealAni(name) {
 export class MguiPointerPanelDetails<T> {
 
   @Output() close = new EventEmitter();
-  @Output() next = new EventEmitter();
-  @Output() prev = new EventEmitter();
 
   @Input() pointerWidth = 0;
   @Input() pointerHeight = 0;

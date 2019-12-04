@@ -10,7 +10,7 @@ import { ItemsControl } from '../items-control';
   selector: 'mgui-carousel',
   templateUrl: './mgui-carousel.html',
   styleUrls: ['./mgui-carousel.scss'],
-  animations: [SetPageAni('animate-page'), ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
+  animations: [ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
 export class MguiCarousel<T> extends ItemsControl<T> implements OnInit, OnDestroy {
   @ViewChild('rotator') rotator: ElementRef;

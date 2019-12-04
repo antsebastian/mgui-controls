@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { CRUDService, CRUDBehaviourService } from 'src/app/services/app.dataservice';
+import { CRUDBehaviourService } from 'src/app/services/app.dataservice';
 
 @Component({
   selector: 'items-control-workspace',
@@ -12,12 +12,12 @@ import { CRUDService, CRUDBehaviourService } from 'src/app/services/app.dataserv
 export class ItemsControlWorkspace implements OnInit, OnDestroy {
 
   itemService = new CRUDBehaviourService<string>(null);
-  items$ = this.itemService.getItems(); // subscribed in  html
+  items$ = this.itemService.getItems();
 
-  addCard(index: number) {
+  addItem(index: number) {
       this.itemService.addItem(`item ${this.getItemCount()}`);
   }
-  removeCard(data: string) {
+  removeItem(data: string) {
     this.itemService.deleteItem(data);
   }
 
@@ -47,9 +47,10 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
     this.items$ = this.itemService.getItems();
 
     for(let i=0; i < 3; i++) {
-      this.addCard(i);
+      this.addItem(i);
     }
-        // get the current size in case the view activates in
+
+    // get the current size in case the view activates in
     // overlapped breakpoint then fx mediaService doesnt set anything in observable
     // fx bug????
     if (!this.currLayoutString) {
@@ -69,13 +70,10 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
       if (this.mediaService.isActive('xl')) {
         this.currLayoutString = 'xl';
       }
-
     }
-
   }
   ngOnDestroy(): void {
     this._onDestroy.next();
     this._onDestroy.complete();
   }
-
 }
