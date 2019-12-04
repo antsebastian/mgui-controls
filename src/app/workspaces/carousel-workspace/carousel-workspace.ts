@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { SetPageAni } from 'projects/mgui-controls/src/animations';
+import { SetPageAni } from 'libs/mgui-controls/src/animations';
 
 @Component({
   selector: 'carousel-workspace',

@@ -3,7 +3,7 @@ import {MatSidenav} from '@angular/material';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {of, Subject} from 'rxjs';
 import {MediaMonitor, ObservableMedia} from '@angular/flex-layout';
-import { MguiSideNavService } from 'projects/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
+import { MguiSideNavService } from 'libs/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
 
 
 
