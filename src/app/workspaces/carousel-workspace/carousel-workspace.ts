@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, AfterViewInit } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -10,12 +10,21 @@ import { SetPageAni } from 'libs/mgui-controls/src/animations';
   styleUrls: ['./carousel-workspace.scss'],
   animations: [SetPageAni('animate-page')]
 })
-export class CarouselWorkspace implements OnInit, OnDestroy {
+export class CarouselWorkspace implements OnInit, OnDestroy, AfterViewInit {
+  
+  firstLoad = false;
+  ngAfterViewInit(): void {
+    this.firstLoad = true;
+  }
 
   @Input()
-  slideSrc = [{ fileName: '../../../assets/small-business-parallax-1-1920x1200.jpg', smallText: 'Union Bank Welcomes You.', bigText: 'We create stunning websites' },
-  { fileName: '../../../assets/small-business-parallax-2-1920x1200.jpg', smallText: 'This is a small line.', bigText: 'We create stunning websites' },
-  { fileName: '../../../assets/small-business-parallax-3-1920x1200.jpg', smallText: 'This is a small line.', bigText: 'We create stunning websites' }];
+  slideSrc = [{ fileName: '../../../assets/small-business-parallax-1-1920x1200.jpg', 
+                smallText: 'Anthony Sebastian - Front End Web Developer', 
+                bigText: 'Welcome to my portfolio' },
+  { fileName: '../../../assets/small-business-parallax-2-1920x1200.jpg', 
+    smallText: 'I designed this portfolio to demonstrate my skills.', bigText: 'Angular Vue ES6 TypeScript' },
+  { fileName: '../../../assets/small-business-parallax-3-1920x1200.jpg', 
+  smallText: 'I\'ve been designing web applications for over 10 years.', bigText: 'Designer Developer Architect' }];
   
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();

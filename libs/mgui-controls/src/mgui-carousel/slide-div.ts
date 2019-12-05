@@ -1,5 +1,5 @@
 import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style } from '@angular/animations';
-import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit, TemplateRef, ViewContainerRef, ViewChild, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit, TemplateRef, ViewContainerRef, ViewChild, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ItemContainer } from '../item-container';
 
 

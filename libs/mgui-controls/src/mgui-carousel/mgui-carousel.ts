@@ -1,5 +1,5 @@
 import {concatMap, flatMap, map, take, takeWhile, tap, throttle, timeout} from 'rxjs/operators';
-import { Component, OnInit, Input, ViewChild, ViewChildren, ElementRef, QueryList, OnDestroy, IterableDiffers } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren, ElementRef, QueryList, OnDestroy, IterableDiffers, AfterViewInit } from '@angular/core';
 import { SlideDiv } from './slide-div';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
@@ -12,7 +12,13 @@ import { ItemsControl } from '../items-control';
   styleUrls: ['./mgui-carousel.scss'],
   animations: [ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
-export class MguiCarousel<T> extends ItemsControl<T> implements OnInit, OnDestroy {
+export class MguiCarousel<T> extends ItemsControl<T> implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void {
+    if(this.slides && this.slides.length > 0) {
+      setTimeout(() => this.slides.first.animatePage = true, 0);
+    }
+  }
+
   @ViewChild('rotator') rotator: ElementRef;
   @ViewChildren(SlideDiv) slides: QueryList<SlideDiv<T>>;
   @Input() currLayoutString: string;
@@ -32,6 +38,7 @@ export class MguiCarousel<T> extends ItemsControl<T> implements OnInit, OnDestro
 
   ngOnInit() {
     super.ngOnInit();
+    
     // get the current size in case the view activates in
     // overlapped breakpoint then fx mediaService doesnt set anything in observable
     // fx bug????

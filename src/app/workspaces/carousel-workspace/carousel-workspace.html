@@ -10,18 +10,11 @@
                           'margin-bottom' : '25px'}">
         {{data.bigText}}
       </div>
-      <button class="child {{'read-more-button-' + currLayoutString}}">READ MORE</button>
+      <button class="child {{'read-more-button-' + currLayoutString}}" (click)="mc?.nextSlide()">READ MORE</button>
     </div>
   </div>
 </ng-template>
 
 <mgui-workspace workspaceTitle="Carousel">
-    <ng-container webTools>
-        <span>{{currLayoutString}}</span>
-      </ng-container>
-    
-      <ng-container mobileTools>
-        <span>{{currLayoutString}}</span>
-      </ng-container>
-  <mgui-carousel [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
+  <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
 </mgui-workspace>
