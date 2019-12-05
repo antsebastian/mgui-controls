@@ -5,12 +5,12 @@ import { Subject } from 'rxjs';
 import { SetPageAni } from 'libs/mgui-controls/src/animations';
 
 @Component({
-  selector: 'carousel-workspace',
-  templateUrl: './carousel-workspace.html',
-  styleUrls: ['./carousel-workspace.scss'],
+  selector: 'website-workspace',
+  templateUrl: './website-workspace.html',
+  styleUrls: ['./website-workspace.scss'],
   animations: [SetPageAni('animate-page')]
 })
-export class CarouselWorkspace implements OnInit, OnDestroy, AfterViewInit {
+export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
   
   firstLoad = false;
   ngAfterViewInit(): void {

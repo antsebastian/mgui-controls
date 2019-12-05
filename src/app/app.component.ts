@@ -1,11 +1,10 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {MatSidenav} from '@angular/material';
+import {MatSidenav, MatNavList, MatList, MatSelectionList} from '@angular/material';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {of, Subject} from 'rxjs';
 import {MediaMonitor, ObservableMedia} from '@angular/flex-layout';
 import { MguiSideNavService } from 'libs/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,15 +16,20 @@ export class AppComponent implements OnDestroy, OnInit {
   @Input() toolbarTemplate: TemplateRef<any>;
   @Input() drawerMode: string;
 
+  @ViewChild('navList') navList: MatSelectionList;
   @ViewChild('drawer') drawer: MatSidenav;
 
   protected _onDestroy = new Subject<void>();
 
-  constructor(public appService: MguiSideNavService,
+  constructor(public appService: MguiSideNavService,           
+              public mediaMonitor: MediaMonitor, 
               private mediaService: ObservableMedia,
-              public mediaMonitor: MediaMonitor) { }
+              private router: Router) { }
 
   ngOnInit(): void {
+    
+    this.router.navigateByUrl('website-workspace'); //without this line the initial link is not activated.
+    
     this.appService.ToggleSideNav
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {

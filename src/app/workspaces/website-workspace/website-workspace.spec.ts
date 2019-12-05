@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SportsbookWorkspace } from './sportsbook-workspace';
+import { WebsiteWorkspace } from './website-workspace';
 
-describe('PointerPanelWorkspace', () => {
-  let component: SportsbookWorkspace;
-  let fixture: ComponentFixture<SportsbookWorkspace>;
+describe('CarouselWorkspace', () => {
+  let component: WebsiteWorkspace;
+  let fixture: ComponentFixture<WebsiteWorkspace>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SportsbookWorkspace ]
+      declarations: [ WebsiteWorkspace ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SportsbookWorkspace);
+    fixture = TestBed.createComponent(WebsiteWorkspace);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

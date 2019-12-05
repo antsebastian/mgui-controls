@@ -10,30 +10,34 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatExpansionModule,
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { MguiControlsModule } from 'libs/mgui-controls/src/mgui-controls.module';
-import { CarouselWorkspace } from './workspaces/carousel-workspace/carousel-workspace'
+import { WebsiteWorkspace } from './workspaces/website-workspace/website-workspace'
 import {PointerPanelWorkspace} from './workspaces/pointer-panel-workspace/pointer-panel-workspace'
 import { MguiSideNavService } from 'libs/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
-import {Route, RouterModule, Routes} from '@angular/router';
+import {Route, RouterModule, Routes, RouteReuseStrategy} from '@angular/router';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { ContactsService, ContactsMockService, GamesMockService, CRUDService, GamesService } from './services/app.dataservice';
 import {ItemsControlWorkspace} from './workspaces/items-control-workspace/items-control-workspace'
-import {SportsbookWorkspace} from './workspaces/sportsbook-workspace/sportsbook-workspace'
+import { CacheReuseStrategy } from './route-cache';
 
+
+const defaultRouteCache = {
+    provide: RouteReuseStrategy,
+    useClass: CacheReuseStrategy
+}
 const indexRoute: Route = {
   path: '',
- component: CarouselWorkspace
+ component: WebsiteWorkspace,
 };
 
 const fallbackRoute: Route = {
  path: '**',
- component: CarouselWorkspace
+ component: WebsiteWorkspace
 };
 
 const appRoutes: Routes = [
- {path: 'carousel-workspace', component: CarouselWorkspace},
+ {path: 'website-workspace', component: WebsiteWorkspace},
  {path: 'pointerpanel-workspace', component: PointerPanelWorkspace},
  {path: 'itemscontrol-workspace', component: ItemsControlWorkspace},
- {path: 'sportsbook-workspace', component: SportsbookWorkspace},
  indexRoute, fallbackRoute
 ];
 
@@ -60,7 +64,7 @@ const contactsServiceProvider = {
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselWorkspace, PointerPanelWorkspace, ItemsControlWorkspace, SportsbookWorkspace
+    WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,7 @@ const contactsServiceProvider = {
   ],
 
   
-  providers: [MguiSideNavService, contactsServiceProvider, gamesServiceProvider],
+  providers: [MguiSideNavService, contactsServiceProvider, gamesServiceProvider, defaultRouteCache],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

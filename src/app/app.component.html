@@ -19,33 +19,25 @@
                    role="navigation" style="min-width:300px" fxLayout="column">
   
         <mat-nav-list>
-          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/carousel-workspace'
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink="website-workspace"
                          routerLinkActive #rla="routerLinkActive">
             <div *ngIf="rla.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>slideshow</mat-icon>
-            <a mat-line>Carousel</a>
+            <a mat-line>Website Demo</a>
   
           </mat-list-item>
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/pointerpanel-workspace'
                          routerLinkActive #rla1="routerLinkActive">
             <div *ngIf="rla1.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>horizontal_split</mat-icon>
-            <a mat-line>Pointer Panel</a>
+            <a mat-line>Pointer Panel Control</a>
           </mat-list-item>
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/itemscontrol-workspace'
                          routerLinkActive #rla2="routerLinkActive">
             <div *ngIf="rla2.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>list</mat-icon>
-            <a mat-line>Items</a>  
+            <a mat-line>Items Control</a>  
           </mat-list-item>
-          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/sportsbook-workspace'
-                         routerLinkActive #rla3="routerLinkActive">
-            <div *ngIf="rla3.isActive" class="active-highlighter"></div>
-            <mat-icon mat-list-icon>sports_football</mat-icon>
-            <a mat-line>Sportsbook</a>
-  
-          </mat-list-item>
-
         </mat-nav-list>
       </mat-sidenav>
     </mat-sidenav-container>
