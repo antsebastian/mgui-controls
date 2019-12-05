@@ -1,7 +1,6 @@
 import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style } from '@angular/animations';
-import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnInit, TemplateRef, ViewContainerRef, ViewChild, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, ContentChild, ElementRef, HostListener, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { ItemContainer } from '../item-container';
-
 
 @Component({
   selector: 'fit-width',
@@ -50,21 +49,26 @@ export class ScaleToFitWidth {
               [ngTemplateOutletContext]="{data: data, slide: slide}"></ng-template>`,
   animations: []
 })
-export class SlideDiv<T> extends ItemContainer<T> {
+export class SlideDiv<T> extends ItemContainer<T> implements AfterViewInit {
   @Input() currTrans = 0;
   @Input() slideid = 0;
-  @Input() animatePage = false;
+  @Output() slideTransitionCompleted = new EventEmitter<boolean>();
   @Input() slide;
 
   wrapTrans = 0;
   isWrapAround = false;
   player: AnimationPlayer = null;
   state: string;
-  @Output() TransitionComplete = new EventEmitter<T>();
 
   constructor(public eleRef: ElementRef, private builder: AnimationBuilder) {
     super();
     
+  }
+
+  ngAfterViewInit(): void {
+    if(this.slideid === 0) {
+      setTimeout(() => this.slideTransitionCompleted.next(true), 0);
+    }
   }
 
   wrapAroundStart(dx: number) {
@@ -75,10 +79,6 @@ export class SlideDiv<T> extends ItemContainer<T> {
   wrapAroundEnd(dx: number) {
     this.isWrapAround = true;
     this.wrapTrans = dx;
-  }
-
-  setanimatePage(){
-    this.animatePage = true;
   }
 
   animateSlide(dx: number, time = 250) {
@@ -107,13 +107,9 @@ export class SlideDiv<T> extends ItemContainer<T> {
         this.animateSlide(this.wrapTrans, 0);
       }
 
-      this.TransitionComplete.next();
-      if (this.state === 'entering') {
-        this.animatePage = true;
-      } else {
-        this.animatePage = false;
-      }
+      this.slideTransitionCompleted.next(this.state === 'entering');
     });
+
     this.player.play();
   }
 }

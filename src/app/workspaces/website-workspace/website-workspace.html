@@ -1,7 +1,7 @@
 <ng-template #fadeinTemplate let-data="data" let-slide="slide">
   <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
        style="background: rgba(0, 0, 0, 0.3)">
-    <div *ngIf="slide.animatePage" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="(slide.slideTransitionCompleted | async)" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
       <div class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
       <div class="child white-text {{getClassName('h1-')}}"
            style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"

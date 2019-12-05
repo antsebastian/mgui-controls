@@ -1,10 +1,8 @@
-import {concatMap, flatMap, map, take, takeWhile, tap, throttle, timeout} from 'rxjs/operators';
 import { Component, OnInit, Input, ViewChild, ViewChildren, ElementRef, QueryList, OnDestroy, IterableDiffers, AfterViewInit } from '@angular/core';
 import { SlideDiv } from './slide-div';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { SetPageAni, ResponsiveScaleAni, FadeInAni } from '../animations';
+import { ResponsiveScaleAni, FadeInAni } from '../animations';
 import { ItemsControl } from '../items-control';
 @Component({
   selector: 'mgui-carousel',
@@ -12,20 +10,17 @@ import { ItemsControl } from '../items-control';
   styleUrls: ['./mgui-carousel.scss'],
   animations: [ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
-export class MguiCarousel<T> extends ItemsControl<T> implements OnInit, AfterViewInit {
-  ngAfterViewInit(): void {
-    if(this.slides && this.slides.length > 0) {
-      setTimeout(() => this.slides.first.animatePage = true, 0);
-    }
-  }
+export class MguiCarousel<T> extends ItemsControl<T> implements OnInit {
 
   @ViewChild('rotator') rotator: ElementRef;
   @ViewChildren(SlideDiv) slides: QueryList<SlideDiv<T>>;
   @Input() currLayoutString: string;
   slideIndex = 0;
+  
   get slideCount() {
     return this.slides.length;
   }
+
   moveOffset = 100;
   constructor(public mediaService: ObservableMedia, protected readonly differs: IterableDiffers) {
     super(differs);
@@ -60,7 +55,7 @@ export class MguiCarousel<T> extends ItemsControl<T> implements OnInit, AfterVie
       }
     }
   }
- 
+  
   getClassName(prefix: string) {
     return prefix + this.currLayoutString;
   }
