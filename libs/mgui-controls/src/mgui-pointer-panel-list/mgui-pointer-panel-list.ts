@@ -16,7 +16,7 @@ import {Observable, of, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MguiPointerPanelItem} from './mgui-pointer-panel-item';
-import { ItemsControl } from '../items-control';
+import { MguiItemsControl } from '../items-control';
 
 export function MoveRowAni(name, to) {
   return trigger(name, [
@@ -50,7 +50,7 @@ export function MoveRowAni(name, to) {
   animations: [MoveRowAni('animate-row-move', 'detailsRowHeight')],
 })
 
-export class MguiPointerPanelList<T> extends ItemsControl<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
+export class MguiPointerPanelList<T> extends MguiItemsControl<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
   constructor(private ruler: ViewportRuler, protected readonly differs: IterableDiffers) {
     super(differs);   
   }
