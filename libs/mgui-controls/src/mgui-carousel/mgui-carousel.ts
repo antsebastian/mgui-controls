@@ -3,14 +3,14 @@ import { SlideDiv } from './slide-div';
 import { ObservableMedia } from '@angular/flex-layout';
 import { takeUntil } from 'rxjs/operators';
 import { ResponsiveScaleAni, FadeInAni } from '../animations';
-import { ItemsControl } from '../items-control';
+import { MguiItemsControl } from '../items-control';
 @Component({
   selector: 'mgui-carousel',
   templateUrl: './mgui-carousel.html',
   styleUrls: ['./mgui-carousel.scss'],
   animations: [ResponsiveScaleAni('responsive-scale-ani'), FadeInAni('fade-in-ani')]
 })
-export class MguiCarousel<T> extends ItemsControl<T> implements OnInit {
+export class MguiCarousel<T> extends MguiItemsControl<T> implements OnInit {
 
   @ViewChild('rotator') rotator: ElementRef;
   @ViewChildren(SlideDiv) slides: QueryList<SlideDiv<T>>;

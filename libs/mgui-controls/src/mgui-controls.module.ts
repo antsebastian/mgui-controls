@@ -15,7 +15,7 @@ import { SlideDiv, ScaleToFitWidth } from './mgui-carousel/slide-div';
 import { MguiPointerPanelList } from './mgui-pointer-panel-list/mgui-pointer-panel-list';
 import { MguiPointerPanelItem } from './mgui-pointer-panel-list/mgui-pointer-panel-item';
 import { MguiPointerPanelDetails } from './mgui-pointer-panel-list/mgui-pointer-panel-details';
-import { ItemsControl } from './items-control';
+import { MguiItemsControl } from './items-control';
 import { ItemContainer } from './item-container';
 import { ItemsPanel } from './items-panel';
 
@@ -23,7 +23,7 @@ import { ItemsPanel } from './items-panel';
   imports: [BrowserModule, FlexLayoutModule, BrowserAnimationsModule, MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule
   ],
   providers: [BootstrapBreakpointsModule],
-  declarations: [ItemsPanel, ItemsControl, ItemContainer, MguiWorkspace, MguiCarousel, SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails],
-  exports: [ItemsPanel, ItemsControl, ItemContainer,MguiWorkspace, MguiCarousel,SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails]
+  declarations: [ItemsPanel, MguiItemsControl, ItemContainer, MguiWorkspace, MguiCarousel, SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails],
+  exports: [ItemsPanel, MguiItemsControl, ItemContainer,MguiWorkspace, MguiCarousel,SlideDiv, ScaleToFitWidth, MguiPointerPanelList, MguiPointerPanelItem, MguiPointerPanelDetails]
 })
 export class MguiControlsModule { }

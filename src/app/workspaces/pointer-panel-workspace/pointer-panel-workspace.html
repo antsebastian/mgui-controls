@@ -74,7 +74,7 @@
 
   <!--Subscribe once to items observable and add it to variable
   so we don't get multiple subscriptions-->
-  <div *ngIf="cards$ | async as items">
+  <div *ngIf="cards$ | async as items" style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden;">
     <mgui-pointer-panel-list [itemTemplate]="myItemTemplate"
                         [itemDetailsTemplate]="myItemDetailsTemplate"
                         [dataSource]="items">

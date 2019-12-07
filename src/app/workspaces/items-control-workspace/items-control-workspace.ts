@@ -15,7 +15,7 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
   items$ = this.itemService.getItems();
 
   addItem(index: number) {
-      this.itemService.addItem(`item ${this.getItemCount()}`);
+      this.itemService.addItem(`This is really looooooooooooooooooooooong item text to test the horz scrollbar behaviour ${this.getItemCount()}`);
   }
   removeItem(data: string) {
     this.itemService.deleteItem(data);
@@ -34,8 +34,7 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
     mediaService.asObservable()
     .pipe(takeUntil(this._onDestroy))
     .subscribe((change) => {
-      this.currLayoutString = change.mqAlias;
-        console.log('currLayoutString 2' + change.mqAlias);
+        this.currLayoutString = change.mqAlias;
     });
   }
   getClassName(prefix: string) {

@@ -4,7 +4,7 @@ import {concatMap, flatMap, map, take, takeUntil, takeWhile, tap, throttle, time
 import { Subject, Observable, Subscription, of } from 'rxjs';
 import { ItemContainer } from './item-container';
 
-@Component({selector:'items-control',
+@Component({selector:'mgui-items-control',
 
  template: `<items-panel>
  <item-container #ic fxFlex *ngFor="let item of (dataStream$ | async); let i = index" id="{{i}}"
@@ -14,7 +14,7 @@ import { ItemContainer } from './item-container';
 </item-container>
 </items-panel>
 `})
-export class ItemsControl<T> implements OnInit, OnDestroy, AfterContentChecked {
+export class MguiItemsControl<T> implements OnInit, OnDestroy, AfterContentChecked {
   
     constructor(protected readonly differs: IterableDiffers) { }
     @Input() itemTemplate: TemplateRef<T>;

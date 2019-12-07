@@ -16,5 +16,226 @@
 </ng-template>
 
 <mgui-workspace workspaceTitle="Website Demo">
-  <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
+  <div #wrapper style="width: 100%; height: 100%; overflow: auto" (scroll)="onScroll($event)">
+  
+    <section #section1 style="position: relative;top:0; left:0; width:100%; height:100%">
+    <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
+  </section>
+  
+  <section #section2
+  class="{{getClassName('section2-')}}"
+  style="position: relative;top:0; left:0; height: auto; background: white">
+<div #scaleDiv fxFill
+fxLayout="row" fxLayoutAlign="center start"
+fxLayout.lt-md="column" fxLayoutAlign.lt-md="start start">
+
+<span *ngIf="fadein2" [@fade-in-ani] class="{{getClassName('asterisk-')}}" fxShow fxHide.lt-lg>*</span>
+
+<span *ngIf="fadein2" [@fade-in-ani] fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
+   class="dark-grey-text {{getClassName('h3-')}}">
+I work at a digital studio crafting outstanding products. My team creates exclusive web designs and branding solutions.
+</span>
+<span *ngIf="fadein2" [@fade-in-ani]
+   style="display: flex; flex: 1 1 30px; max-width: 60px; min-width: 25px"></span>
+<div *ngIf="fadein2" [@fade-in-ani] fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
+  fxLayout="column">
+<span class="med-grey-text {{getClassName('p-')}}">
+ I’m constantly learning web design & development technologies and other design related topics, currently playing around with JavaScript and jQuery. I’m skilled in many areas of design and development. It allows me to achieve better results than any other designer.
+</span>
+<a class="primary-color-text uppercase raleway" style="margin-top:15px"
+  href="#">view my portfolio</a>
+</div>
+</div>
+</section>
+  <section #section3
+  [ngStyle.xs]="{ 'padding' : '0px', 'background-position' : 'center'}"
+  style="position: relative;top:0px; left:0;background-origin: border-box; padding: 50px;
+  background: url('http://localhost:4200/assets/site/about-me-1-1920x1100.jpg') fixed;"
+  fxLayout="row" fxLayoutAlign="end start" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+<div fxLayout="column" class="{{getClassName('section3-rectangle-')}}">
+<span class="at-sign" fxHide.xs>@</span>
+<span class="dark-grey-text char-spacing-med {{getClassName('h4-')}}">Hello, I'm a leading designer and developer from Los Angeles, CA. I deliver innovative and easy-to-use designs to my clients.</span>
+<ul class="list-dash-bullet">
+<li>
+ <pre>Name:          Andrew Smith</pre>
+</li>
+<li>
+ <pre>Email:         <a href="mailto:#">info@demolink.org</a></pre>
+</li>
+<li>
+ <pre>Phone:         <a href="tel:#">1-818-539-9985</a></pre>
+</li>
+<li>
+ <pre>Date of birth: February 23, 1986</pre>
+</li>
+<li>
+ <pre>Nationality:   American</pre>
+</li>
+</ul>
+</div>
+
+</section>
+<!---->
+<section #section4 [ngStyle.lt-lg]="{'padding' : '50px 0'}" style="padding:100px 0; background: white;
+position: relative;top:0; left:0;">
+<div style="margin: 0 10px; max-width: 1000px" fxLayout="row" fxLayoutAlign="center start"
+fxLayout.lt-lg="column" fxLayoutAlign.lt-lg="center center">
+
+<mat-grid-list
+[cols]="mediaService.isActive('xs') ? 1 : 2" rowHeight="175px"
+[ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
+style="width:100%; min-width:340px; max-width: 600px">
+
+<div *ngIf="slideUp4" [@animate-page]>
+ <mat-grid-tile *ngFor="let data of section4Src" class="child" style="background: white">
+   <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign.lt-lg="center center" fxLayoutAlign="start start"
+        [ngStyle.lt-lg]="{'text-align' : 'center'}"
+        style="margin-right:20px">
+     <mat-icon color="primary" style="width:48px; height: 48px; font-size: 48px;">{{data.icon}}</mat-icon>
+     <div class="raleway med-grey-text bold h7">{{data.header}}</div>
+     <div class="med-grey-text h8">{{data.content}}</div>
+   </div>
+
+ </mat-grid-tile>
+</div>
+</mat-grid-list>
+
+<div style="height:40px; min-width: 2px; max-width: 40px; width:100%"></div>
+
+<div fxLayout="column" fxLayoutAlign="start start" fxLayoutAlign.lt-lg="center center" fxLayoutGap="15px"
+  [ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
+  [ngStyle.lt-md]="{'min-width':'340px', 'max-width': '600px'}"
+
+  style=" min-width: 375px; max-width: 455px">
+<div class="raleway primary-color-text h7">We create premium websites</div>
+<span [ngStyle.lt-lg]="{'text-align':'center'}"
+     style="max-width: 500px"
+     class="raleway dark-grey-text bold char-spacing-med {{getClassName('h3-')}}">
+     We are a digital studio crafting beautiful experiences</span>
+<div [ngStyle.lt-lg]="{'text-align':'center'}" class="med-grey-text h8">
+ Small and medium-sized businesses partner with Medium to help them grow. We work with owners and
+ entrepreneurs to help them build a sustainable business through data-driven creative marketing, branding,
+ web design, and development that are all aimed at moving the revenue needle. We’re a true business partner
+ and our dedicated industry practice can help you define and meet specific business goals.
+</div>
+<button style="margin-left:2px; padding: 5px">READ MORE</button>
+</div>
+</div>
+</section>
+
+<section #section5 class="{{getClassName('section2-')}}" style="position: relative; overflow: hidden">
+
+<img *ngIf="mediaService.isActive('xs')" src="http://localhost:4200/assets/site/about-me-parallax-1-1920x1100.jpg"
+height="100%" style="position: absolute; top:0; left: 0; "/>
+
+
+<div #section5Parallax *ngIf="mediaService.isActive('gt-xs')"
+style="position: absolute; top:0; left:0; width:100%; height: calc(100% + 400px);
+ background-origin: border-box; background-size: cover;
+ background: url('http://localhost:4200/assets/site/about-me-parallax-1-1920x1100.jpg') center;">
+
+</div>
+
+<div style="position: absolute; top:0; left: 0; width:100%; height:100%; background: rgba(0, 0, 0, 0.4)">
+</div>
+
+<div *ngIf="slideUp5" [@animate-page] style="width: 100%;" fxLayout="column" fxLayoutAlign="center center">
+
+<div gdGap="50px" gdColumns.sm="200px" gdColumns.sm="200px 200px"
+  gdColumns.md="350px 350px" gdColumns.gt-md="200px 200px 200px 200px">
+
+<div *ngFor="let spinner of section5Src" class="child">
+ <div style="width:100%; z-index: 1000; position: relative" fxLayout="column" fxLayoutAlign="center center">
+   <div style="position: relative">
+     <mat-progress-spinner value="{{spinner.value}}" [strokeWidth]="3"
+                           [diameter]="150"
+                           mode="determinate" color="accent">
+     </mat-progress-spinner>
+     <button mat-fab color="accent" style="position: absolute; top:0; left:100px;">{{spinner.value}}</button>
+   </div>
+   <div class="white-text raleway {{getClassName('h6-')}}"
+        style="width:100%;text-align: center; margin: 10px auto">{{spinner.header}}
+   </div>
+   <div [ngStyle.xs]="{'max-width' : '90%'}" class="raleway white-text" style="text-align: center">
+     {{spinner.content}}
+   </div>
+ </div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<div #section6 style="background-color: white; overflow: hidden">
+
+<div fxLayout="column" fxLayoutAlign="start center" style="width:100%; padding: 150px 0">
+<div class="light-grey-text uppercase raleway">What We Work On</div>
+<div class="center-text {{getClassName('h3-')}}" style="max-width: 350px">Take a look at our featured and recent
+projects
+</div>
+</div>
+
+<div #fitme gdGap="10px"  gdColumns="repeat(6, [col] auto)" gdRows="repeat(3, [row] 308px)"
+    gdColumns.lt-lg="repeat(2, [col] auto)" gdRows.lt-lg="repeat(6, [row] auto)">
+
+ <div style="position: relative" gdColumn="col 1" gdRow="row 1">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-01.jpg'">
+   <div class="h1" style="position: absolute; top:10px; left:10px">1</div>
+ </div>
+
+ <div style="position: relative" gdColumn="col 2" gdRow="row 1">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-02.jpg'"
+        alt="" data-no-retina="">
+   <div class="h1" style="position: absolute; top:10px; left:10px">2</div>
+ </div>
+
+ <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 2"
+      gdColumn="col 3 / span 2" gdRow="row 1 / span 2">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-03.jpg'"
+        alt="" data-no-retina="">
+   <div class="h1" style="position: absolute; top:10px; left:10px">3</div>
+
+ </div>
+
+ <div style="position: relative"
+      gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 3"
+      gdColumn="col 5 / span 2" gdRow="row 1 / span 2">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-04.jpg'"
+        alt="" data-no-retina="">
+   <div class="h1" style="position: absolute; top:10px; left:10px">4</div>
+ </div>
+
+ <div style="position: relative"
+      gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 4"
+      gdColumn="col 1/ span 2" gdRow="row 2">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-07.jpg'"
+        alt="" data-no-retina="">
+   <div class="h1" style="position: absolute; top:10px; left:10px">5</div>
+ </div>
+
+ <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 5"
+      gdColumn="col 3 / span 2" gdRow="row 3">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-06.jpg'"
+        alt="" data-no-retina="">
+   <div class="h1" style="position: absolute; top:10px; left:10px">6</div>
+ </div>
+
+ <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 6"
+      gdColumn="col 5 / span 2" gdRow="row 3">
+   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-05.jpg'"
+        alt="" data-no-retina="">
+   <div class="h1" style="position: absolute; top:10px; left:10px">7</div>
+ </div>
+ <!--
+       <div *ngFor="let pic of section6Src; let i = index">
+       <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-0' + (i + 1) + '.jpg'"
+            alt="" data-no-retina="">
+       </div>
+ -->
+</div>
+<h1>Hallalu ya!!!</h1>
+</div>
+
+</div>
 </mgui-workspace>

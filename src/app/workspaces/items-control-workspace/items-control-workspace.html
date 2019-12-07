@@ -2,7 +2,7 @@
     <button mat-icon-button (click)="removeItem(data)">
         <mat-icon>delete</mat-icon>
       </button>
-      <span class="foreground" style="font-size:20px">{{data}}</span>
+      <span class="foreground" style="font-size:20px; white-space:nowrap;">{{data}}</span>
 </ng-template>
 <ng-template #myItemsPanel>
     <div fxLayoutGap="15px" fxLayout="column" fxLayout.lt-sm="column">
@@ -19,7 +19,11 @@
     <ng-container mobileTools>
       <span>{{currLayoutString}}</span>
     </ng-container>
-  <items-control style="margin:15px" [itemsPanel]="myItemsPanel"
+
+    <div #wrapper style="width: 100%; height: 100%; overflow: auto">
+
+  <mgui-items-control style="margin:15px" [itemsPanel]="myItemsPanel"
                  [itemTemplate]="myItemTemplate" [dataSource]="items$ | async">
-  </items-control>
+  </mgui-items-control>
+  </div>
 </mgui-workspace>
