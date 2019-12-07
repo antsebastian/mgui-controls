@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 import {MguiSideNavService} from './mgui-side-nav.service';
 import {ObservableMedia} from '@angular/flex-layout';
 
@@ -6,7 +6,8 @@ import {ObservableMedia} from '@angular/flex-layout';
 @Component({
   selector: 'mgui-workspace',
   templateUrl: './mgui-workspace.html',
-  styleUrls: ['./mgui-workspace.scss'] })
+  styleUrls: ['./mgui-workspace.scss'],
+  encapsulation: ViewEncapsulation.None }) //.None -> workspace turns off scrolling on the side nav content, needs to be global. 
 export class MguiWorkspace {
 
 
