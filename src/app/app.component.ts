@@ -46,9 +46,6 @@ export class AppComponent implements OnDestroy, OnInit {
           }
         } else if (this.mediaService.isActive('gt-md')) {
           this.drawerMode = 'side';
-          if (this.drawer) {
-            this.drawer.open();
-          }
         }
       });
 
