@@ -1,4 +1,4 @@
-<div #gridcontainer style="padding: 0">
+<div #gridcontainer style="padding: 0; position: relative">
   <div fxLayout="row wrap" fxLayout.lt-sm="column">
       <mgui-pointer-panel-item #ic fxFlex *ngFor="let item of (dataStream$ | async); let i = index" id="{{i}}"
                           (selectionChanged)="icSelectionChanged(ic)"

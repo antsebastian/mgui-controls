@@ -83,7 +83,7 @@ export class MguiPointerPanelList<T> extends MguiItemsControl<T> implements OnIn
 
     const icPrev = this.getItem(this._selectedIndex);
 
-    const gridScrolledTop = this.gridContainer.nativeElement.getBoundingClientRect().top - this.gridContainer.nativeElement.offsetTop;
+    const gridScrolledTop = this.gridContainer.nativeElement.getBoundingClientRect().top;
     const selIndex = this.pointerPanelItems.toArray().indexOf(icSel);
 
     if (this._selectedIndex === selIndex) { // same card selected...close row
@@ -153,8 +153,7 @@ protected getItem(index: number) {
     const icSel = this.getItem(this._selectedIndex);
 
     if (icSel) {
-      const gridScrolledTop = this.gridContainer.nativeElement.getBoundingClientRect().top -
-        this.gridContainer.nativeElement.offsetTop;
+      const gridScrolledTop = this.gridContainer.nativeElement.getBoundingClientRect().top;
 
       const evens = this.pointerPanelItems.filter(ic => ic.bottom === icSel.bottom);
       for (const ic of evens) { ic.detailsPanelState = 'closeNow'; }
