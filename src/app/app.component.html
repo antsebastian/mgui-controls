@@ -22,10 +22,17 @@
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink="website-workspace"
                          routerLinkActive #rla="routerLinkActive">
             <div *ngIf="rla.isActive" class="active-highlighter"></div>
-            <mat-icon mat-list-icon>slideshow</mat-icon>
-            <a mat-line>Website Demo</a>
-  
+            <mat-icon mat-list-icon>web</mat-icon>
+            <a mat-line>Website</a>
           </mat-list-item>
+          
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink="carousel-workspace"
+                         routerLinkActive #rla3="routerLinkActive">
+            <div *ngIf="rla3.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>slideshow</mat-icon>
+            <a mat-line>Carousel Control</a>
+          </mat-list-item>
+
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/pointerpanel-workspace'
                          routerLinkActive #rla1="routerLinkActive">
             <div *ngIf="rla1.isActive" class="active-highlighter"></div>

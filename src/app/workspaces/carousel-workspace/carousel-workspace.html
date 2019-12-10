@@ -1,0 +1,17 @@
+
+<ng-template #slides let-myData="data">
+  <img [src]="myData?.fileName"/>
+</ng-template>
+
+<ng-template #fadeInAnimation let-data="data">
+  <div>{{data?.aniText}}</div>
+</ng-template>
+
+<mgui-workspace workspaceTitle="mgui-carousel">
+    <div #scroller style="width: 100%; height: 100%; overflow: auto">
+      <div #wrapper fxLayout="column" >
+        <span style="margin: 10px 30px; font-weight: 100;font-size: 20px;">Using background images with fade in animation.</span>
+        <mgui-carousel style="width: 100%; height: 500px" #mc [dataSource]="myData"></mgui-carousel>
+      </div>
+    </div>
+</mgui-workspace>

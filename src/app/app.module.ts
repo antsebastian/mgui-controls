@@ -12,7 +12,9 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatExpansionModule,
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { MguiControlsModule } from 'libs/mgui-controls/src/mgui-controls.module';
-import { WebsiteWorkspace } from './workspaces/website-workspace/website-workspace'
+import { WebsiteWorkspace } from './workspaces/website-workspace/website-workspace';
+import { CarouselWorkspace } from './workspaces/carousel-workspace/carousel-workspace';
+
 import {PointerPanelWorkspace} from './workspaces/pointer-panel-workspace/pointer-panel-workspace'
 import { MguiSideNavService } from 'libs/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
 import {Route, RouterModule, Routes, RouteReuseStrategy} from '@angular/router';
@@ -38,6 +40,7 @@ const fallbackRoute: Route = {
 
 const appRoutes: Routes = [
  {path: 'website-workspace', component: WebsiteWorkspace},
+ {path: 'carousel-workspace', component: CarouselWorkspace},
  {path: 'pointerpanel-workspace', component: PointerPanelWorkspace},
  {path: 'itemscontrol-workspace', component: ItemsControlWorkspace},
  indexRoute, fallbackRoute
@@ -66,7 +69,7 @@ const contactsServiceProvider = {
 @NgModule({
   declarations: [
     AppComponent,
-    WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
+    CarouselWorkspace, WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
   ],
   imports: [
     BrowserModule,

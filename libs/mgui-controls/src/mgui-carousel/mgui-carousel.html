@@ -1,11 +1,13 @@
+<ng-template #defaultTemplate><div fxFill></div></ng-template>
+
 <section #section1
-             style="position: relative;top:0; left:0; width:100%; height:100%">
+             style="position: relative;top:0; left:0; width:inherit; height:inherit">
       <div #rotator style="overflow-x: hidden;" fxFill>
         <div id="scrolled-wrapper" fxLayout="row" fxFill>
             <ng-container *ngFor="let s of (dataStream$ | async); let i = index">
                 <slide-div #slide fxFill [slideid]="i"
                 [ngStyle]="{'background-image': 'url('+s.fileName+')'}" style="background-size: cover;"
-                [itemTemplate]="itemTemplate" [slide]="slide" [data]="s">
+                [itemTemplate]="itemTemplate ? itemTemplate : defaultTemplate" [slide]="slide" [data]="s">
                 </slide-div>
               </ng-container>
     

@@ -19,7 +19,7 @@
   <div #wrapper style="width: 100%; height: 100%; overflow: auto" (scroll)="onScroll($event)">
   
     <section #section1 style="position: relative;top:0; left:0; width:100%; height:100%">
-    <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" fxFlex="100%"></mgui-carousel>
+    <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" style="width: 100%; height: 100%"></mgui-carousel>
   </section>
   
   <section #section2

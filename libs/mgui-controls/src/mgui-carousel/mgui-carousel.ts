@@ -20,8 +20,10 @@ export class MguiCarousel<T> extends MguiItemsControl<T> implements OnInit {
   get slideCount() {
     return this.slides.length;
   }
-
-  moveOffset = 100;
+/*   getTemplate(slide) {
+    slide.itemTemplate ? slide.itemTemplate : defaultTemplate
+  }
+ */  moveOffset = 100;
   constructor(public mediaService: ObservableMedia, protected readonly differs: IterableDiffers) {
     super(differs);
     mediaService.asObservable()
