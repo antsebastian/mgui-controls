@@ -1,8 +1,10 @@
 <ng-template #myItemTemplate let-data>
-    <button mat-icon-button (click)="removeItem(data)">
+  <div fxLayout="row">
+    <button fxFlexAlign="center" mat-icon-button (click)="removeItem(data)">
         <mat-icon>delete</mat-icon>
       </button>
-      <span class="foreground" style="font-size:20px; white-space:nowrap;">{{data}}</span>
+      <span fxFlexAlign="center" class="foreground" style="font-size:20px; white-space:nowrap;">{{data}}</span>
+    </div>
 </ng-template>
 <ng-template #myItemsPanel>
     <div fxLayoutGap="15px" fxLayout="column" fxLayout.lt-sm="column">
