@@ -50,7 +50,7 @@ I work at a digital studio crafting outstanding products. My team creates exclus
   <section #section3
   [ngStyle.xs]="{ 'padding' : '0px', 'background-position' : 'center'}"
   style="position: relative;top:0px; left:0;background-origin: border-box; padding: 50px;
-  background: url('http://localhost:4200/assets/site/about-me-1-1920x1100.jpg') fixed;"
+  background: url('../../assets/website/about-me-1-1920x1100.jpg') fixed;"
   fxLayout="row" fxLayoutAlign="end start" fxLayout.xs="column" fxLayoutAlign.xs="center center">
 <div fxLayout="column" class="{{getClassName('section3-rectangle-')}}">
 <span class="at-sign" fxHide.xs>@</span>
@@ -125,14 +125,14 @@ style="width:100%; min-width:340px; max-width: 600px">
 
 <section #section5 class="{{getClassName('section2-')}}" style="position: relative; overflow: hidden">
 
-<img *ngIf="mediaService.isActive('xs')" src="http://localhost:4200/assets/site/about-me-parallax-1-1920x1100.jpg"
+<img *ngIf="mediaService.isActive('xs')" src="../../assets/website/about-me-parallax-1-1920x1100.jpg"
 height="100%" style="position: absolute; top:0; left: 0; "/>
 
 
 <div #section5Parallax *ngIf="mediaService.isActive('gt-xs')"
 style="position: absolute; top:0; left:0; width:100%; height: calc(100% + 400px);
  background-origin: border-box; background-size: cover;
- background: url('http://localhost:4200/assets/site/about-me-parallax-1-1920x1100.jpg') center;">
+ background: url('../../assets/website/about-me-parallax-1-1920x1100.jpg') center;">
 
 </div>
 
@@ -180,19 +180,19 @@ projects
     gdColumns.lt-lg="repeat(2, [col] auto)" gdRows.lt-lg="repeat(6, [row] auto)">
 
  <div style="position: relative" gdColumn="col 1" gdRow="row 1">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-01.jpg'">
+   <img [src]="'../../assets/website/home-classic-web-agency-project-01.jpg'">
    <div class="h1" style="position: absolute; top:10px; left:10px">1</div>
  </div>
 
  <div style="position: relative" gdColumn="col 2" gdRow="row 1">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-02.jpg'"
+   <img [src]="'../../assets/website/home-classic-web-agency-project-02.jpg'"
         alt="" data-no-retina="">
    <div class="h1" style="position: absolute; top:10px; left:10px">2</div>
  </div>
 
  <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 2"
       gdColumn="col 3 / span 2" gdRow="row 1 / span 2">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-03.jpg'"
+   <img [src]="'../../assets/website/home-classic-web-agency-project-03.jpg'"
         alt="" data-no-retina="">
    <div class="h1" style="position: absolute; top:10px; left:10px">3</div>
 
@@ -201,7 +201,7 @@ projects
  <div style="position: relative"
       gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 3"
       gdColumn="col 5 / span 2" gdRow="row 1 / span 2">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-04.jpg'"
+   <img [src]="'../../assets/website/home-classic-web-agency-project-04.jpg'"
         alt="" data-no-retina="">
    <div class="h1" style="position: absolute; top:10px; left:10px">4</div>
  </div>
@@ -209,27 +209,27 @@ projects
  <div style="position: relative"
       gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 4"
       gdColumn="col 1/ span 2" gdRow="row 2">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-07.jpg'"
+   <img [src]="'../../assets/website/home-classic-web-agency-project-07.jpg'"
         alt="" data-no-retina="">
    <div class="h1" style="position: absolute; top:10px; left:10px">5</div>
  </div>
 
  <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 5"
       gdColumn="col 3 / span 2" gdRow="row 3">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-06.jpg'"
+   <img [src]="'../../assets/website/home-classic-web-agency-project-06.jpg'"
         alt="" data-no-retina="">
    <div class="h1" style="position: absolute; top:10px; left:10px">6</div>
  </div>
 
  <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 6"
       gdColumn="col 5 / span 2" gdRow="row 3">
-   <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-05.jpg'"
+   <img [src]="'../../assets/website/home-classic-web-agency-project-05.jpg'"
         alt="" data-no-retina="">
    <div class="h1" style="position: absolute; top:10px; left:10px">7</div>
  </div>
  <!--
        <div *ngFor="let pic of section6Src; let i = index">
-       <img [src]="'http://localhost:4200/assets/site/home-classic-web-agency-project-0' + (i + 1) + '.jpg'"
+       <img [src]="'../../assets/website/home-classic-web-agency-project-0' + (i + 1) + '.jpg'"
             alt="" data-no-retina="">
        </div>
  -->
