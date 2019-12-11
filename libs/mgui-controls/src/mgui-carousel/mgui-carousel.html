@@ -6,14 +6,13 @@
         <div id="scrolled-wrapper" fxLayout="row" fxFill>
             <ng-container *ngFor="let s of (dataStream$ | async); let i = index">
                 <slide-div #slide fxFill [slideid]="i"
-                [ngStyle]="{'background-image': 'url('+s.fileName+')'}" style="background-size: cover;"
+                [ngStyle]="{'background-image': 'url('+s.fileName+')'}" style="background-repeat: no-repeat; background-position: center; background-size: cover;"
                 [itemTemplate]="itemTemplate ? itemTemplate : defaultTemplate" [slide]="slide" [data]="s">
                 </slide-div>
               </ng-container>
     
         </div>
         </div>
-
 
       <ng-container *ngIf="mediaService.isActive('gt-sm')">
         <button mat-fab style=" color:white; background: rgba(0, 0, 0, 0.6); position: absolute;
