@@ -17,6 +17,10 @@ export class PointerPanelWorkspace implements OnInit {
 
   }
 
+  goToDoc(){
+    window.open("https://github.com/antsebastian/mgui-controls/wiki/mgui-pointer-panel", "_blank");
+}
+
   addCard() {
 
     const icm = new Contact();

@@ -39,37 +39,34 @@
 <mgui-workspace workspaceTitle="Pointer Panel">
 
   <ng-container webTools>
-    <button mat-icon-button>
-      <mat-icon>cloud_upload</mat-icon>
-    </button>
-
-    <button mat-icon-button (click)="addCard()">
+    <button matTooltip="Add a card"
+      mat-icon-button (click)="addCard()">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
-    </button>
-
+    <span fxFlex="1 1 0"></span>
+    <button matTooltip="Open documentation in a new browser tab" 
+    mat-icon-button (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png"/></button>
   </ng-container>
 
   <ng-container mobileTools>
     <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
-      <button mat-menu-item>Add Card</button>
-      <button mat-menu-item>Share</button>
-      <button mat-menu-item>Help</button>
+      <button mat-menu-item (click)="addCard()">Add Card</button>
+      <button mat-menu-item (click)="goToDoc()">Open Docs</button>  
     </mat-menu>
+
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>more_vert</mat-icon>
     </button>
   </ng-container>
 
   <ng-container mobilePrimeTools>
-    <button mat-fab>
+    <button mat-fab (click)="addCard()">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-fab style="margin-left: 10px">
-      <mat-icon>share</mat-icon>
+    <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
+      <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
     </button>
+
   </ng-container>
 
   <!--Subscribe once to items observable and add it to variable
