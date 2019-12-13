@@ -187,7 +187,6 @@
   }
   .section3-rectangle-sm, .section3-rectangle-md, .section3-rectangle-lg {
     @extend .section3-rectangle;
-    max-width: 400px; min-width: 350px;
     padding: 15px 25px;
 
   }

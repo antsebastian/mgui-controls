@@ -2,7 +2,7 @@
   <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
        style="background: rgba(0, 0, 0, 0.3)">
     <div *ngIf="(slide.slideTransitionCompleted | async)" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
-      <div class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
+      <div style="padding-left: 10px; padding-right: 10px;text-align: center;" class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
       <div class="child white-text {{getClassName('h1-')}}"
            style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"
            [ngStyle.sm]="{'max-width' : '535px'}"
@@ -15,7 +15,33 @@
   </div>
 </ng-template>
 
-<mgui-workspace workspaceTitle="Website Demo">
+<mgui-workspace workspaceTitle="Website">
+
+    <ng-container webTools>
+        <span fxFlex="1 1 0"></span>
+        <button matTooltip="Open GitHub source code and documentation in a new browser tab" 
+        mat-icon-button (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png"/></button>
+      </ng-container>
+    
+      <ng-container mobileTools>
+        <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
+          <button mat-menu-item (click)="goToDoc()">
+            <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24"/>
+            <span style="margin-left: 10px; vertical-align: middle;">GitHub</span></button>  
+        </mat-menu>
+    
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>more_vert</mat-icon>*
+        </button>
+      </ng-container>
+    
+      <ng-container mobilePrimeTools>
+        <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
+          <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
+        </button>    
+      </ng-container>
+    
+
   <div #wrapper style="width: 100%; height: 100%; overflow: auto" (scroll)="onScroll($event)">
   
     <section #section1 style="position: relative;top:0; left:0; width:100%; height:100%">
@@ -29,21 +55,24 @@
 fxLayout="row" fxLayoutAlign="center start"
 fxLayout.lt-md="column" fxLayoutAlign.lt-md="start start">
 
-<span *ngIf="fadein2" [@fade-in-ani] class="{{getClassName('asterisk-')}}" fxShow fxHide.lt-lg>*</span>
+<span class="{{getClassName('asterisk-')}}" fxShow fxHide.lt-lg>*</span>
 
-<span *ngIf="fadein2" [@fade-in-ani] fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
+<span fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
    class="dark-grey-text {{getClassName('h3-')}}">
-I work at a digital studio crafting outstanding products. My team creates exclusive web designs and branding solutions.
+I have over 15 years of experience crafting front end components, frameworks and solutions.
 </span>
-<span *ngIf="fadein2" [@fade-in-ani]
+<span
    style="display: flex; flex: 1 1 30px; max-width: 60px; min-width: 25px"></span>
-<div *ngIf="fadein2" [@fade-in-ani] fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
+<div fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
   fxLayout="column">
 <span class="med-grey-text {{getClassName('p-')}}">
- I’m constantly learning web design & development technologies and other design related topics, currently playing around with JavaScript and jQuery. I’m skilled in many areas of design and development. It allows me to achieve better results than any other designer.
+ I’m constantly learning web design & development technologies and other design related topics, currently playing around with TypeScript and Angular. 
+ I built this responsive website from scratch using Angular 6. The animations use Angular triggers, the fluid layout uses a combination of FxGrid and FxFlex. 
 </span>
-<a class="primary-color-text uppercase raleway" style="margin-top:15px"
-  href="#">view my portfolio</a>
+<!--I’m skilled in many areas of design and development. It allows me to creat fast and modern web applications that surpass expectations.-->
+
+<a class="primary-color-text uppercase raleway" style="margin-top:15px; cursor:pointer;"
+  (click)="goToDoc('https://github.com/antsebastian/mgui-controls/tree/created/src/app/workspaces/website-workspace')">View the source code</a>
 </div>
 </div>
 </section>
@@ -54,22 +83,22 @@ I work at a digital studio crafting outstanding products. My team creates exclus
   fxLayout="row" fxLayoutAlign="end start" fxLayout.xs="column" fxLayoutAlign.xs="center center">
 <div fxLayout="column" class="{{getClassName('section3-rectangle-')}}">
 <span class="at-sign" fxHide.xs>@</span>
-<span class="dark-grey-text char-spacing-med {{getClassName('h4-')}}">Hello, I'm a leading designer and developer from Los Angeles, CA. I deliver innovative and easy-to-use designs to my clients.</span>
+<span class="dark-grey-text char-spacing-med {{getClassName('h4-')}}">I'm a leading developer from Las Vegas, NV and can work on-site in the west coast area or remote depending on your needs.</span>
 <ul class="list-dash-bullet">
 <li>
- <pre>Name:          Andrew Smith</pre>
+ <pre>Name:          Anthony Sebastian</pre>
 </li>
 <li>
- <pre>Email:         <a href="mailto:#">info@demolink.org</a></pre>
+ <pre>Email:         <a href="mailto:#">antsebastian.as@gmail.com</a></pre>
 </li>
 <li>
- <pre>Phone:         <a href="tel:#">1-818-539-9985</a></pre>
+ <pre>Phone:         <a href="tel:#">1-408-334-4666</a></pre>
 </li>
 <li>
- <pre>Date of birth: February 23, 1986</pre>
+ <pre>DOB:           September 29</pre>
 </li>
 <li>
- <pre>Nationality:   American</pre>
+ <pre>Education:     ASEE & BSCS</pre>
 </li>
 </ul>
 </div>

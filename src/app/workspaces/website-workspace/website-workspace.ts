@@ -19,12 +19,14 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
 
   @Input()
   slideSrc = [{ fileName: '../../../assets/website/small-business-parallax-1-1920x1200.jpg', 
-                smallText: 'Anthony Sebastian - Front End Web Developer', 
-                bigText: 'Welcome to my portfolio' },
+                smallText: 'I\'m Anthony Sebastian and Modern GUIs is my consulting company for web application development.', 
+                bigText: 'UI Designer and Developer' },
   { fileName: '../../../assets/website/small-business-parallax-2-1920x1200.jpg', 
-    smallText: 'I designed this portfolio to demonstrate my skills.', bigText: 'Angular Vue ES6 TypeScript' },
+    smallText: 'I created this app to showcase my skills with modern Angular components. ', 
+    bigText: 'Angular Vue ES6 TypeScript' },
   { fileName: '../../../assets/website/small-business-parallax-3-1920x1200.jpg', 
-  smallText: 'I\'ve been designing web applications for over 10 years.', bigText: 'Designer Developer Architect' }];
+  smallText: 'Scroll down to check out more of my website components. Use the navigation panel to demo my application components.', 
+  bigText: 'Simple Solutions to Complex Problems'}];
   
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();
@@ -41,21 +43,21 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
   @Input() value1 = 20;
 
   @Input() section4Src = [
-    {icon: 'laptop', header: 'Web Design', content: 'The team of Medium offers web design and development services at affordable rates.'},
+    {icon: 'laptop', header: 'Construct It', content: 'Hands-on programming with Angular, Vue, JavaScript, ES6/ES7, TypeScript, HTML5, CSS3.'},
     {
       icon: 'whatshot',
-      header: 'Branding',
-      content: 'Let us create a one-of-a-kind brand identity for your company to drive positive experiences and engagement.'
+      header: 'Optimize It',
+      content: 'Optimized web pages for speed. Good understanding of web optimization techniques.'
     },
     {
       icon: 'phone_iphone',
-      header: 'App Development',
-      content: 'Our web development team can create an elegant web app for any platform that fits your brand.'
+      header: 'App It',
+      content: 'High quality responsive web applications and pages that work well across desktop and mobile platforms.'
     },
     {
       icon: 'share',
-      header: 'Content Creation',
-      content: 'Our copywriters and content managers will create proper content for your website.'
+      header: 'Architect It',
+      content: 'Experience working with and building front end component libraries. Easy-to-use and intuitive API and framework designs.'
     },
 
   ];
@@ -135,6 +137,10 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
     this._onDestroy.next();
     this._onDestroy.complete();
   }
+  goToDoc(url = "https://github.com/antsebastian/mgui-controls/wiki/Mgui-Showcase---Website-Workspace"){
+    window.open(url, "_blank");
+  }
+
   onScroll(event) {
 
     //   console.log(this.wrapper.nativeElement.getBoundingClientRect().bottom);
