@@ -65,28 +65,28 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() section5Src = [
     {
-      header: 'Web Services',
+      header: 'Angular Skills',
       value: 20,
       valueTo: 96,
-      content: `A set of online marketing services offered by Medium includes SEO & SMM as well as PR solutions.`
+      content: `Experience with Angular 6+, includes RxJS, data store, template referencing and content projection.`
     },
     {
-      header: 'Web Services',
+      header: 'TypeScript Skills',
       value: 20,
       valueTo: 94,
-      content: `A set of online marketing services offered by Medium includes SEO & SMM as well as PR solutions.`
+      content: `Experience with generic classes, data structures, interfaces and OOP.`
     },
     {
-      header: 'Web Services',
+      header: 'Vue Skills',
       value: 20,
       valueTo: 87,
-      content: `A set of online marketing services offered by Medium includes SEO & SMM as well as PR solutions.`
+      content: `Experience with Vue, Vuex, watchers, mixins and databinding.`
     },
     {
-      header: 'Web Services',
+      header: 'JavaScript Skills',
       value: 20,
       valueTo: 90,
-      content: `A set of online marketing services offered by Medium includes SEO & SMM as well as PR solutions.`
+      content: `Experience with ES6/ES7, prototype inheritence, abstraction, polymorphism and closures.`
     },
 
   ];
@@ -101,6 +101,7 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
     mediaService.asObservable()
     .pipe(takeUntil(this._onDestroy))
     .subscribe((change) => {
+      console.log(change.mqAlias);
         this.currLayoutString = change.mqAlias;
     });
   }

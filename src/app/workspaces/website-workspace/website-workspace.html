@@ -136,17 +136,17 @@ style="width:100%; min-width:340px; max-width: 600px">
   [ngStyle.lt-md]="{'min-width':'340px', 'max-width': '600px'}"
 
   style=" min-width: 375px; max-width: 455px">
-<div class="raleway primary-color-text h7">We create premium websites</div>
+<div class="raleway primary-color-text h7">Creating premium applications</div>
 <span [ngStyle.lt-lg]="{'text-align':'center'}"
      style="max-width: 500px"
      class="raleway dark-grey-text bold char-spacing-med {{getClassName('h3-')}}">
-     We are a digital studio crafting beautiful experiences</span>
+     A great user experience starts with a great front-end architecture.</span>
 <div [ngStyle.lt-lg]="{'text-align':'center'}" class="med-grey-text h8">
- Small and medium-sized businesses partner with Medium to help them grow. We work with owners and
- entrepreneurs to help them build a sustainable business through data-driven creative marketing, branding,
- web design, and development that are all aimed at moving the revenue needle. We’re a true business partner
- and our dedicated industry practice can help you define and meet specific business goals.
-</div>
+    There are many things to consider when it comes to designing the front-end code. 
+    Should we use a component or directive, smart or presentation component? Naming conventions, 
+    CSS hierarchy, how to divide the services? These technical decisions have an impact on the 
+    performance of the application and the development teams alike. Using my experience and knack for design and architecture, 
+    I can help your team make the best design decisions for your application.</div>
 <button style="margin-left:2px; padding: 5px">READ MORE</button>
 </div>
 </div>
@@ -171,7 +171,7 @@ style="position: absolute; top:0; left:0; width:100%; height: calc(100% + 400px)
 <div *ngIf="slideUp5" [@animate-page] style="width: 100%;" fxLayout="column" fxLayoutAlign="center center">
 
 <div gdGap="50px" gdColumns.sm="200px" gdColumns.sm="200px 200px"
-  gdColumns.md="350px 350px" gdColumns.gt-md="200px 200px 200px 200px">
+gdColumns.md="350px 350px"  gdColumns.lg="350px 350px" gdColumns.gt-lg="200px 200px 200px 200px">
 
 <div *ngFor="let spinner of section5Src" class="child">
  <div style="width:100%; z-index: 1000; position: relative" fxLayout="column" fxLayoutAlign="center center">
@@ -196,74 +196,15 @@ style="position: absolute; top:0; left:0; width:100%; height: calc(100% + 400px)
 </div>
 </section>
 
-<div #section6 style="background-color: white; overflow: hidden">
-
-<div fxLayout="column" fxLayoutAlign="start center" style="width:100%; padding: 150px 0">
-<div class="light-grey-text uppercase raleway">What We Work On</div>
-<div class="center-text {{getClassName('h3-')}}" style="max-width: 350px">Take a look at our featured and recent
-projects
+<div #section6 fxLayout="column" fxLayoutAlign="center center" style="background-color: white; overflow: hidden">
+    <div class="dark-grey-text uppercase raleway" style="padding-top: 150px">Companies I've worked with</div>    
+    <div style="padding-top: 50px; padding-bottom: 150px; justify-items: center;align-items: center;" gdColumns.sm="304px" gdColumns.sm="304px 304px"
+        gdColumns.md="304px 304px" gdColumns.lg="304px 304px" gdColumns.gt-lg="304px 304px 304px 304px">
+      <img src="../../../assets/website/companies/bcbs.png"/>
+      <img src="../../../assets/website/companies/vms.jpg" height="75"/>
+      <img src="../../../assets/website/companies/bofa.png" height="100"/>
+      <img src="../../../assets/website/companies/canon.png" height="75"/>
 </div>
-</div>
-
-<div #fitme gdGap="10px"  gdColumns="repeat(6, [col] auto)" gdRows="repeat(3, [row] 308px)"
-    gdColumns.lt-lg="repeat(2, [col] auto)" gdRows.lt-lg="repeat(6, [row] auto)">
-
- <div style="position: relative" gdColumn="col 1" gdRow="row 1">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-01.jpg'">
-   <div class="h1" style="position: absolute; top:10px; left:10px">1</div>
- </div>
-
- <div style="position: relative" gdColumn="col 2" gdRow="row 1">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-02.jpg'"
-        alt="" data-no-retina="">
-   <div class="h1" style="position: absolute; top:10px; left:10px">2</div>
- </div>
-
- <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 2"
-      gdColumn="col 3 / span 2" gdRow="row 1 / span 2">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-03.jpg'"
-        alt="" data-no-retina="">
-   <div class="h1" style="position: absolute; top:10px; left:10px">3</div>
-
- </div>
-
- <div style="position: relative"
-      gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 3"
-      gdColumn="col 5 / span 2" gdRow="row 1 / span 2">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-04.jpg'"
-        alt="" data-no-retina="">
-   <div class="h1" style="position: absolute; top:10px; left:10px">4</div>
- </div>
-
- <div style="position: relative"
-      gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 4"
-      gdColumn="col 1/ span 2" gdRow="row 2">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-07.jpg'"
-        alt="" data-no-retina="">
-   <div class="h1" style="position: absolute; top:10px; left:10px">5</div>
- </div>
-
- <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 5"
-      gdColumn="col 3 / span 2" gdRow="row 3">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-06.jpg'"
-        alt="" data-no-retina="">
-   <div class="h1" style="position: absolute; top:10px; left:10px">6</div>
- </div>
-
- <div style="position: relative" gdColumn.lt-lg="col 1 / span 2" gdRow.lt-lg="row 6"
-      gdColumn="col 5 / span 2" gdRow="row 3">
-   <img [src]="'../../assets/website/home-classic-web-agency-project-05.jpg'"
-        alt="" data-no-retina="">
-   <div class="h1" style="position: absolute; top:10px; left:10px">7</div>
- </div>
- <!--
-       <div *ngFor="let pic of section6Src; let i = index">
-       <img [src]="'../../assets/website/home-classic-web-agency-project-0' + (i + 1) + '.jpg'"
-            alt="" data-no-retina="">
-       </div>
- -->
-</div>
-<h1>Hallalu ya!!!</h1>
 </div>
 
 </div>
