@@ -25,6 +25,13 @@
             <mat-icon mat-list-icon>web</mat-icon>
             <a mat-line>Website</a>
           </mat-list-item>
+
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink="library-workspace"
+                         routerLinkActive #rla6="routerLinkActive">
+            <div *ngIf="rla6.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>devices</mat-icon>
+            <a mat-line>Angular Component Library</a>
+          </mat-list-item>
           
           <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink="carousel-workspace"
                          routerLinkActive #rla3="routerLinkActive">
