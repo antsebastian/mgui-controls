@@ -25,7 +25,7 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
     smallText: 'I create front-end components, frameworks and applications.',
     bigText: 'Angular Vue ES6 TypeScript' },
   { fileName: '../../../assets/website/small-business-parallax-3-1920x1200.jpg', 
-  smallText: 'Scroll down to find out more about my services.',
+  smallText: 'Scroll down to find out more about me and the services I offer.',
   bigText: 'HTML5 CSS3 Flex Grid'}];
   
   @Input() currLayoutString = 'lg';
