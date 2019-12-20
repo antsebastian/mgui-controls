@@ -2,10 +2,29 @@
 <mgui-workspace workspaceTitle="MGUI Components for Angular">
     <div #scroller style="width: 100%; height: 100%; overflow: auto">
       <div #wrapper fxLayout="column" >
-        <div>Infinite Carousel - Transitions background images and templates.   </div>
-        <div>Pointer Panel List - Shows details of item by opening the row near selected item in a list.   </div>
-        <div>ItemsControl - Base class that contains the datasource/template bindings. Used by pointer panel and carousel.</div>
-        <div>Workspace - Provides the scafolding for a responsive layout used for applications that need tools.</div>
+        <mat-grid-list [cols]="mediaService.isActive('xs') || mediaService.isActive('sm')  ? 1 : 2" 
+        gutterSize="20px" style="margin:50px">
+          <mat-grid-tile>
+            <mat-card>
+              <mat-card-header>
+              <mat-card-title>Infinite Carousel</mat-card-title>
+              <mat-card-subtitle>Transitions background images and templates.</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/website/component-screenshots/pointer-panel.png" alt="Photo of thepointer panel">
+        </mat-card>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-card>
+            <div>Pointer Panel List - Shows details of item by opening the row near selected item in a list.   </div>
+        </mat-card>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div>ItemsControl - Base class that contains the datasource/template bindings. Used by pointer panel and carousel.</div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div>Workspace - Provides the scafolding for a responsive layout used for applications that need tools.</div>
+          </mat-grid-tile>
+        </mat-grid-list>
       </div>
     </div>
 </mgui-workspace>
