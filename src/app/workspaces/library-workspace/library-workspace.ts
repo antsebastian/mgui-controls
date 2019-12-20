@@ -21,6 +21,10 @@ export class LibraryWorkspace implements OnInit, OnDestroy {
         this.currLayoutString = change.mqAlias;
     });
   }
+
+  goToDoc() {
+    window.open("https://github.com/antsebastian/mgui-controls/wiki", "_blank");
+  }
   getClassName(prefix: string) {
     return prefix + this.currLayoutString;
   }

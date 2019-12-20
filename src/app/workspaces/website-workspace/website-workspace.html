@@ -16,7 +16,6 @@
 </ng-template>
 
 <mgui-workspace workspaceTitle="Website">
-
     <ng-container webTools>
         <span fxFlex="1 1 0"></span>
         <a mat-menu-item href="tel:+1-408-334-4666" matTooltip="Call me for more information">+1-408-334-4666</a>
@@ -26,14 +25,11 @@
     
       <ng-container mobileTools>
         <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
-
           <a mat-menu-item href="tel:+1-408-334-4666">+1-408-334-4666</a>
-
           <button mat-menu-item (click)="goToDoc()">
             <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24"/>
-            <span style="margin-left: 10px; vertical-align: middle;">GitHub</span></button>  
+            <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>  
         </mat-menu>
-    
         <button mat-icon-button [matMenuTriggerFor]="appMenu">
           <mat-icon>more_vert</mat-icon>
         </button>
@@ -43,11 +39,9 @@
         <button mat-fab style="margin-left: 10px" (click)="callMe()" >
           <mat-icon>phone</mat-icon>          
         </button>    
-
         <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
           <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
         </button>    
-
       </ng-container>
     
 

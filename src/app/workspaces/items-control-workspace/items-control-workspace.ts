@@ -15,7 +15,7 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
   items$ = this.itemService.getItems();
 
   addItem(index: number) {
-      this.itemService.addItem(`This is really looooooooooooooooooooooong item text to test the horz scrollbar behaviour ${this.getItemCount()}`);
+      this.itemService.addItem(`This is really long item text to test the horz scrollbar behaviour ${this.getItemCount()}`);
   }
   removeItem(data: string) {
     this.itemService.deleteItem(data);
@@ -29,14 +29,17 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
   private _onDestroy = new Subject<void>();
 
   constructor(public mediaService: ObservableMedia) {
-    
-
     mediaService.asObservable()
     .pipe(takeUntil(this._onDestroy))
     .subscribe((change) => {
         this.currLayoutString = change.mqAlias;
     });
   }
+
+  goToDoc() {
+    window.open("https://github.com/antsebastian/mgui-controls/wiki/mgui-items-control", "_blank");
+  }
+
   getClassName(prefix: string) {
     return prefix + this.currLayoutString;
   }

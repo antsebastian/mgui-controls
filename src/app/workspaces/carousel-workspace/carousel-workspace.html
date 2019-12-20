@@ -1,20 +1,37 @@
 
-<ng-template #slides let-myData="data">
-  <img [src]="myData?.fileName"/>
+<ng-template #myTemplate let-data="data">
+  <div style="text-align: center;">
+  <h1 style="color:goldenrod">{{data?.someText}}</h1>
+</div>
 </ng-template>
 
-<ng-template #fadeInAnimation let-data="data">
-  <div>{{data?.aniText}}</div>
-</ng-template>
+<mgui-workspace workspaceTitle="Infinite Carousel">
 
-<mgui-workspace workspaceTitle="mgui-carousel">
+  <ng-container webTools>
+    <span fxFlex="1 1 0"></span>
+    <button matTooltip="Open documentation in a new browser tab" 
+    mat-icon-button (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png"/></button>
+  </ng-container>
+
+  <ng-container mobileTools>
+    <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="goToDoc()">Open Docs</button>  
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container mobilePrimeTools>
+    <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
+      <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
+    </button>
+
+  </ng-container>
+
+
     <div #scroller style="width: 100%; height: 100%; overflow: auto">
-      <div #wrapper fxLayout="column" >
-        <span style="margin: 10px 30px; font-weight: 100;font-size: 20px;">Using carousel defaults.</span>
-        <mgui-carousel style="width: 100%; height: 500px" #mc [dataSource]="myData"></mgui-carousel>
-        <span style="margin: 10px 30px; font-weight: 100;font-size: 20px;">Using carousel defaults with animation.</span>
-        <mgui-carousel style="width: 100%; height: 500px" #mc [itemTemplate]="fadeInAnimation" [dataSource]="myData"></mgui-carousel>
-
-      </div>
+        <mgui-carousel style="width: 100%; height: 500px" #mc [itemTemplate]="myTemplate" [dataSource]="myData"></mgui-carousel>
     </div>
 </mgui-workspace>

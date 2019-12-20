@@ -43,7 +43,7 @@ const appRoutes: Routes = [
  {path: 'website-workspace', component: WebsiteWorkspace},
  {path: 'library-workspace', component: LibraryWorkspace},
  {path: 'carousel-workspace', component: CarouselWorkspace},
- {path: 'pointerpanel-workspace', component: PointerPanelWorkspace},
+ {path: 'pointer-panel-workspace', component: PointerPanelWorkspace},
  {path: 'itemscontrol-workspace', component: ItemsControlWorkspace},
  indexRoute, fallbackRoute
 ];

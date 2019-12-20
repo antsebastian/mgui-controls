@@ -14,31 +14,26 @@ export class CarouselWorkspace implements OnInit, OnDestroy {
   @Input() myData = [
     { 
       fileName: '../../../assets/website/portfolio-grid-1-800x650.jpg',
-      aniText: 'My Template - Slide 1'
+      someText: 'My Template - Slide 1'
     },    
     { 
       fileName: '../../../assets/website/portfolio-grid-2-800x650.jpg',
-      aniText: 'My Template - Slide 2'
+      someText: 'My Template - Slide 2'
     }, 
     { 
       fileName: '../../../assets/website/portfolio-grid-3-800x650.jpg',
-      aniText: 'My Template - Slide 3'
+      someText: 'My Template - Slide 3'
     }, 
     { 
       fileName: '../../../assets/website/portfolio-grid-4-800x650.jpg',
-      aniText: 'My Template - Slide 4'
+      someText: 'My Template - Slide 4'
     }, 
     { 
       fileName: '../../../assets/website/portfolio-grid-5-800x650.jpg',
-      aniText: 'My Template - Slide 5'
+      someText: 'My Template - Slide 5'
     }, 
  
 ];
-
-debugData(data) {
-  console.log(data);
-  return '../../../assets/website/portfolio-grid-5-800x650.jpg';
-}
 
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();
@@ -50,9 +45,15 @@ debugData(data) {
         this.currLayoutString = change.mqAlias;
     });
   }
+
+  goToDoc() {
+    window.open("https://github.com/antsebastian/mgui-controls/wiki/mgui-carousel", "_blank");
+  }
+
   getClassName(prefix: string) {
     return prefix + this.currLayoutString;
   }
+
 
   ngOnInit() {
   
