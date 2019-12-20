@@ -7,6 +7,10 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
+.foreground-text {
+  color: mat-color($foreground, text);
+}
+
   .dark-grey-text{
     color: #232323;
   }

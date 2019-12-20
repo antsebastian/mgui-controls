@@ -19,14 +19,14 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
 
   @Input()
   slideSrc = [{ fileName: '../../../assets/website/small-business-parallax-1-1920x1200.jpg', 
-                smallText: 'I\'m Anthony Sebastian and Modern GUIs is my consulting company for web application development.', 
+                smallText: 'Hello, I\'m Anthony Sebastian and Modern GUIs is my consulting company for web application development.', 
                 bigText: 'UI Designer and Developer' },
   { fileName: '../../../assets/website/small-business-parallax-2-1920x1200.jpg', 
-    smallText: 'I created this app to showcase my skills with modern Angular components. ', 
+    smallText: 'I create front-end components, frameworks and applications.',
     bigText: 'Angular Vue ES6 TypeScript' },
   { fileName: '../../../assets/website/small-business-parallax-3-1920x1200.jpg', 
-  smallText: 'Scroll down to check out more of my website components. Use the navigation panel to demo my application components.', 
-  bigText: 'Simple Solutions to Complex Problems'}];
+  smallText: 'Scroll down to find out more about my services.',
+  bigText: 'HTML5 CSS3 Flex Grid'}];
   
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();
@@ -141,7 +141,9 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
   goToDoc(url = "https://github.com/antsebastian/mgui-controls/wiki/Mgui-Showcase---Website-Workspace"){
     window.open(url, "_blank");
   }
-
+  callMe() {
+    window.location.href = 'tel:+1-408-334-4666';
+  }
   onScroll(event) {
 
     //   console.log(this.wrapper.nativeElement.getBoundingClientRect().bottom);
