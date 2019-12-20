@@ -1,11 +1,5 @@
 
-<ng-template #myTemplate let-data="data">
-  <div style="text-align: center;">
-  <h1 style="color:goldenrod">{{data?.someText}}</h1>
-</div>
-</ng-template>
-
-<mgui-workspace workspaceTitle="Infinite Carousel">
+<mgui-workspace workspaceTitle="Workspace Title & Tools Here">
 
   <ng-container webTools>
     <span fxFlex="1 1 0"></span>
@@ -33,6 +27,6 @@
 
 
     <div #scroller style="width: 100%; height: 100%; overflow: auto">
-        <mgui-carousel style="width: 100%; height: 500px" #mc [itemTemplate]="myTemplate" [dataSource]="myData"></mgui-carousel>
+      <h1 style="margin:25px">Workspace Content Here</h1>
     </div>
 </mgui-workspace>

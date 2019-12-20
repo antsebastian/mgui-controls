@@ -15,6 +15,7 @@ import { MguiControlsModule } from 'libs/mgui-controls/src/mgui-controls.module'
 import { WebsiteWorkspace } from './workspaces/website-workspace/website-workspace';
 import { CarouselWorkspace } from './workspaces/carousel-workspace/carousel-workspace';
 import { LibraryWorkspace } from './workspaces/library-workspace/library-workspace';
+import { EmptyWorkspace } from './workspaces/empty-workspace/empty-workspace';
 
 import {PointerPanelWorkspace} from './workspaces/pointer-panel-workspace/pointer-panel-workspace'
 import { MguiSideNavService } from 'libs/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
@@ -44,7 +45,9 @@ const appRoutes: Routes = [
  {path: 'library-workspace', component: LibraryWorkspace},
  {path: 'carousel-workspace', component: CarouselWorkspace},
  {path: 'pointer-panel-workspace', component: PointerPanelWorkspace},
- {path: 'itemscontrol-workspace', component: ItemsControlWorkspace},
+ {path: 'items-control-workspace', component: ItemsControlWorkspace},
+ {path: 'empty-workspace', component: EmptyWorkspace},
+
  indexRoute, fallbackRoute
 ];
 
@@ -71,7 +74,7 @@ const contactsServiceProvider = {
 @NgModule({
   declarations: [
     AppComponent,
-    LibraryWorkspace, CarouselWorkspace, WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
+    EmptyWorkspace, LibraryWorkspace, CarouselWorkspace, WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
   ],
   imports: [
     BrowserModule,

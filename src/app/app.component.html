@@ -46,12 +46,19 @@
             <mat-icon mat-list-icon>horizontal_split</mat-icon>
             <a mat-line>Pointer Panel Control</a>
           </mat-list-item>
-          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/itemscontrol-workspace'
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/items-control-workspace'
                          routerLinkActive #rla2="routerLinkActive">
             <div *ngIf="rla2.isActive" class="active-highlighter"></div>
             <mat-icon mat-list-icon>list</mat-icon>
             <a mat-line>Items Control</a>  
           </mat-list-item>
+          <mat-list-item role="listitem" (click)="closeDrawerOnNav()" routerLink='/empty-workspace'
+                         routerLinkActive #rla7="routerLinkActive">
+            <div *ngIf="rla7.isActive" class="active-highlighter"></div>
+            <mat-icon mat-list-icon>web_asset</mat-icon>
+            <a mat-line>Workspace</a>  
+          </mat-list-item>
+
         </mat-nav-list>
       </mat-sidenav>
     </mat-sidenav-container>
