@@ -14,7 +14,7 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
   itemService = new CRUDBehaviourService<string>(null);
   items$ = this.itemService.getItems();
 
-  addItem(index: number) {
+  addItem() {
       this.itemService.addItem(`This is really long item text to test the horz scrollbar behaviour ${this.getItemCount()}`);
   }
   removeItem(data: string) {
@@ -49,7 +49,7 @@ export class ItemsControlWorkspace implements OnInit, OnDestroy {
     this.items$ = this.itemService.getItems();
 
     for(let i=0; i < 3; i++) {
-      this.addItem(i);
+      this.addItem();
     }
 
     // get the current size in case the view activates in

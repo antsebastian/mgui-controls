@@ -36,7 +36,11 @@ export class AppComponent implements OnDestroy, OnInit {
         this.drawer.toggle();
       });
 
-    this.mediaMonitor.observe()
+      if(this.mediaService.isActive('gt-md')) {
+        this.drawer.toggle();
+      }
+
+      this.mediaMonitor.observe()
       .pipe(takeUntil(this._onDestroy))
       .subscribe((change) => {
         if (this.mediaService.isActive('lt-lg')) {
