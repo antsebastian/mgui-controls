@@ -215,7 +215,7 @@ protected getItem(index: number) {
      const width = this.gridContainer.nativeElement.getBoundingClientRect().width;
      if(this.currWidth !== width) {
           this.currWidth = width;
-          this.setDetailPanelPosition();
+          setTimeout(() => this.setDetailPanelPosition());
      }
 
    }
