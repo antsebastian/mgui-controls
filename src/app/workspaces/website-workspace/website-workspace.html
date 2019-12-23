@@ -101,13 +101,13 @@
           needs.</span>
 
         <div class="list-dash-bullet"
-          style="display: inline-grid; grid-template-columns: 100px auto 200px; grid-row-gap: 15px; padding:10px">
-          <span>-Name:</span> <span></span> <span>Anthony Sebastian</span>
-          <span>-Email:</span> <span></span> <span style="word-wrap: break-word;"><a
+          style="display: inline-grid; grid-template-columns: auto auto auto; grid-row-gap: 15px; padding:10px">
+          <span>Name:</span> <span></span> <span>Anthony Sebastian</span>
+          <span>Email:</span> <span></span> <span style="justify-self:stretch; word-wrap: break-word;"><a
               href="mailto:antsebastian.as@gmail.com">antsebastian.as@gmail.com</a></span>
-          <span>-Phone:</span> <span></span> <span><a href="tel:+1-408-334-4666">+1-408-334-4666</a></span>
-          <span>-DOB:</span> <span></span> <span>September 29</span>
-          <span>-Edu:</span> <span></span> <span>ASEE | BSCS</span>
+          <span>Phone:</span> <span></span> <span><a href="tel:+1-408-334-4666">+1-408-334-4666</a></span>
+          <span>DOB:</span> <span></span> <span>September 29</span>
+          <span>Edu:</span> <span></span> <span>ASEE | BSCS</span>
         </div>
       </div>
 
@@ -177,7 +177,7 @@
             gdColumns.lg="350px 350px" gdColumns.gt-lg="200px 200px 200px 200px">
 
             <div *ngFor="let spinner of section5Src" class="child">
-              <div style="width:100%; z-index: 1000; position: relative" fxLayout="column"
+              <div style="width:100%; z-index: 10; position: relative" fxLayout="column"
                 fxLayoutAlign="center center">
                 <div style="position: relative">
                   <mat-progress-spinner value="{{spinner.value}}" [strokeWidth]="3" [diameter]="150" mode="determinate"
