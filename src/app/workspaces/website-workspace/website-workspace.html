@@ -7,18 +7,18 @@
   <img src="../assets/website/companies/bcbs.png" />
   <img src="../assets/website/companies/vms.jpg" />
   <img src="../assets/website/companies/bofa.png" />
-  <img src="../assets/website/companies/canon.png" />  
+  <img src="../assets/website/companies/canon.png" />
 </div>
 
 <ng-template #fadeinTemplate let-data="data" let-slide="slide">
-  <div fxFill fxFlexLayout="column" fxLayoutAlign="center center"
-       style="background: rgba(0, 0, 0, 0.3)">
-    <div *ngIf="(slide.slideTransitionCompleted | async)" [@animate-page] fxLayout="column" fxLayoutAlign="center center">
-      <div style="padding-left: 10px; padding-right: 10px;text-align: center;" class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
+  <div fxFill fxFlexLayout="column" fxLayoutAlign="center center" style="background: rgba(0, 0, 0, 0.3)">
+    <div *ngIf="(slide.slideTransitionCompleted | async)" [@animate-page] fxLayout="column"
+      fxLayoutAlign="center center">
+      <div style="padding-left: 10px; padding-right: 10px;text-align: center;"
+        class="child white-text {{getClassName('h6-')}}">{{data.smallText}}</div>
       <div class="child white-text {{getClassName('h1-')}}"
-           style="max-width:600px; margin-top: 50px; margin-bottom: 55px;"
-           [ngStyle.sm]="{'max-width' : '535px'}"
-           [ngStyle.xs]="{'max-width' : '350px', 'margin-top': '30px',
+        style="max-width:600px; margin-top: 50px; margin-bottom: 55px;" [ngStyle.sm]="{'max-width' : '535px'}"
+        [ngStyle.xs]="{'max-width' : '350px', 'margin-top': '30px',
                           'margin-bottom' : '25px'}">
         {{data.bigText}}
       </div>
@@ -28,199 +28,189 @@
 </ng-template>
 
 <mgui-workspace workspaceTitle="Website">
-    <ng-container webTools>
-        <span fxFlex="1 1 0"></span>
-        <a mat-menu-item href="tel:+1-408-334-4666" matTooltip="Call for more information">+1-408-334-4666</a>
-        <button matTooltip="Open GitHub source code and documentation in a new browser tab" 
-        mat-icon-button (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png"/></button>
-      </ng-container>
-    
-      <ng-container mobileTools>
-        <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
-          <a mat-menu-item href="tel:+1-408-334-4666">+1-408-334-4666</a>
-          <button mat-menu-item (click)="goToDoc()">
-            <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24"/>
-            <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>  
-        </mat-menu>
-        <button mat-icon-button [matMenuTriggerFor]="appMenu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-      </ng-container>
-    
-      <ng-container mobilePrimeTools>
-        <button mat-fab style="margin-left: 10px" (click)="callMe()" >
-          <mat-icon>phone</mat-icon>          
-        </button>    
-        <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
-          <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
-        </button>    
-      </ng-container>
-    
+  <ng-container webTools>
+    <span fxFlex="1 1 0"></span>
+    <a mat-menu-item href="tel:+1-408-334-4666" matTooltip="Call for more information">+1-408-334-4666</a>
+    <button matTooltip="Open GitHub source code and documentation in a new browser tab" mat-icon-button
+      (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png" /></button>
+  </ng-container>
+
+  <ng-container mobileTools>
+    <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
+      <a mat-menu-item href="tel:+1-408-334-4666">+1-408-334-4666</a>
+      <button mat-menu-item (click)="goToDoc()">
+        <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24" />
+        <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container mobilePrimeTools>
+    <button mat-fab style="margin-left: 10px" (click)="callMe()">
+      <mat-icon>phone</mat-icon>
+    </button>
+    <button mat-fab style="margin-left: 10px" (click)="goToDoc()">
+      <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24" />
+    </button>
+  </ng-container>
+
 
   <div #wrapper style="width: 100%; height: 100%; overflow: auto" (scroll)="onScroll($event)">
-  
-    <section #section1 style="position: relative;top:0; left:0; width:100%; height:100%">
-    <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc" style="width: 100%; height: 100%"></mgui-carousel>
-  </section>
-  
-  <section #section2
-  class="{{getClassName('section2-')}}"
-  style="position: relative;top:0; left:0; height: auto; background: white">
-<div #scaleDiv fxFill
-fxLayout="row" fxLayoutAlign="center start"
-fxLayout.lt-md="column" fxLayoutAlign.lt-md="start start">
 
-<span class="{{getClassName('asterisk-')}}" fxShow fxHide.lt-lg>*</span>
+    <section #section1 style="position: relative;top:0; left:0; width:100%; height:100%;min-height: 350px">
+      <mgui-carousel #mc [itemTemplate]="fadeinTemplate" [dataSource]="slideSrc"
+        style="width: 100%; height: 100%; min-height: 350px;"></mgui-carousel>
+    </section>
 
-<span fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
-   class="dark-grey-text {{getClassName('h3-')}}">
-I have over 10 years of experience crafting front end components, frameworks and solutions.
-</span>
-<span
-   style="display: flex; flex: 1 1 30px; max-width: 60px; min-width: 25px"></span>
-<div fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
-  fxLayout="column">
-<span class="med-grey-text {{getClassName('p-')}}">
- I’m constantly learning web design & development technologies and other design related topics, currently playing around with TypeScript and Angular. 
- I built this responsive website from scratch using Angular 6. The animations use Angular triggers, the responsive layout uses a combination of FxGrid and FxFlex. 
-</span>
-<!--I’m skilled in many areas of design and development. It allows me to creat fast and modern web applications that surpass expectations.-->
+    <section #section2 class="{{getClassName('section2-')}}"
+      style="position: relative;top:0; left:0; height: auto; background: white">
+      <div #scaleDiv fxFill fxLayout="row" fxLayoutAlign="center start" fxLayout.lt-md="column"
+        fxLayoutAlign.lt-md="start start">
 
-<a class="primary-color-text uppercase raleway" style="margin-top:15px; cursor:pointer;"
-  (click)="goToDoc('https://github.com/antsebastian/mgui-controls/tree/created/src/app/workspaces/website-workspace')">View the source code</a>
-</div>
-</div>
-</section>
-  <section #section3
-  [ngStyle.xs]="{ 'padding' : '0px', 'background-position' : 'center'}"
-  style="position: relative;top:0px; left:0;background-origin: border-box; padding: 50px;
-  background: url('../../assets/website/about-me-1-1920x1100.jpg') fixed;"
-  fxLayout="row" fxLayoutAlign="end start" fxLayout.xs="column" fxLayoutAlign.xs="center center">
-<div fxLayout="column" class="{{getClassName('section3-rectangle-')}}">
-<span class="at-sign" fxHide.xs>@</span>
-<span class="dark-grey-text char-spacing-med {{getClassName('h4-')}}">I'm a leading developer from Las Vegas, NV and can work on-site in the west coast area or remote depending on your needs.</span>
-<ul class="list-dash-bullet">
-<li>
- <pre>Name:          Anthony Sebastian</pre>
-</li>
-<li>
- <pre>Email:         <a href="mailto:antsebastian.as@gmail.com">antsebastian.as@gmail.com</a></pre>
-</li>
-<li>
- <pre>Phone:         <a href="tel:+1-408-334-4666">+1-408-334-4666</a></pre>
-</li>
-<li>
- <pre>DOB:           September 29</pre>
-</li>
-<li>
- <pre>Education:     ASEE & BSCS</pre>
-</li>
-</ul>
-</div>
+        <span class="{{getClassName('asterisk-')}}" fxShow fxHide.lt-lg>*</span>
 
-</section>
-<!---->
-<section #section4 [ngStyle.lt-lg]="{'padding' : '50px 0'}" style="padding:100px 0; background: white;
-position: relative;top:0; left:0;">
-<div style="margin: 0 10px; max-width: 1000px" fxLayout="row" fxLayoutAlign="center start"
-fxLayout.lt-lg="column" fxLayoutAlign.lt-lg="center center">
+        <span fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px"
+          class="dark-grey-text {{getClassName('h3-')}}">
+          I have over 10 years of experience crafting front end components, frameworks and solutions.
+        </span>
+        <span style="display: flex; flex: 1 1 30px; max-width: 60px; min-width: 25px"></span>
+        <div fxFlex.lt-md="1 1 auto" fxFlex.md="0 0 350px" fxFlex="0 0 390px" fxLayout="column">
+          <span class="med-grey-text {{getClassName('p-')}}">
+            I’m constantly learning web design & development technologies and other design related topics, currently
+            playing around with TypeScript and Angular.
+            I built this responsive website from scratch using Angular 6. The animations use Angular triggers, the
+            responsive layout uses a combination of FxGrid and FxFlex.
+          </span>
+          <!--I’m skilled in many areas of design and development. It allows me to creat fast and modern web applications that surpass expectations.-->
 
-<mat-grid-list
-[cols]="mediaService.isActive('xs') ? 1 : 2" rowHeight="175px"
-[ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
-style="width:100%; min-width:340px; max-width: 600px">
+          <a class="primary-color-text uppercase raleway" style="margin-top:15px; cursor:pointer;"
+            (click)="goToDoc('https://github.com/antsebastian/mgui-controls/tree/created/src/app/workspaces/website-workspace')">View
+            the source code</a>
+        </div>
+      </div>
+    </section>
+    <section #section3 [ngStyle.xs]="{ 'padding' : '0px', 'background-position' : 'center'}" style="position: relative;top:0px; left:0;background-origin: border-box; padding: 50px;
+  background: url('../../assets/website/about-me-1-1920x1100.jpg') fixed;" fxLayout="row" fxLayoutAlign="end start"
+      fxLayout.xs="column" fxLayoutAlign.xs="center center">
+      <div fxLayout="column" class="{{getClassName('section3-rectangle-')}}">
+        <span class="at-sign" fxHide.xs>@</span>
+        <span class="dark-grey-text char-spacing-med {{getClassName('h4-')}}" style="padding: 5px;">I'm a leading
+          developer from Las Vegas, NV and can work on-site in the west coast area or remote depending on your
+          needs.</span>
 
-<div *ngIf="slideUp4" [@animate-page]>
- <mat-grid-tile *ngFor="let data of section4Src" class="child" style="background: white">
-   <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign.lt-lg="center center" fxLayoutAlign="start start"
-        [ngStyle.lt-lg]="{'text-align' : 'center'}"
-        style="margin-right:20px">
-     <mat-icon color="primary" style="width:48px; height: 48px; font-size: 48px;">{{data.icon}}</mat-icon>
-     <div class="raleway med-grey-text bold h7">{{data.header}}</div>
-     <div class="med-grey-text h8">{{data.content}}</div>
-   </div>
+        <div class="list-dash-bullet"
+          style="display: inline-grid; grid-template-columns: 100px auto 200px; grid-row-gap: 15px; padding:10px">
+          <span>-Name:</span> <span></span> <span>Anthony Sebastian</span>
+          <span>-Email:</span> <span></span> <span style="word-wrap: break-word;"><a
+              href="mailto:antsebastian.as@gmail.com">antsebastian.as@gmail.com</a></span>
+          <span>-Phone:</span> <span></span> <span><a href="tel:+1-408-334-4666">+1-408-334-4666</a></span>
+          <span>-DOB:</span> <span></span> <span>September 29</span>
+          <span>-Edu:</span> <span></span> <span>ASEE | BSCS</span>
+        </div>
+      </div>
 
- </mat-grid-tile>
-</div>
-</mat-grid-list>
+    </section>
+    <!---->
+    <section #section4 [ngStyle.lt-lg]="{'padding' : '50px 0'}" style="padding:100px 0; background: white;
+              position: relative;top:0; left:0;">
+      <div [ngStyle.xs]="{'height' : '703px'}" style="margin: 0 10px; max-width: 1000px" fxLayout="row" fxLayoutAlign="center start" fxLayout.lt-lg="column"
+        fxLayoutAlign.lt-lg="center center">
 
-<div style="height:40px; min-width: 2px; max-width: 40px; width:100%"></div>
+        <mat-grid-list [cols]="mediaService.isActive('xs') ? 1 : 2" rowHeight="175px"
+          [ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
+          style="width:100%; min-width:340px; max-width: 600px">
 
-<div fxLayout="column" fxLayoutAlign="start start" fxLayoutAlign.lt-lg="center center" fxLayoutGap="15px"
-  [ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
-  [ngStyle.lt-md]="{'min-width':'340px', 'max-width': '600px'}"
+          <div *ngIf="slideUp4" [@animate-page]>
+            <mat-grid-tile *ngFor="let data of section4Src" class="child" style="background: white">
+              <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign.lt-lg="center center" fxLayoutAlign="start start"
+                [ngStyle.lt-lg]="{'text-align' : 'center'}" style="margin-right:20px">
+                <mat-icon color="primary" style="width:48px; height: 48px; font-size: 48px;">{{data.icon}}</mat-icon>
+                <div class="raleway med-grey-text bold h7">{{data.header}}</div>
+                <div class="med-grey-text h8">{{data.content}}</div>
+              </div>
 
-  style=" min-width: 375px; max-width: 455px">
-<div class="raleway primary-color-text h7">Creating premium applications</div>
-<span [ngStyle.lt-lg]="{'text-align':'center'}"
-     style="max-width: 500px"
-     class="raleway dark-grey-text bold char-spacing-med {{getClassName('h3-')}}">
-     A great user experience starts with a great front-end architecture.</span>
-<div [ngStyle.lt-lg]="{'text-align':'center'}" class="med-grey-text h8">
-    There are many things to consider when it comes to designing the front-end code. 
-    Should we use a component or directive, smart or presentation component? Naming conventions, 
-    CSS hierarchy, how to divide the services? These technical decisions have an impact on the 
-    performance of the application and the development teams alike. Using my experience and knack for design and architecture, 
-    I can help your team make the best design decisions for your application.</div>
-</div>
-</div>
-</section>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
 
-<section #section5 class="{{getClassName('section2-')}}" style="position: relative; overflow: hidden">
+        <div style="height:40px; min-width: 2px; max-width: 40px; width:100%"></div>
 
-  <img *ngIf="mediaService.isActive('xs')" src="../../assets/website/about-me-parallax-1-1920x1100.jpg"
-  height="100%" style="position: absolute; top:0; left: 0; "/>
-  
-  
-  <div #section5Parallax *ngIf="mediaService.isActive('gt-xs')"
-  style="position: absolute; top:0; left:0; width:100%; height: calc(100% + 400px);
-   background-origin: border-box; background-size: cover;
-   background: url('../../assets/website/about-me-parallax-1-1920x1100.jpg') center;">
-  
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutAlign.lt-lg="center center" fxLayoutGap="15px"
+          [ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
+          [ngStyle.lt-md]="{'min-width':'340px', 'max-width': '600px'}" style=" min-width: 375px; max-width: 455px">
+          <div class="raleway primary-color-text h7">Creating premium applications</div>
+          <span [ngStyle.lt-lg]="{'text-align':'center'}" style="max-width: 500px"
+            class="raleway dark-grey-text bold char-spacing-med {{getClassName('h3-')}}">
+            A great user experience starts with a great front-end architecture.</span>
+          <div [ngStyle.lt-lg]="{'text-align':'center'}" class="med-grey-text h8">
+            There are many things to consider when it comes to designing the front-end code.
+            Should we use a component or directive, smart or presentation component? Naming conventions,
+            CSS hierarchy, how to divide the services? These technical decisions have an impact on the
+            performance of the application and the development teams alike. Using my experience and knack for design and
+            architecture,
+            I can help your team make the best design decisions for your application.</div>
+        </div>
+      </div>
+    </section>
+
+    <section #section5 class="{{getClassName('section2-')}}" style="position: relative; overflow: hidden">
+
+      <img *ngIf="mediaService.isActive('xs')" src="../../assets/website/about-me-parallax-1-1920x1100.jpg"
+        height="100%" style="position: absolute; top:0; left: 0; " />
+
+
+      <div #section5Parallax *ngIf="mediaService.isActive('gt-xs')" style="position: absolute; top:0; left:0; width:100%; height: calc(100% + 400px);
+            background-origin: border-box; background-size: cover;
+            background: url('../../assets/website/about-me-parallax-1-1920x1100.jpg') center;">
+
+      </div>
+
+      <div style="position: absolute; top:0; left: 0; width:100%; height:100%; background: rgba(0, 0, 0, 0.4)">
+      </div>
+
+      <div [ngStyle.xs]="{'height' : '1130px'}">
+        <div *ngIf="slideUp5" [@animate-page] style="width: 100%;" fxLayout="column" fxLayoutAlign="center center">
+
+          <div gdGap="50px" gdColumns.sm="200px" gdColumns.sm="200px 200px" gdColumns.md="350px 350px"
+            gdColumns.lg="350px 350px" gdColumns.gt-lg="200px 200px 200px 200px">
+
+            <div *ngFor="let spinner of section5Src" class="child">
+              <div style="width:100%; z-index: 1000; position: relative" fxLayout="column"
+                fxLayoutAlign="center center">
+                <div style="position: relative">
+                  <mat-progress-spinner value="{{spinner.value}}" [strokeWidth]="3" [diameter]="150" mode="determinate"
+                    color="accent">
+                  </mat-progress-spinner>
+                  <button mat-fab color="accent"
+                    style="position: absolute; top:0; left:100px;">{{spinner.value}}</button>
+                </div>
+                <div class="white-text raleway {{getClassName('h6-')}}"
+                  style="width:100%;text-align: center; margin: 10px auto">{{spinner.header}}
+                </div>
+                <div [ngStyle.xs]="{'max-width' : '90%'}" class="raleway white-text" style="text-align: center">
+                  {{spinner.content}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div #section6 fxLayout="column" fxLayoutAlign="center center" style="background-color: white; overflow: hidden">
+      <div class="dark-grey-text uppercase raleway" style="padding-top: 150px">Companies I've worked with</div>
+      <div style="padding-top: 50px; padding-bottom: 150px; place-items: center center;" gdColumns.sm="304px"
+        gdColumns.sm="304px 304px" gdColumns.md="304px 304px" gdColumns.lg="304px 304px"
+        gdColumns.gt-lg="304px 304px 304px 304px">
+        <img style="padding: 25px;" src="../../../assets/website/companies/bcbs.png" />
+        <img src="../../../assets/website/companies/vms.jpg" height="75" />
+        <img src="../../../assets/website/companies/bofa.png" height="100" />
+        <img src="../../../assets/website/companies/canon.png" height="75" />
+      </div>
+    </div>
+
   </div>
-  
-  <div style="position: absolute; top:0; left: 0; width:100%; height:100%; background: rgba(0, 0, 0, 0.4)">
-  </div>
-
-<div *ngIf="slideUp5" [@animate-page] style="width: 100%;" fxLayout="column" fxLayoutAlign="center center">
-
-<div gdGap="50px" gdColumns.sm="200px" gdColumns.sm="200px 200px"
-gdColumns.md="350px 350px"  gdColumns.lg="350px 350px" gdColumns.gt-lg="200px 200px 200px 200px">
-
-<div *ngFor="let spinner of section5Src" class="child">
- <div style="width:100%; z-index: 1000; position: relative" fxLayout="column" fxLayoutAlign="center center">
-   <div style="position: relative">
-     <mat-progress-spinner value="{{spinner.value}}" [strokeWidth]="3"
-                           [diameter]="150"
-                           mode="determinate" color="accent">
-     </mat-progress-spinner>
-     <button mat-fab color="accent" style="position: absolute; top:0; left:100px;">{{spinner.value}}</button>
-   </div>
-   <div class="white-text raleway {{getClassName('h6-')}}"
-        style="width:100%;text-align: center; margin: 10px auto">{{spinner.header}}
-   </div>
-   <div [ngStyle.xs]="{'max-width' : '90%'}" class="raleway white-text" style="text-align: center">
-     {{spinner.content}}
-   </div>
- </div>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<div #section6 fxLayout="column" fxLayoutAlign="center center" style="background-color: white; overflow: hidden">
-    <div class="dark-grey-text uppercase raleway" style="padding-top: 150px">Companies I've worked with</div>    
-    <div style="padding-top: 50px; padding-bottom: 150px; place-items: center center;" 
-     gdColumns.sm="304px" gdColumns.sm="304px 304px"
-        gdColumns.md="304px 304px" gdColumns.lg="304px 304px" gdColumns.gt-lg="304px 304px 304px 304px">
-      <img style="padding: 25px;" src="../../../assets/website/companies/bcbs.png"/>
-      <img src="../../../assets/website/companies/vms.jpg" height="75"/>
-      <img src="../../../assets/website/companies/bofa.png" height="100"/>
-      <img src="../../../assets/website/companies/canon.png" height="75"/>
-</div>
-</div>
-
-</div>
 </mgui-workspace>
