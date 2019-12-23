@@ -1,8 +1,8 @@
 import {
   AfterContentChecked,
-  AfterViewInit, ChangeDetectionStrategy,
+  AfterViewInit,
   Component, DoCheck, ElementRef,
-  Input, IterableDiffer, IterableDiffers,
+  Input, IterableDiffers,
   OnDestroy,
   OnInit,
   QueryList,
@@ -10,9 +10,7 @@ import {
   ViewChild,
   ViewChildren
 } from '@angular/core';
-import {ViewportRuler} from '@angular/cdk/scrolling';
 import {MguiPointerPanelDetails} from './mgui-pointer-panel-details';
-import {Observable, of, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MguiPointerPanelItem} from './mgui-pointer-panel-item';
@@ -51,7 +49,7 @@ export function MoveRowAni(name, to) {
 })
 
 export class MguiPointerPanelList<T> extends MguiItemsControl<T> implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked, DoCheck {
-  constructor(private ruler: ViewportRuler, protected readonly differs: IterableDiffers) {
+  constructor(protected readonly differs: IterableDiffers) {
     super(differs);   
   }
   
@@ -72,6 +70,7 @@ export class MguiPointerPanelList<T> extends MguiItemsControl<T> implements OnIn
   @ViewChildren(MguiPointerPanelItem) pointerPanelItems: QueryList<MguiPointerPanelItem<T>>;
 
   private _selectedIndex = -1;
+  private currWidth = 0;
 
   detailsPanelTop = 0;
   detailsPointerLeft = 0;
@@ -181,7 +180,7 @@ protected getItem(index: number) {
 
   ngOnInit(): void {
     super.ngOnInit();
-    this.ruler.change().pipe(takeUntil(this._onDestroy)).subscribe(() => this.setDetailPanelPosition());
+    this.currWidth = this.gridContainer.nativeElement.getBoundingClientRect().width;
   }
 
   ngAfterViewInit(): void {
@@ -212,6 +211,13 @@ protected getItem(index: number) {
          return; // only handles single item deletion for now.
        });
      }
+
+     const width = this.gridContainer.nativeElement.getBoundingClientRect().width;
+     if(this.currWidth !== width) {
+          this.currWidth = width;
+          this.setDetailPanelPosition();
+     }
+
    }
  }
 }

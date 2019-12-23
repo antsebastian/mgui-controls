@@ -11,6 +11,7 @@
   <mgui-pointer-panel-details #detailsPanel [pointerHeight]="20" [pointerWidth]="40"
                          class="image-details-panel"
                          [style.top]="detailsPanelTop + 'px'"
+                         [style.z-index]="detailsPanelState === 'open' ? 3 : 0" 
                          [pointerX]="detailsPointerLeft"
                          [itemDetailsTemplate]="itemDetailsTemplate"></mgui-pointer-panel-details>
 </div>
