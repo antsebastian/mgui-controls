@@ -115,10 +115,10 @@
     <!---->
     <section #section4 [ngStyle.lt-lg]="{'padding' : '50px 0'}" style="padding:100px 0; background: white;
               position: relative;top:0; left:0;">
-      <div [ngStyle.xs]="{'height' : '703px'}" style="margin: 0 10px; max-width: 1000px" fxLayout="row" fxLayoutAlign="center start" fxLayout.lt-lg="column"
+      <div style="margin: 0 10px; max-width: 1000px" fxLayout="row" fxLayoutAlign="center start" fxLayout.lt-lg="column"
         fxLayoutAlign.lt-lg="center center">
 
-        <mat-grid-list [cols]="mediaService.isActive('xs') ? 1 : 2" rowHeight="175px"
+        <mat-grid-list [cols]="mediaService.isActive('xs') ? 1 : 2" rowHeight="175px" [ngStyle.xs]="{'height' : '703px'}"
           [ngStyle.md]="{'min-width':'700px', 'max-width': '700px'}"
           style="width:100%; min-width:340px; max-width: 600px">
 
