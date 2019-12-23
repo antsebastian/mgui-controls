@@ -5,7 +5,8 @@
       <div #rotator style="overflow-x: hidden;" fxFill>
         <div id="scrolled-wrapper" fxLayout="row" fxFill>
             <ng-container *ngFor="let s of (dataStream$ | async); let i = index">
-                <slide-div #slide fxFill [slideid]="i"
+                <slide-div #slide fxFill [slideid]="i" (swipeleft)="nextSlide()"
+                (swiperight)="prevSlide()"
                 [ngStyle]="{'background-image': 'url('+s.fileName+')'}" style="background-repeat: no-repeat; background-position: center; background-size: cover;"
                 [itemTemplate]="itemTemplate ? itemTemplate : defaultTemplate" [slide]="slide" [data]="s">
                 </slide-div>
