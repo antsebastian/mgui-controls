@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,11 +25,26 @@ import { ContactsService, ContactsMockService, GamesMockService, GamesService } 
 import {ItemsControlWorkspace} from './workspaces/items-control-workspace/items-control-workspace'
 import { CacheReuseStrategy } from './route-cache';
 
+import { HammerGestureConfig } from "@angular/platform-browser";
+import * as hammer from "hammerjs";
+ 
+class MyHammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    swipe: { direction: hammer.DIRECTION_HORIZONTAL },
+    pinch: { enable: false },
+    rotate: { enable: false }
+  };
+};
+
+const hammerProvider = {
+  provide: HAMMER_GESTURE_CONFIG,
+  useClass: MyHammerConfig
+};
 
 const defaultRouteCache = {
     provide: RouteReuseStrategy,
     useClass: CacheReuseStrategy
-}
+};
 const indexRoute: Route = {
   path: '',
  component: WebsiteWorkspace,
@@ -91,7 +106,7 @@ const contactsServiceProvider = {
   ],
 
   
-  providers: [MguiSideNavService, contactsServiceProvider, gamesServiceProvider, defaultRouteCache],
+  providers: [ hammerProvider, MguiSideNavService, contactsServiceProvider, gamesServiceProvider, defaultRouteCache],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
