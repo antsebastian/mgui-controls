@@ -1,36 +1,17 @@
-# MguiControlsDemo
+# mgui-controls
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## The Components
 
-## Code scaffolding
+**Workspace** - a container component that fixes the double scrollbar issue with Angular 6 router, it also adds a secondary toolbar that’s fixed under the router and does not scroll off the screen. mgui-workspace uses content projection for developers to easily add tools. It then changes the position and interaction of those tools based on media breakpoints. Read the API Documentation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Pointer Panel** - a master/detail component that displays a wrapped list of cards and shows details of the selected card. The details panel points to the selected card and loads the details template; it then binds the selected card’s source to the details template.
 
-## Build
+**Carousal** - an infinite carousal that transition slides in to view. The slides wrap to the start or end to appear as infinite.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**ItemsControl** - A base component that contains the datasource/template bindings used by pointer panel and carousel.
 
-## Running unit tests
+**mguiBootstrapBreakpoint** –  a breakpoint provider that maps existing fxFlex breakpoint aliases to use bootstrap media min/max values. The provider overrides the values but not the aliases, so the existing aliases such as ngStyle.xs and fxHide.lg will use the bootstrap media values instead of the fxFlex default values.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-[Further help](##Further-help)
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further-help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-| Components  |  |
-| ------------- | ------------- |
-| mgui-carousel | mgui-pointer-panel-list |
-| <img src="./src/assets/website/component-screenshots/carousel.png" width="500px" /> | <img src="./src/assets/website/component-screenshots/pointer-panel.png" width="500px" />
-| mgui-items-control | mgui-workspace |
- | <img src="./src/assets/website/component-screenshots/items-control.png" width="500px" />  | <img src="./src/assets/website/component-screenshots/workspace.png" width="500px" />  |
