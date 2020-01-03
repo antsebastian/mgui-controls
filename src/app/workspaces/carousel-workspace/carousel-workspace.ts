@@ -13,23 +13,23 @@ export class CarouselWorkspace implements OnInit, OnDestroy {
   //data bound. fileName displays and transitions images.   
   @Input() myData = [
     { 
-      fileName: '../../../assets/website/portfolio-grid-1-800x650.jpg',
+      fileName: '../../../assets/website/portfolio-grid-1-800x650.webp',
       someText: 'My Template - Slide 1'
     },    
     { 
-      fileName: '../../../assets/website/portfolio-grid-2-800x650.jpg',
+      fileName: '../../../assets/website/portfolio-grid-2-800x650.webp',
       someText: 'My Template - Slide 2'
     }, 
     { 
-      fileName: '../../../assets/website/portfolio-grid-3-800x650.jpg',
+      fileName: '../../../assets/website/portfolio-grid-3-800x650.webp',
       someText: 'My Template - Slide 3'
     }, 
     { 
-      fileName: '../../../assets/website/portfolio-grid-4-800x650.jpg',
+      fileName: '../../../assets/website/portfolio-grid-4-800x650.webp',
       someText: 'My Template - Slide 4'
     }, 
     { 
-      fileName: '../../../assets/website/portfolio-grid-5-800x650.jpg',
+      fileName: '../../../assets/website/portfolio-grid-5-800x650.webp',
       someText: 'My Template - Slide 5'
     }, 
  
