@@ -4,7 +4,7 @@ import {switchMap, takeUntil} from 'rxjs/operators';
 import {of, Subject} from 'rxjs';
 import {MediaMonitor, ObservableMedia} from '@angular/flex-layout';
 import { MguiSideNavService } from 'libs/mgui-controls/src/mgui-workspace/mgui-side-nav.service';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   @Input() toolbarTemplate: TemplateRef<any>;
   @Input() drawerMode: string;
+  loading = false;
 
   @ViewChild('navList') navList: MatSelectionList;
   @ViewChild('drawer') drawer: MatSidenav;
@@ -24,7 +25,26 @@ export class AppComponent implements OnDestroy, OnInit {
   constructor(public appService: MguiSideNavService,           
               public mediaMonitor: MediaMonitor, 
               private mediaService: ObservableMedia,
-              private router: Router) { }
+              private router: Router) 
+              { 
+                router.events.subscribe((event) => {
+                  if (event instanceof NavigationStart) {
+                    this.loading = true
+                  }
+                  if (event instanceof NavigationEnd) {
+                    this.loading = false
+                  }
+              
+                  // Set loading state to false in both of the below events to hide the spinner in case a request fails
+                  if (event instanceof NavigationCancel) {
+                    this.loading = false
+                  }
+                  if (event instanceof NavigationError) {
+                    this.loading = false
+                  }
+                })
+
+              }
 
   ngOnInit(): void {
     

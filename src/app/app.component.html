@@ -12,7 +12,9 @@
     <mat-sidenav-container fxFlex="100%">
   
       <mat-sidenav-content role="main" fxFlex="100%">
-       <router-outlet></router-outlet>
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
   
       <mat-sidenav #drawer class="mat-elevation-z3" [mode]="drawerMode"

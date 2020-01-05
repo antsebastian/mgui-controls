@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
-import { takeUntil, takeWhile, map } from 'rxjs/operators';
-import { Subject, interval } from 'rxjs';
+import { takeUntil, takeWhile, map, tap, mergeMap, flatMap, concatAll, concatMap } from 'rxjs/operators';
+import { Subject, interval, forkJoin, Observable, from, of, merge, concat } from 'rxjs';
 import { SetPageAni, ResponsiveScaleAni, FadeInAni } from 'libs/mgui-controls/src/animations';
+import { ActivatedRoute } from '@angular/router';
+import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
 
 @Component({
   selector: 'website-workspace',
@@ -18,13 +20,13 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
   }
 
   @Input()
-  slideSrc = [{ fileName: '../../../assets/website/small-business-parallax-1-1920x1200.webp', 
+  slideSrc = [{ fileName: '../assets/website/small-business-parallax-1-1920x1200.webp', 
                 smallText: 'Hello, I\'m Anthony Sebastian and Modern GUIs is my consulting company for web application development.', 
                 bigText: 'UI Designer and Developer' },
-  { fileName: '../../../assets/website/small-business-parallax-2-1920x1200.webp', 
+  { fileName: '../assets/website/small-business-parallax-2-1920x1200.webp', 
     smallText: 'I create front-end components, frameworks and applications.',
     bigText: 'Angular Vue ES6 TypeScript' },
-  { fileName: '../../../assets/website/small-business-parallax-3-1920x1200.webp', 
+  { fileName: '../assets/website/small-business-parallax-3-1920x1200.webp', 
   smallText: 'Scroll down to find out more about me and the services I offer.',
   bigText: 'HTML5 CSS3 Flex Grid'}];
   
@@ -97,7 +99,15 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
   slideUp4 = false;
   slideUp5 = false;
 
-  constructor(public mediaService: ObservableMedia) { 
+  constructor(public mediaService: ObservableMedia, private route: ActivatedRoute) {
+    const imageResolver$ = route.data.pipe( map( data => data.imageResolver ));
+    imageResolver$.subscribe((images: Array<HTMLImageElement>) => {
+      images.forEach(element => {
+        console.log(element);
+        
+      });
+    } );
+    
     mediaService.asObservable()
     .pipe(takeUntil(this._onDestroy))
     .subscribe((change) => {

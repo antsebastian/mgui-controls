@@ -27,6 +27,7 @@ import { CacheReuseStrategy } from './route-cache';
 
 import { HammerGestureConfig } from "@angular/platform-browser";
 import * as hammer from "hammerjs";
+import { MguiImageResolverService } from './services/mgui-image-resolver.service';
  
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -55,9 +56,20 @@ const fallbackRoute: Route = {
  component: WebsiteWorkspace
 };
 
+const webSitePreloads = ['../assets/website/small-business-parallax-1-1920x1200.webp', 
+  '../assets/website/small-business-parallax-2-1920x1200.webp', 
+  '../assets/website/small-business-parallax-3-1920x1200.webp',
+  '../assets/website/about-me-1-1920x1100.webp',
+  '../assets/website/about-me-parallax-1-1920x1100.webp',
+  '../assets/website/companies/bcbs.png',
+  '../assets/website/companies/vms.jpg',
+  '../assets/website/companies/bofa.png',
+  '../assets/website/companies/canon.png'
+];
+
 const appRoutes: Routes = [
- {path: 'website-workspace', component: WebsiteWorkspace},
- {path: 'library-workspace', component: LibraryWorkspace},
+ {path: 'website-workspace', component: WebsiteWorkspace, data: {preloads: webSitePreloads}, resolve: {imageResolver: MguiImageResolverService} },
+ {path: 'library-workspace', component: LibraryWorkspace, resolve: {imageResolver: MguiImageResolverService}},
  {path: 'carousel-workspace', component: CarouselWorkspace},
  {path: 'pointer-panel-workspace', component: PointerPanelWorkspace},
  {path: 'items-control-workspace', component: ItemsControlWorkspace},
@@ -106,7 +118,7 @@ const contactsServiceProvider = {
   ],
 
   
-  providers: [ hammerProvider, MguiSideNavService, contactsServiceProvider, gamesServiceProvider, defaultRouteCache],
+  providers: [ hammerProvider, MguiSideNavService, contactsServiceProvider, gamesServiceProvider, defaultRouteCache, MguiImageResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
