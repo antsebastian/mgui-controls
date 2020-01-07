@@ -2,23 +2,26 @@
   <ng-container webTools>
     <span fxFlex="1 1 0"></span>
     <button matTooltip="Open GitHub source code and documentation in a new browser tab" 
-    mat-icon-button (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png"/></button>
+            mat-icon-button (click)="goToDoc()" aria-label="Open documentation">
+    <img src="../../../assets/GitHub-Mark-Light-32px.png" aria-label="Open documentation"/>
+  </button>
   </ng-container>
 
   <ng-container mobileTools>
     <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
-      <button mat-menu-item (click)="goToDoc()">
-        <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24"/>
+      <button mat-menu-item (click)="goToDoc()" aria-label="Open documentation">
+        <img  style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" 
+              width="24" height="24" alt=""/>
         <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>  
     </mat-menu>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="More commands">
       <mat-icon>more_vert</mat-icon>
     </button>
   </ng-container>
 
   <ng-container mobilePrimeTools>
-    <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
-      <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
+    <button mat-fab style="margin-left: 10px" (click)="goToDoc()" aria-label="Open documentation">
+      <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24" alt=""/>
     </button>    
   </ng-container>
 

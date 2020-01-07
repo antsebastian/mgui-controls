@@ -1,6 +1,6 @@
 <ng-template #myItemTemplate let-data>
   <div fxLayout="row">
-    <button fxFlexAlign="center" mat-icon-button (click)="removeItem(data)">
+    <button fxFlexAlign="center" mat-icon-button (click)="removeItem(data)" aria-label="Remove item">
         <mat-icon>delete</mat-icon>
       </button>
       <span fxFlexAlign="center" class="foreground" style="font-size:20px; white-space:nowrap;">{{data}}</span>
@@ -15,39 +15,41 @@
     
       <ng-container webTools>
 
-        <button mat-icon-button (click)="addItem()" matTooltip="Add an item to the list below">
+        <button mat-icon-button (click)="addItem()" matTooltip="Add an item to the list below" aria-label="Add item">
           <mat-icon>add</mat-icon>
         </button>
           <span fxFlex="1 1 0"></span>
         <button matTooltip="Open GitHub source code and documentation in a new browser tab" 
-        mat-icon-button (click)="goToDoc()"><img src="../../../assets/GitHub-Mark-Light-32px.png"/></button>
+                mat-icon-button (click)="goToDoc()" aria-label="Open documentation">
+        <img src="../../../assets/GitHub-Mark-Light-32px.png" alt=""/>
+      </button>
       </ng-container>
-    
     
       <ng-container mobileTools>
         <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
     
-          <button mat-menu-item (click)="addItem()">
+          <button mat-menu-item (click)="addItem()" aria-label="Add item">
             <mat-icon>add</mat-icon>
             <span style="vertical-align: middle;">Add an item</span>  
           </button>
     
-          <button mat-menu-item (click)="goToDoc()">
-            <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24"/>
-            <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>  
+          <button mat-menu-item (click)="goToDoc()" aria-label="Open documentation">
+            <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" width="24" height="24" alt=""/>
+            <span style="margin-left: 17px; vertical-align: middle;">GitHub</span>
+          </button>  
         </mat-menu>
     
-        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <button mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="More commands">
           <mat-icon>more_vert</mat-icon>
         </button>
       </ng-container>
     
       <ng-container mobilePrimeTools>
-        <button mat-fab (click)="addItem()">
+        <button mat-fab (click)="addItem()" aria-label="Add item">
           <mat-icon>add</mat-icon>
         </button>
-        <button mat-fab style="margin-left: 10px" (click)="goToDoc()" >
-          <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24"/>
+        <button mat-fab style="margin-left: 10px" (click)="goToDoc()" aria-label="Open documentation">
+          <img src="../../../assets/GitHub-Mark-32px.png" width="24" height="24" alt=""/>
         </button>    
     
       </ng-container>

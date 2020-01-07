@@ -12,7 +12,7 @@
 
     </svg>
     <div id="div-details-panel" class="mat-elevation-z2">
-      <button mat-icon-button (click)="close.emit()" style="position:absolute; top:20px; right:0">
+      <button mat-icon-button (click)="close.emit()" style="position:absolute; top:20px; right:0" aria-label="Close details panel">
         <mat-icon>close</mat-icon>
       </button>
       <ng-template *ngTemplateOutlet="itemDetailsTemplate; context: {$implicit: data}"></ng-template>

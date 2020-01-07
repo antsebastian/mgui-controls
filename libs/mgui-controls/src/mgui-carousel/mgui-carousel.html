@@ -11,25 +11,17 @@
                 [itemTemplate]="itemTemplate ? itemTemplate : defaultTemplate" [slide]="slide" [data]="s">
                 </slide-div>
               </ng-container>
-    
         </div>
         </div>
 
       <ng-container *ngIf="mediaService.isActive('gt-sm')">
         <button mat-fab style=" color:white; background: rgba(0, 0, 0, 0.6); position: absolute;
-                              top: 50%; left: 25px" (click)="prevSlide()">
+                              top: 50%; left: 25px" (click)="prevSlide()" aria-label="Slide left">
           <mat-icon>arrow_back</mat-icon>
         </button>
         <button mat-fab style=" color:white; background: rgba(0, 0, 0, 0.6); position: absolute;
-                              top: 50%; right:25px" (click)="nextSlide()">
+                              top: 50%; right:25px" (click)="nextSlide()" aria-label="Slide right">
           <mat-icon>arrow_forward</mat-icon>
         </button>
       </ng-container >
-
-<!--       <div fxLayout="row" style="position: absolute; bottom: 10%; left: calc(50% - 30px)">
-        <button (click)="selSlide(0)">0</button>
-        <button (click)="selSlide(1)">1</button>
-        <button (click)="selSlide(2)">2</button>
-        <button (click)="selSlide(3)">3</button>
-      </div>
- -->    </section>
+  </section>
