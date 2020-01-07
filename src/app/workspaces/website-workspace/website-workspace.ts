@@ -4,7 +4,6 @@ import { takeUntil, takeWhile, map, tap, mergeMap, flatMap, concatAll, concatMap
 import { Subject, interval, forkJoin, Observable, from, of, merge, concat } from 'rxjs';
 import { SetPageAni, ResponsiveScaleAni, FadeInAni } from 'libs/mgui-controls/src/animations';
 import { ActivatedRoute } from '@angular/router';
-import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
 
 @Component({
   selector: 'website-workspace',
@@ -101,12 +100,7 @@ export class WebsiteWorkspace implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(public mediaService: ObservableMedia, private route: ActivatedRoute) {
     const imageResolver$ = route.data.pipe( map( data => data.imageResolver ));
-    imageResolver$.subscribe((images: Array<HTMLImageElement>) => {
-      images.forEach(element => {
-        console.log(element);
-        
-      });
-    } );
+    imageResolver$.subscribe();
     
     mediaService.asObservable()
     .pipe(takeUntil(this._onDestroy))
