@@ -10,20 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./library-workspace.scss']
 })
 export class LibraryWorkspace implements OnInit, OnDestroy {
-
-
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();
 
-  constructor(public mediaService: ObservableMedia, private route: ActivatedRoute) {
-
-    const res = route.data.pipe(tap(data => console.log(data))).subscribe(d => console.log(d));
-   
-    //
-    // res.subscribe(w=>console.log(w));
-    
-   // console.log(route.data);
-
+  constructor(public mediaService: ObservableMedia) {
     mediaService.asObservable()
     .pipe(takeUntil(this._onDestroy))
     .subscribe((change) => {

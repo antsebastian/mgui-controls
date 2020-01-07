@@ -69,7 +69,7 @@ const webSitePreloads = ['../assets/website/small-business-parallax-1-1920x1200.
 
 const appRoutes: Routes = [
  {path: 'website-workspace', component: WebsiteWorkspace, data: {preloads: webSitePreloads}, resolve: {imageResolver: MguiImageResolverService} },
- {path: 'library-workspace', component: LibraryWorkspace, resolve: {imageResolver: MguiImageResolverService}},
+ {path: 'library-workspace', component: LibraryWorkspace},
  {path: 'carousel-workspace', component: CarouselWorkspace},
  {path: 'pointer-panel-workspace', component: PointerPanelWorkspace},
  {path: 'items-control-workspace', component: ItemsControlWorkspace},
