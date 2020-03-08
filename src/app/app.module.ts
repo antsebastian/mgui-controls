@@ -28,6 +28,7 @@ import { CacheReuseStrategy } from './route-cache';
 import { HammerGestureConfig } from "@angular/platform-browser";
 import * as hammer from "hammerjs";
 import { MguiImageResolverService } from './services/mgui-image-resolver.service';
+import { TabComponent } from './workspaces/empty-workspace/tab/tab.component';
  
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -73,7 +74,13 @@ const appRoutes: Routes = [
  {path: 'carousel-workspace', component: CarouselWorkspace},
  {path: 'pointer-panel-workspace', component: PointerPanelWorkspace},
  {path: 'items-control-workspace', component: ItemsControlWorkspace},
- {path: 'empty-workspace', component: EmptyWorkspace},
+  {
+    path: 'empty-workspace', component: EmptyWorkspace, children: [
+      {path: '', redirectTo: 'tab1', pathMatch: 'full'},
+      {path: 'tab1', component: TabComponent},
+      {path: 'tab2', component: TabComponent}
+    ]
+  },
 
  indexRoute, fallbackRoute
 ];
@@ -101,7 +108,7 @@ const contactsServiceProvider = {
 @NgModule({
   declarations: [
     AppComponent,
-    EmptyWorkspace, LibraryWorkspace, CarouselWorkspace, WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace
+    EmptyWorkspace, LibraryWorkspace, CarouselWorkspace, WebsiteWorkspace, PointerPanelWorkspace, ItemsControlWorkspace, TabComponent
   ],
   imports: [
     BrowserModule,
