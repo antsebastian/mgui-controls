@@ -1,19 +1,18 @@
-
 <mgui-workspace workspaceTitle="Workspace Title & Tools Here">
 
   <ng-container webTools>
     <span fxFlex="1 1 0"></span>
-    <button matTooltip="Open documentation in a new browser tab"  aria-label="Open documentation"
+    <button matTooltip="Open documentation in a new browser tab" aria-label="Open documentation"
             mat-icon-button (click)="goToDoc()">
-    <img src="../../../assets/GitHub-Mark-Light-32px.png" alt=""/></button>
+      <img src="../../../assets/GitHub-Mark-Light-32px.png" alt=""/></button>
   </ng-container>
 
   <ng-container mobileTools>
     <mat-menu #appMenu="matMenu" [overlapTrigger]="false">
       <button mat-menu-item (click)="goToDoc()" aria-label="Open documentation">
-        <img  style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png" 
-              width="24" height="24" alt=""/>
-        <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>  
+        <img style="vertical-align: middle;" src="../../../assets/GitHub-Mark-Light-32px.png"
+             width="24" height="24" alt=""/>
+        <span style="margin-left: 17px; vertical-align: middle;">GitHub</span></button>
     </mat-menu>
     <button mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="More commands">
       <mat-icon>more_vert</mat-icon>
@@ -28,7 +27,12 @@
   </ng-container>
 
 
-    <div #scroller style="width: 100%; height: 100%; overflow: auto">
-      <h1 style="margin:25px">Workspace Content Here</h1>
-    </div>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of links"
+       (click)="activeLink = link"
+       [active]="activeLink == link"> {{link}} </a>
+  </nav>
+
+    <router-outlet></router-outlet>
+
 </mgui-workspace>

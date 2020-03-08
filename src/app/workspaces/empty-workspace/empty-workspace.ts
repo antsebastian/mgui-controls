@@ -12,6 +12,8 @@ export class EmptyWorkspace implements OnInit, OnDestroy {
 
   @Input() currLayoutString = 'lg';
   private _onDestroy = new Subject<void>();
+  links = ['Tab1', 'Tab2'];
+  activeLink = this.links[0];
 
   constructor(public mediaService: ObservableMedia) {
     mediaService.asObservable()
